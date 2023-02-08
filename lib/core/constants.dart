@@ -1,0 +1,32 @@
+abstract class Images {
+  static const String brushingTeeth = 'assets/images/brushing_teeth.webp';
+  static const String brushingTeeth1 = 'assets/images/brushing_teeth1.webp';
+  static const String brushingTeeth2 = 'assets/images/brushing_teeth2.webp';
+  static const String combingHair = 'assets/images/combing_hair.webp';
+  static const String combingHair1 = 'assets/images/combing_hair1.webp';
+  static const String combingHair2 = 'assets/images/combing_hair2.webp';
+  static const String combingHair3 = 'assets/images/combing_hair3.webp';
+  static const String drinkingWater = 'assets/images/drinking_water.webp';
+  static const String drinkingWater1 = 'assets/images/drinking_water1.webp';
+  static const String drinkingWater2 = 'assets/images/drinking_water2.webp';
+  static const String eating = 'assets/images/eating.webp';
+  static const String eating1 = 'assets/images/eating1.webp';
+  static const String eating2 = 'assets/images/eating2.webp';
+  static const String laughing = 'assets/images/laughing.webp';
+  static const String laughing2 = 'assets/images/laughing2.webp';
+  static const String reading = 'assets/images/reading.webp';
+  static const String reading1 = 'assets/images/reading1.webp';
+  static const String reading2 = 'assets/images/reading2.webp';
+  static const String running = 'assets/images/running.webp';
+  static const String running1 = 'assets/images/running1.webp';
+  static const String sleeping = 'assets/images/sleeping.webp';
+  static const String sleeping1 = 'assets/images/sleeping1.webp';
+  static const String takingShower = 'assets/images/taking_shower.webp';
+  static const String takingShower1 = 'assets/images/taking_shower1.webp';
+  static const String takingShower2 = 'assets/images/taking_shower2.webp';
+  static const String washingHands = 'assets/images/washing_hands.webp';
+  static const String washingHands1 = 'assets/images/washing_hands1.webp';
+  static const String washingHands2 = 'assets/images/washing_hands2.webp';
+  static const String watchingTv = 'assets/images/watching_tv.webp';
+  static const String watchingTv1 = 'assets/images/watching_tv1.webp';
+}
