@@ -1,0 +1,24 @@
+{
+    "appTitle": "Aba Game",
+    "@appTitle": {
+      "description": "nome do app"
+    },
+    "menuTitle": "Menu",
+    "@appTitle": {
+      
+    },
+    "menuStart": "Começar",
+    "@menuStart": {
+      
+    },
+    "menuSettings": "Configurações",
+    "@menuSettings": {
+    },
+    "menuAbout": "Sobre",
+    "@menuAbout": {},
+    "menuExit": "Sair",
+    "@menuExit": {},
+    "menuScore": "Pontuação",
+    "@menuScore": {}
+
+  }
