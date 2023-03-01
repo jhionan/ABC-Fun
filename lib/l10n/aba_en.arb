@@ -1,0 +1,46 @@
+{
+  "appTitle": "Aba Game",
+  "@appTitle": {
+    "description": "app's name"
+  },
+  "menuTitle": "Menu",
+  "@appTitle": {
+    
+  },
+  "menuStart": "Start",
+  "@menuStart": {
+    
+  },
+  "menuSettings": "Settings",
+  "@menuSettings": {
+  },
+  "menuAbout": "About",
+  "@menuAbout": {},
+  "menuExit": "Exit",
+  "@menuExit": {},
+  "menuScore": "Score",
+  "@menuScore": {},
+  "brushingTeeth": "Brushing teeth",
+  "@brushingTeeth": {},
+  "combingHair": "Combing hair",
+  "@combingHair": {},
+  "washingHands": "Washing hands",
+  "@washingHands": {},
+  "drinkingWater": "Drinking water",
+  "@drinkingWater": {},
+  "eating" : "Eating",
+  "@eating" : {},
+  "reading" : "Reading",
+  "@reading" : {},
+  "sleeping" : "Sleeping",
+  "@sleeping" : {},
+  "watchingTv" : "Watching TV",
+  "@watchingTv" : {},
+  "takingShower" : "Taking shower",
+  "@takingShower" : {},
+  "running" : "Running",
+  "@running" : {},
+  "laughing" : "Laughing",
+  "@laughing" : {}
+
+}
