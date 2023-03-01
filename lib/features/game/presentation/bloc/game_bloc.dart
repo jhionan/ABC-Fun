@@ -35,15 +35,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   GameState _nextState(GameEventOnItemTapped event) {
+    totalMoves++;
     if (state is GameRunning && event.item == (state as GameRunning).correctAnswer && currentRound < rounds) {
-      totalMoves++;
       return GameVictory();
     }
     if (state is GameRunning && event.item != (state as GameRunning).correctAnswer && currentRound < rounds) {
-      totalMoves++;
       return GameWrongAnswer.fromRunningState(state as GameRunning);
     }
-    totalMoves++;
     return GameOver(scorePercentage: finalScorePercentage);
   }
 
@@ -53,6 +51,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       return;
     }
     Set<ActionGroup> containnedItems = <ActionGroup>{roundItems[currentRound].group};
+    possibleItems.shuffle();
     List<ActionItemEntity> phaseItems = <ActionItemEntity>[
       roundItems[currentRound],
       ...possibleItems.where((element) {

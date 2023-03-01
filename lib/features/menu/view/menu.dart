@@ -77,8 +77,7 @@ class _MenuState extends State<Menu> {
         // TODO: Handle this case.
         break;
       case MenuEvent.exit:
-        // TODO: Handle this case.
-        break;
+       
     }
   }
 }

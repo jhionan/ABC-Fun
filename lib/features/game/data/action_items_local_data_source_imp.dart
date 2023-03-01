@@ -168,6 +168,232 @@ class ActionItemsLocalDataSourceImp implements ActionItemsRepository {
         dificulty: 1,
         imagePath: Images.watchingTv1,
       ),
+      const ActionItemEntity(
+        group: ActionGroup.climbing,
+        name: 'Clinbing',
+        dificulty: 1,
+        imagePath: Images.climbing,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.climbing,
+        name: 'Clinbing1',
+        dificulty: 1,
+        imagePath: Images.climbing1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.climbing,
+        name: 'Clinbing2',
+        dificulty: 1,
+        imagePath: Images.climbing2,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.coloring,
+        name: 'Coloring',
+        dificulty: 1,
+        imagePath: Images.coloring,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.coloring,
+        name: 'Coloring1',
+        dificulty: 1,
+        imagePath: Images.coloring1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.coloring,
+        name: 'Coloring2',
+        dificulty: 1,
+        imagePath: Images.coloring2,
+      ),
+      //crying
+      const ActionItemEntity(
+        group: ActionGroup.crying,
+        name: 'Crying',
+        dificulty: 1,
+        imagePath: Images.crying,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.crying,
+        name: 'Crying1',
+        dificulty: 1,
+        imagePath: Images.crying1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.crying,
+        name: 'Crying2',
+        dificulty: 1,
+        imagePath: Images.crying2,
+      ),
+      //greeting
+      const ActionItemEntity(
+        group: ActionGroup.greeting,
+        name: 'Greeting',
+        dificulty: 1,
+        imagePath: Images.greeting,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.greeting,
+        name: 'Greeting1',
+        dificulty: 1,
+        imagePath: Images.greeting1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.greeting,
+        name: 'Greeting2',
+        dificulty: 1,
+        imagePath: Images.greeting2,
+      ),
+      //hugging
+      const ActionItemEntity(
+        group: ActionGroup.hugging,
+        name: 'Hugging',
+        dificulty: 1,
+        imagePath: Images.hugging,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.hugging,
+        name: 'Hugging1',
+        dificulty: 1,
+        imagePath: Images.hugging1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.hugging,
+        name: 'Hugging2',
+        dificulty: 1,
+        imagePath: Images.hugging2,
+      ),
+      //jumping
+      const ActionItemEntity(
+        group: ActionGroup.jumping,
+        name: 'Jumping',
+        dificulty: 1,
+        imagePath: Images.jumping,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.jumping,
+        name: 'Jumping1',
+        dificulty: 1,
+        imagePath: Images.jumping1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.jumping,
+        name: 'Jumping2',
+        dificulty: 1,
+        imagePath: Images.jumping2,
+      ),
+      //playing
+      const ActionItemEntity(
+        group: ActionGroup.playing,
+        name: 'Playing',
+        dificulty: 1,
+        imagePath: Images.playing,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.playing,
+        name: 'Playing1',
+        dificulty: 1,
+        imagePath: Images.playing1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.playing,
+        name: 'Playing2',
+        dificulty: 1,
+        imagePath: Images.playing2,
+      ),
+      //petting
+      const ActionItemEntity(
+        group: ActionGroup.petting,
+        name: 'Petting',
+        dificulty: 1,
+        imagePath: Images.petting,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.petting,
+        name: 'Petting1',
+        dificulty: 1,
+        imagePath: Images.petting1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.petting,
+        name: 'Petting2',
+        dificulty: 1,
+        imagePath: Images.petting2,
+      ),
+      //screaming
+      const ActionItemEntity(
+        group: ActionGroup.screaming,
+        name: 'Screaming',
+        dificulty: 1,
+        imagePath: Images.screaming,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.screaming,
+        name: 'Screaming1',
+        dificulty: 1,
+        imagePath: Images.screaming1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.screaming,
+        name: 'Screaming2',
+        dificulty: 1,
+        imagePath: Images.screaming2,
+      ),
+      //sitting
+      const ActionItemEntity(
+        group: ActionGroup.sitting,
+        name: 'Sitting',
+        dificulty: 1,
+        imagePath: Images.sitting,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.sitting,
+        name: 'Sitting1',
+        dificulty: 1,
+        imagePath: Images.sitting1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.sitting,
+        name: 'Sitting2',
+        dificulty: 1,
+        imagePath: Images.sitting2,
+      ),
+      //singing
+      const ActionItemEntity(
+        group: ActionGroup.singing,
+        name: 'Singing',
+        dificulty: 1,
+        imagePath: Images.singing,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.singing,
+        name: 'Singing1',
+        dificulty: 1,
+        imagePath: Images.singing1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.singing,
+        name: 'Singing2',
+        dificulty: 1,
+        imagePath: Images.singing2,
+      ),
+      //studying
+      const ActionItemEntity(
+        group: ActionGroup.studying,
+        name: 'Studying',
+        dificulty: 1,
+        imagePath: Images.studying,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.studying,
+        name: 'Studying1',
+        dificulty: 1,
+        imagePath: Images.studying1,
+      ),
+      const ActionItemEntity(
+        group: ActionGroup.studying,
+        name: 'Studying2',
+        dificulty: 1,
+        imagePath: Images.studying2,
+      ),
     ];
   }
 
