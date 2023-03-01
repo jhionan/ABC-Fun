@@ -1,3 +1,4 @@
+import 'package:aba/features/game/domain/models/action_item_entity.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,12 +17,12 @@ class Game extends StatelessWidget {
             return const Center(child: Text('Initial'));
           }
           if (state is GameVictory) {
-            Future.delayed(const Duration(seconds: 1))
+            Future.delayed(const Duration(milliseconds: 500))
                 .then((value) => context.read<GameBloc>().add(GameEventRestart()));
             return Container(color: Colors.green.shade200, child: const Center(child: Text('Victory')));
           }
           if (state is GameWrongAnswer) {
-            Future.delayed(const Duration(seconds: 1))
+            Future.delayed(const Duration(milliseconds: 500))
                 .then((value) => context.read<GameBloc>().add(GameEventRestart()));
             return Container(color: Colors.yellow.shade200, child: const Center(child: Text('Wrong Answer')));
           }
@@ -32,7 +33,7 @@ class Game extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('Pontuação final: ${state.scorePercentage}%'),
+                    Text('Pontuação final: ${state.scorePercentage.toStringAsPrecision(4)}%'),
                     const SizedBox(
                       width: double.infinity,
                       height: 16,
@@ -47,7 +48,10 @@ class Game extends StatelessWidget {
           if (state is GameRunning) {
             return Column(
               children: [
-                Text(state.correctAnswer.group.name),
+                Text(
+                  state.correctAnswer.group.actionName(context),
+                  style: const TextStyle(fontSize: 32),
+                ),
                 Expanded(
                   child: LayoutBuilder(builder: (context, contraints) {
                     return GridView(

@@ -47,7 +47,7 @@ class _MenuState extends State<Menu> {
                       padding: const EdgeInsets.all(8.0),
                       child: MaterialButton(
                         onPressed: () => _navigateToGame(context, e),
-                        child: Text(e.name(context)),
+                        child: Text(e.name(context), style: const TextStyle(fontSize: 32),),
                       ),
                     ),
                   ),
