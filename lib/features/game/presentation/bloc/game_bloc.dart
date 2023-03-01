@@ -43,6 +43,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       totalMoves++;
       return GameWrongAnswer.fromRunningState(state as GameRunning);
     }
+    totalMoves++;
     return GameOver(scorePercentage: finalScorePercentage);
   }
 
