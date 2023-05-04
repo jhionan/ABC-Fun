@@ -1,6 +1,7 @@
 import 'package:aba/features/game/presentation/view/game_provider.dart';
 import 'package:aba/features/menu/bloc/menu_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 extension MenuNamesExt on MenuEvent {
@@ -77,7 +78,7 @@ class _MenuState extends State<Menu> {
         // TODO: Handle this case.
         break;
       case MenuEvent.exit:
-       
+       SystemNavigator.pop();
     }
   }
 }
