@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ActionItemEntity {
   final ActionGroup group;
@@ -32,80 +31,210 @@ class ActionItemEntity {
 }
 
 enum ActionGroup {
-  brushingTeeth,
-  combingHair,
-  drinkingWater,
-  eating,
-  laughing,
-  reading,
-  running,
-  sleeping,
-  takingShower,
-  washingHands,
-  watchingTv,
-  climbing,
-  crying,
-  greeting,
-  hugging,
+  clappingHands,
   jumping,
-  petting,
-  playing,
-  screaming,
+  running,
   sitting,
-  studying,
+  waving,
+  throwingBall,
+  drinkingWater,
+  brushingTeeth,
+  sleeping,
+  laughing,
+  eating,
+  readingBook,
+  ridingBike,
+  hugging,
+  walking,
+  blowingBubbles,
+  drawing,
+  kickingBall,
+  playingBlocks,
+  pettingDog,
+  openingDoor,
+  closingDoor,
+  pouringWater,
+  wateringPlants,
+  puttingOnHat,
+  takingOffHat,
+  puttingOnShoes,
+  takingOffShoes,
+  flippingLightSwitch,
+  washingHands,
+  blowingNose,
+  combingHair,
+  foldingClothes,
+  makingBed,
+  plantingSeeds,
+  pushingWheelchair,
+  shakingHands,
+  holdingHands,
+  zippingJacket,
+  unzippingJacket,
+  buttoningShirt,
+  unbuttoningShirt,
+  stirringFood,
+  cuttingFood,
+  sweepingFloor,
+  vacuuming,
+  wipingTable,
+  typingOnKeyboard,
+  clickingMouse,
+  usingRemoteControl,
+  puttingOnGlasses,
+  takingOffGlasses,
+  paintingPicture,
+  playingPiano,
+  strummingGuitar,
+  writingLetter,
+  turningPage,
+  sortingShapes,
+  slidingPuzzle,
+  shakingRattle,
+  playingCatch,
+  pushingSwing,
+  catchingButterfly,
+  skippingRope,
+  twirlingHulaHoop,
+  bouncingBall,
+  spinningTop,
+  buildingSandcastle,
+  blowingOutCandles,
+  openingPresent,
+  givingGift,
+  receivingGift,
+  makingWish,
+  takingPicture,
+  wavingGoodbye,
+  scratchingItch,
+  yawning,
+  sneezing,
+  playingVideoGames,
+  watchingTV,
+  listeningToMusic,
+  settingTable,
+  clearingTable,
+  washingDishes,
+  dryingDishes,
+  throwingTrash,
+  recycling,
+  diggingHole,
+  rakingLeaves,
+  shovelingSnow,
+  feedingBirds,
+  flyingKite,
+  climbingLadder,
+  swingingOnSwing,
+  slidingDownSlide,
+  balancingOnBeam,
+  climbingRope,
+  crawlingTunnel,
+  jumpingPuddles,
+  splashingWater,
+  pickingFlowers,
+  chasingButterflies,
+  fishing,
+  playingTag,
+  whispering,
+  shouting,
   singing,
-  coloring,
+  dancing,
+  rollingToyCar,
+  stackingCups,
+  liftingWeights,
+  stretchingArms,
+  bendingKnees,
+  touchingToes,
+  spinningAround,
+  balancingOnOneFoot,
+  tickling,
+  playingPeekABoo,
+  marchingInPlace,
+  clappingToMusic,
+  swayingToMusic,
+  hoppingOnOneFoot,
+  pointingAtObject,
+  wavingFlag,
+  turningKnob,
+  pullingRope,
+  pushingButton,
+  openingUmbrella,
+  closingUmbrella,
+  measuringWithRuler,
+  cuttingPaper,
+  gluingPaper,
+  tyingShoelaces,
+  pickingUpToys,
+  pushingStroller,
+  catchingBall,
+  pointing,
+  rollingBall,
+  swinging,
+  sliding,
+  climbingStairs,
+  coughing,
+  rubbingEyes,
+  scratchingHead,
+  moppingFloor,
+  openingWindow,
+  closingWindow,
+  puttingAwayGroceries,
+  bakingCookies,
+  flippingPancakes,
+  boilingWater,
+  peelingFruit,
+  slicingBread,
+  spreadingButter,
+  packingLunch,
+  takingOutTrash,
+  feedingPet,
+  watchingTv,
+  listeningToRadio,
+  usingComputer,
+  playingInstrument,
+  gluingCraft,
+  stampingEnvelope,
+  mailingLetter,
+  browsingBookshelf,
+  chargingPhone,
+  adjustingThermostat,
+  hangingPicture,
+  measuringDistance,
+  hammeringNail,
+  tighteningScrew,
+  turningKey,
+  unlockingDoor,
+  lockingDoor,
+  carryingGroceries,
+  bendingOver,
+  twistingBody,
+  reachingUp,
+  smellingFlowers,
+  stylingHair,
+  wearingGlasses,
+  removingGlasses,
+  washingFace,
+  applyingLotion,
+  puttingOnMakeup,
+  removingMakeup,
+  wearingBackpack,
+  removingBackpack,
+  puttingOnBelt,
+  takingOffBelt,
+  puttingOnGloves,
+  takingOffGloves,
+  puttingOnJacket,
+  takingOffJacket,
+  puttingOnScarf,
+  takingOffScarf,
+  puttingOnSocks,
+  takingOffSocks,
+  puttingOnSweater,
+  takingOffS
 }
 
 extension ActionGroupNameEx on ActionGroup {
   String actionName(BuildContext context) {
-    switch (this) {
-      case ActionGroup.brushingTeeth:
-        return AppLocalizations.of(context)!.brushingTeeth;
-      case ActionGroup.combingHair:
-        return AppLocalizations.of(context)!.combingHair;
-      case ActionGroup.drinkingWater:
-        return AppLocalizations.of(context)!.drinkingWater;
-      case ActionGroup.eating:
-        return AppLocalizations.of(context)!.eating;
-      case ActionGroup.laughing:
-        return AppLocalizations.of(context)!.laughing;
-      case ActionGroup.reading:
-        return AppLocalizations.of(context)!.reading;
-      case ActionGroup.running:
-        return AppLocalizations.of(context)!.running;
-      case ActionGroup.sleeping:
-        return AppLocalizations.of(context)!.sleeping;
-      case ActionGroup.takingShower:
-        return AppLocalizations.of(context)!.takingShower;
-      case ActionGroup.washingHands:
-        return AppLocalizations.of(context)!.washingHands;
-      case ActionGroup.watchingTv:
-        return AppLocalizations.of(context)!.watchingTv;
-      case ActionGroup.climbing:
-        return AppLocalizations.of(context)!.climbing;
-      case ActionGroup.crying:
-        return AppLocalizations.of(context)!.crying;
-      case ActionGroup.greeting:
-        return AppLocalizations.of(context)!.greeting;
-      case ActionGroup.hugging:
-        return AppLocalizations.of(context)!.hugging;
-      case ActionGroup.jumping:
-        return AppLocalizations.of(context)!.jumping;
-      case ActionGroup.petting:
-        return AppLocalizations.of(context)!.petting;
-      case ActionGroup.playing:
-        return AppLocalizations.of(context)!.playing;
-      case ActionGroup.screaming:
-        return AppLocalizations.of(context)!.screaming;
-      case ActionGroup.sitting:
-        return AppLocalizations.of(context)!.sitting;
-      case ActionGroup.studying:
-        return AppLocalizations.of(context)!.studying;
-      case ActionGroup.singing:
-        return AppLocalizations.of(context)!.singing;
-      case ActionGroup.coloring:
-        return AppLocalizations.of(context)!.coloring;
-    }
+    return 'action';
   }
 }
