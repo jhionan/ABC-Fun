@@ -1,18 +1,39 @@
-{
-  "appTitle": "ABC Fun",
+{"appTitle": "ABC Fun",
   "@appTitle": {
-  "description": "nome do aplicativo"
+    "description": "nome do aplicativo"
   },
   "menuTitle": "Menu",
   "@menuTitle": {
-  
   },
-  "menuStart": "Iniciar",
-  "@menuStart": {
-  
+  "menuAccountSync": "Sicronizar conta",
+  "@menuAccountSync": {
   },
   "menuSettings": "Configurações",
   "@menuSettings": {
+  },
+  "menuChallenges": "Desafios",
+  "@menuChallenges": {
+  },
+  "menuDashboard": "Inicial",
+  "@menuDashboard": {
+  },
+  "reportWidgetByTheme": "Desempenho por tema",
+  "@reportWidgetByTheme": {
+  },
+  "reportWidgetByThemeErrors": "de erros",
+  "@reportWidgetByThemeErrors": {
+  },
+  "resultWidget": "Resultados gerais",
+  "@resultWidget": {
+  },
+  "resultCardAverange": "Média",
+  "@resultCardAverange": {
+  },
+  "resultCardDoneChallanges": "Desafios realizados",
+  "@resultCardDoneChallanges": {
+  },
+  "resultCardSucessChanllanges": "Desafios vencidos",
+  "@resultCardSucessChanllanges": {
   },
   "menuAbout": "Sobre",
   "@menuAbout": {},
@@ -20,50 +41,8 @@
   "@menuExit": {},
   "menuScore": "Pontuação",
   "@menuScore": {},
-  "brushingTeeth": "Escovar os dentes",
-  "@brushingTeeth": {},
-  "combingHair": "Pentear o cabelo",
-  "@combingHair": {},
-  "washingHands": "Lavar as mãos",
-  "@washingHands": {},
-  "drinkingWater": "Beber água",
-  "@drinkingWater": {},
-  "eating" : "Comer",
-  "@eating" : {},
-  "reading" : "Ler",
-  "@reading" : {},
-  "sleeping" : "Dormir",
-  "@sleeping" : {},
-  "watchingTv" : "Assistir TV",
-  "@watchingTv" : {},
-  "takingShower" : "Tomar banho",
-  "@takingShower" : {},
-  "running" : "Correr",
-  "@running" : {},
-  "laughing" : "Rir",
-  "@laughing" : {},
-  "climbing" : "Escalar",
-  "@climbing" : {},
-  "coloring" : "Colorir",
-  "@coloring" : {},
-  "crying" : "Chorar",
-  "@crying" : {},
-  "greeting" : "Comprimentar",
-  "@greeting" : {},
-  "hugging" : "Abraçar",
-  "@hugging" : {},
-  "jumping" : "Pular",
-  "@jumping" : {},
-  "petting" : "Acariciar",
-  "@petting" : {},
-  "playing" : "Brincar",
-  "@playing" : {},
-  "screaming" : "Gritar",
-  "@screaming" : {},
-  "singing" : "Cantar",
-  "@singing" : {},
-  "sitting" : "Sentar",
-  "@sitting" : {},
-  "studying" : "Estudar",
-  "@studying" : {}
-  }
+  "playCardDescription": "Olá, pronto para muitos desafios hoje?",
+  "@playCardDescription": {},
+  "playCardButton": "Jogar",
+  "@playCardButton": {}
+}
