@@ -5,9 +5,11 @@ import 'package:aba/features/game/presentation/view/game.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-@RoutePage() 
+
+@RoutePage()
 class GameProvider extends StatelessWidget {
-  const GameProvider({super.key});
+  const GameProvider({super.key,});
+
 
   @override
   Widget build(BuildContext context) {
