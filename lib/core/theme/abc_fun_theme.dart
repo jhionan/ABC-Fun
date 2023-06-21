@@ -1,4 +1,4 @@
-import 'package:aba/core/theme/abc_fun_colors.dart';
+import 'package:aba/core/theme/abc_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,18 +16,21 @@ class AbcTheme {
 
   ThemeData lightTheme() {
     return ThemeData(
+      useMaterial3: true,
+      dividerColor: AbcColors.dropShadow,
       colorScheme: const ColorScheme(
-        primary: AbcFunColors.primary,
-        background: AbcFunColors.background,
+        primary: AbcColors.primary,
+        background: AbcColors.background,
         brightness: Brightness.light,
-        error: AbcFunColors.error,
-        onBackground: AbcFunColors.onBackground,
-        onError: AbcFunColors.onError,
-        onPrimary: AbcFunColors.onPrimary,
-        onSecondary: AbcFunColors.onSecondary,
-        onSurface: AbcFunColors.onSurface,
-        secondary: AbcFunColors.secondary,
-        surface: AbcFunColors.surface,
+        error: AbcColors.error,
+        onBackground: AbcColors.onBackground,
+        onError: AbcColors.onError,
+        onPrimary: AbcColors.onPrimary,
+        onSecondary: AbcColors.onSecondary,
+        onSurface: AbcColors.onSurface,
+        secondary: AbcColors.secondary,
+        surface: AbcColors.surface,
+        shadow: AbcColors.dropShadow,
       ),
       textTheme: GoogleFonts.interTextTheme(),
     );
