@@ -24,14 +24,14 @@ class Dashboard extends StatelessWidget {
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: isHandset ? context.dimensions.max2ColumnsWidth/2: context.dimensions.max2ColumnsWidth,
+                  maxWidth: isHandset ? context.dimensions.max2ColumnsWidth / 2 : context.dimensions.max2ColumnsWidth,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: context.dimensions.hMargin*2),
-                      child: Center(child: const PlayCard()),
+                      padding: EdgeInsets.symmetric(horizontal: context.dimensions.hMargin * 2),
+                      child: const Center(child: PlayCard()),
                     ),
                     const AbcMobileDivider(),
                     Center(

@@ -46,6 +46,7 @@ dependencies:
   riverpod: ^2.3.6
   url_strategy: ^0.2.0
   realm: ^1.2.0
+  audioplayers: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +79,11 @@ flutter:
     - fonts/inter/
     - assets/actions/
     - assets/images/
+    - assets/actions_audio/de/
+    - assets/actions_audio/en/
+    - assets/actions_audio/es/
+    - assets/actions_audio/fr/
+    - assets/actions_audio/pt/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

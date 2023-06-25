@@ -1,10 +1,12 @@
+import 'package:aba/core/actions_audio.dart';
+import 'package:aba/core/providers/providers.dart';
+import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/features/game/domain/models/action_item_entity.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
-import 'package:auto_route/annotations.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class Game extends StatelessWidget {
   const Game({super.key});
@@ -43,32 +45,55 @@ class Game extends StatelessWidget {
                       ),
                       MaterialButton(
                         onPressed: () => _navigateToMenu(context),
-                        child: Text(AppLocalizations.of(context)!.menuTitle),
+                        child: Text(AppLocalizations.of(context).menuTitle),
                       )
                     ],
                   ));
             }
             if (state is GameRunning) {
+              Future.microtask(() =>  _readAloud(context, state.correctAnswer));
               return Column(
                 children: [
-                  Text(
-                    state.correctAnswer.group.actionName(context),
-                    style: const TextStyle(fontSize: 32),
+                  InkWell(
+                    onTap: () => _readAloud(context, state.correctAnswer),
+                    child: Container(
+                      color: Colors.white,
+                      margin: EdgeInsets.all(context.dimensions.vMargin),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.play_circle_outline_sharp,
+                            size: 32,
+                          ),
+                          SizedBox(
+                            width: context.dimensions.hMargin / 2,
+                          ),
+                          Text(
+                            state.correctAnswer.actionName(context),
+                            style: const TextStyle(fontSize: 32),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: LayoutBuilder(builder: (context, contraints) {
                       return GridView(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, childAspectRatio: 2, mainAxisExtent: contraints.maxHeight / 3),
+                            crossAxisCount: 2, childAspectRatio: 1, mainAxisExtent: contraints.maxHeight / 3),
                         physics: const NeverScrollableScrollPhysics(),
                         children: state.items.map((e) {
                           return GestureDetector(
                             onTap: () => context.read<GameBloc>().add(GameEventOnItemTapped(item: e)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(24),
-                                  child: Image.asset(e.imagePath, fit: BoxFit.fill)),
+                              child: Center(
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(24),
+                                    child: Image.asset(e.imagePath, fit: BoxFit.contain)),
+                              ),
                             ),
                           );
                         }).toList(),
@@ -85,7 +110,16 @@ class Game extends StatelessWidget {
     );
   }
 
-  _navigateToMenu(BuildContext context) {
+  void _navigateToMenu(BuildContext context) {
     Navigator.of(context).pop();
+  }
+
+  void _readAloud(BuildContext context, ActionItemEntity action) {
+    ActionAudio audioPathProvider = provider.read<ActionAudio>(Providers.actionAudio);
+    String audioPath = audioPathProvider.audioPathOrEmpty(action, context);
+    AudioPlayer audioPlayer = provider.read<AudioPlayer>(Providers.audioPlayer);
+    if (audioPath.isNotEmpty && action.group != ActionGroup.custom) {
+      audioPlayer.play(AssetSource(audioPath.replaceAll('assets/', '')));
+    }
   }
 }

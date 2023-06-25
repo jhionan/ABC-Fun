@@ -29,22 +29,22 @@ class MyApp extends StatelessWidget {
           _ => Dimensions.biggerScreens(),
         },
         child: MaterialApp.router(
-          routerConfig: appRouter.config(),
-          title: 'ABC fun',
-          theme: AbcTheme().lightTheme(),
-          localizationsDelegates: const [
-            AppLocalizations.delegate, // Add this line
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('pt', 'BR'),
-            Locale('en', 'US'),
-            Locale('fr', 'FR'),
-            Locale('es', 'ES'),
-          ],
-        ),
+            routerConfig: appRouter.config(),
+            title: 'ABC fun',
+            theme: AbcTheme().lightTheme(),
+            localizationsDelegates: const [
+              AppLocalizations.delegate, // Add this line
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('pt', 'BR'),
+              Locale('en', 'US'),
+              Locale('fr', 'FR'),
+              Locale('es', 'ES'),
+              Locale('de', 'DE'),
+            ],
       );
     });
   }
