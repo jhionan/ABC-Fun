@@ -1,5 +1,3 @@
-import 'package:aba/features/game/domain/models/action_item_entity.dart';
-
 final class Images {
   static const String logo = 'assets/images/abc_fun_logo.webp';
   static const String averageResultsIcon = 'assets/images/average_results.png';
@@ -79,9 +77,9 @@ final class ActionImages {
   static const String eating = 'assets/actions/eating.webp';
   static const String eating1 = 'assets/actions/eating1.webp';
   static const String eating2 = 'assets/actions/eating2.webp';
-  static const String jumpingHope = 'assets/actions/jumpingHope.webp';
-  static const String jumpingHope1 = 'assets/actions/jumpingHope1.webp';
-  static const String jumpingHope2 = 'assets/actions/jumpingHope2.webp';
+  static const String jumpingRope = 'assets/actions/jumpingRope.webp';
+  static const String jumpingRope1 = 'assets/actions/jumpingRope1.webp';
+  static const String jumpingRope2 = 'assets/actions/jumpingRope2.webp';
   static const String playingBlocks = 'assets/actions/playingBlocks.webp';
   static const String playingBlocks1 = 'assets/actions/playingBlocks1.webp';
   static const String playingBlocks2 = 'assets/actions/playingBlocks2.webp';
@@ -144,5 +142,3 @@ final class ActionImages {
   static const String wateringPlants1 = 'assets/actions/wateringPlants1.webp';
   static const String wateringPlants2 = 'assets/actions/wateringPlants2.webp';
 }
-
-

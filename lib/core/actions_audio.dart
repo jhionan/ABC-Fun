@@ -2,23 +2,23 @@ import 'package:aba/features/game/domain/models/action_item_entity.dart';
 import 'package:flutter/widgets.dart';
 
 final class ActionAudio {
-  String audioPathOrEmpty(ActionGroup actionGroup, BuildContext context) {
-    if (!_baseAudioName.containsKey(actionGroup)) {
+  String audioPathOrEmpty(ActionItemEntity actionGroup, BuildContext context) {
+    if (!_baseAudioName.containsKey(actionGroup.group)) {
       return '';
     }
-    switch (Localizations.localeOf(context).countryCode) {
+    switch (Localizations.localeOf(context).languageCode) {
       case 'en':
-        return _enBasePath + _baseAudioName[actionGroup]!;
+        return _enBasePath + _baseAudioName[actionGroup.group]!;
       case 'es':
-        return _esBasePath + _baseAudioName[actionGroup]!;
+        return _esBasePath + _baseAudioName[actionGroup.group]!;
       case 'de':
-        return _deBasePath + _baseAudioName[actionGroup]!;
+        return _deBasePath + _baseAudioName[actionGroup.group]!;
       case 'pt':
-        return _ptBasePath + _baseAudioName[actionGroup]!;
+        return _ptBasePath + _baseAudioName[actionGroup.group]!;
       case 'fr':
-        return _frBasePath + _baseAudioName[actionGroup]!;
+        return _frBasePath + _baseAudioName[actionGroup.group]!;
       default:
-        return _enBasePath + _baseAudioName[actionGroup]!;
+        return _enBasePath + _baseAudioName[actionGroup.group]!;
     }
   }
 
@@ -50,7 +50,7 @@ final class ActionAudio {
     ActionGroup.drawing: 'actionDrawing.mp3',
     ActionGroup.drinkingWater: 'actionDrinkingWater.mp3',
     ActionGroup.eating: 'actionEating.mp3',
-    ActionGroup.jumpingHope: 'actionJumpingHope.mp3',
+    ActionGroup.jumpingRope: 'actionJumpingRope.mp3',
     ActionGroup.playingBlocks: 'actionPlayingBlocks.mp3',
     ActionGroup.playingWithDog: 'actionPlayingWithDog.mp3',
     ActionGroup.readingBook: 'actionReadingBook.mp3',

@@ -15,7 +15,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
   final ActionItemsRepository repository;
   final int itemsCount = 6;
-  final int rounds = 1;
+  final int rounds = 5;
   int currentRound = 0;
   int totalMoves = 0;
   double get finalScorePercentage => rounds / totalMoves * 100;
@@ -71,5 +71,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         (value) => !containnedItems.add(value.group),
       ).take(rounds));
     possibleItems.addAll(event);
+    
   }
 }

@@ -10,27 +10,27 @@ import 'package:flutter/widgets.dart';
 class ReportWidget extends StatelessWidget {
   ReportWidget({super.key});
   final List<ActionStatistics> actionStatistics = [
-    ActionStatistics(
-      action:
-          ActionItemEntity(name: 'Correndo', imagePath: 'assets/images/a.png', group: ActionGroup.custom, dificulty: 1),
-      totalShown: 10,
-      totalCorrect: 5,
-      totalIncorrect: 8,
-    ),
-    ActionStatistics(
-      action:
-          ActionItemEntity(name: 'Nadando', imagePath: 'assets/images/b.png', group: ActionGroup.custom, dificulty: 1),
-      totalShown: 10,
-      totalCorrect: 5,
-      totalIncorrect: 9,
-    ),
-    ActionStatistics(
-      action: ActionItemEntity(
-          name: 'Escalando', imagePath: 'assets/images/c.png', group: ActionGroup.custom, dificulty: 1),
-      totalShown: 10,
-      totalCorrect: 5,
-      totalIncorrect: 1,
-    ),
+    // ActionStatistics(
+    //   action:
+    //       ActionItemEntity(name: 'Correndo', imagePath: 'assets/images/a.png', group: ActionGroup.custom, dificulty: 1),
+    //   totalShown: 10,
+    //   totalCorrect: 5,
+    //   totalIncorrect: 8,
+    // ),
+    // ActionStatistics(
+    //   action:
+    //       ActionItemEntity(name: 'Nadando', imagePath: 'assets/images/b.png', group: ActionGroup.custom, dificulty: 1),
+    //   totalShown: 10,
+    //   totalCorrect: 5,
+    //   totalIncorrect: 9,
+    // ),
+    // ActionStatistics(
+    //   action: ActionItemEntity(
+    //       name: 'Escalando', imagePath: 'assets/images/c.png', group: ActionGroup.custom, dificulty: 1),
+    //   totalShown: 10,
+    //   totalCorrect: 5,
+    //   totalIncorrect: 1,
+    // ),
   ];
 
   @override

@@ -50,7 +50,7 @@ class ResultsWidget extends StatelessWidget {
              padding: EdgeInsets.only(top: context.dimensions.vMargin),
              child: ResultCard(
               imageUrl: Images.totalAverangeSuccessResults,
-              text: context.intl.resultCardSucessChanllanges,
+              text: context.intl.resultCardSucessChallenges,
               result: totalActionResults.completedRounds,
              ),
            ),

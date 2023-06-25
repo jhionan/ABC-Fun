@@ -1,48 +1,54 @@
-{"appTitle": "ABC Fun",
-  "@appTitle": {
-    "description": "nome do aplicativo"
-  },
+{
+  "appTitle": "ABC Fun",
   "menuTitle": "Menu",
-  "@menuTitle": {
-  },
   "menuAccountSync": "Sicronizar conta",
-  "@menuAccountSync": {
-  },
   "menuSettings": "Configurações",
-  "@menuSettings": {
-  },
   "menuChallenges": "Desafios",
-  "@menuChallenges": {
-  },
   "menuDashboard": "Inicial",
-  "@menuDashboard": {
-  },
   "reportWidgetByTheme": "Desempenho por tema",
-  "@reportWidgetByTheme": {
-  },
   "reportWidgetByThemeErrors": "de erros",
-  "@reportWidgetByThemeErrors": {
-  },
   "resultWidget": "Resultados gerais",
-  "@resultWidget": {
-  },
+  "resultCardSucessChallenges": "Desafios vencidos",
   "resultCardAverange": "Média",
-  "@resultCardAverange": {
-  },
   "resultCardDoneChallanges": "Desafios realizados",
-  "@resultCardDoneChallanges": {
-  },
-  "resultCardSucessChanllanges": "Desafios vencidos",
-  "@resultCardSucessChanllanges": {
-  },
   "menuAbout": "Sobre",
-  "@menuAbout": {},
   "menuExit": "Sair",
-  "@menuExit": {},
   "menuScore": "Pontuação",
-  "@menuScore": {},
   "playCardDescription": "Olá, pronto para muitos desafios hoje?",
-  "@playCardDescription": {},
   "playCardButton": "Jogar",
-  "@playCardButton": {}
+  "actionAnsweringPhone": "Atendendo o telefone",
+  "actionBathing": "Tomando Banho",
+  "actionBlowingBubbles": "Assomprando bolhas",
+  "actionBrushingHair": "Escovando o cabelo",
+  "actionBrushingTeeth": "Escovando os dentes",
+  "actionButtoningShirt": "Abotoando a camisa",
+  "actionCatPlayingWithWoolBall": "Gato brincando com bola de lã",
+  "actionCatchingBall": "Pegando a bola",
+  "actionChasingButterflies": "Correndo atrás de borboletas",
+  "actionClappingHands": "Batendo palmas",
+  "actionClearingTable": "Limpando a mesa",
+  "actionClimbingStairs": "Subindo escadas",
+  "actionClimbingTree": "Subindo em árvore",
+  "actionCooking": "Cozinhando",
+  "actionCrying": "Chorando",
+  "actionDancing": "Dançando",
+  "actionDog": "Cachorro",
+  "actionDrawing": "Desenhando",
+  "actionDrinkingWater": "Bebendo água",
+  "actionEating": "Comendo",
+  "actionJumpingRope": "Pulando corda",
+  "actionPlayingBlocks": "Brincando com blocos",
+  "actionPlayingWithDog": "Brincando com cachorro",
+  "actionReadingBook": "Lendo livro",
+  "actionReceivingGift": "Recebendo presente",
+  "actionRidingBike": "Andando de bicicleta",
+  "actionRunning": "Correndo",
+  "actionSinging": "Cantando",
+  "actionSleeping": "Dormindo",
+  "actionSwinging": "Balançando",
+  "actionUsingComputer": "Usando computador",
+  "actionWashingDishes": "Lavando louça",
+  "actionWashingHands": "Lavando as mãos",
+  "actionWatchingTV": "Assistindo TV",
+  "actionWateringPlants": "Regando plantas"
 }
