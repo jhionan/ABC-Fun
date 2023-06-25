@@ -24,11 +24,11 @@ class MyApp extends StatelessWidget {
     final appRouter = provider.read<AbcRouter>(Providers.appRouter);
     return AdaptativeScreenBuilder(builder: (context, type) {
       return DimensionsProvider(
-        dimensions: switch (type) {
-          AdaptativeScreenType.handset => Dimensions.handSet(),
-          _ => Dimensions.biggerScreens(),
-        },
-        child: MaterialApp.router(
+          dimensions: switch (type) {
+            AdaptativeScreenType.handset => Dimensions.handSet(),
+            _ => Dimensions.biggerScreens(),
+          },
+          child: MaterialApp.router(
             routerConfig: appRouter.config(),
             title: 'ABC fun',
             theme: AbcTheme().lightTheme(),
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
               Locale('es', 'ES'),
               Locale('de', 'DE'),
             ],
-      );
+          ));
     });
   }
 }
