@@ -1,4 +1,4 @@
-import 'package:aba/features/game/domain/models/action_item_entity.dart';
+import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:flutter/widgets.dart';
 
 final class ActionAudio {

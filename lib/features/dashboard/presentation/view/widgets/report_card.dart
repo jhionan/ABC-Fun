@@ -3,7 +3,7 @@ import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:aba/features/widgets/abc_card.dart';
 
-import 'package:aba/features/game/domain/models/action_statistics.dart';
+import 'package:aba/core/domain/models/action_statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

@@ -7,7 +7,7 @@ import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:aba/core/utils/widgets/abc_scaffold.dart';
 import 'package:aba/core/utils/widgets/abc_title_card.dart';
 import 'package:aba/features/challenges/presentation/view/widgets/challenge_card_item.dart';
-import 'package:aba/features/game/domain/models/action_item_entity.dart';
+import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:aba/features/widgets/abc_button.dart';
 import 'package:aba/features/widgets/abc_divider.dart';
 import 'package:auto_route/auto_route.dart';

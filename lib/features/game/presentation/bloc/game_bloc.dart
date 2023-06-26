@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:aba/features/game/domain/action_items_repository.dart';
-import 'package:aba/features/game/domain/models/action_item_entity.dart';
+import 'package:aba/core/domain/action_items_repository.dart';
+import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

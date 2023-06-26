@@ -1,6 +1,6 @@
 import 'package:aba/core/images.dart';
-import 'package:aba/features/game/domain/action_items_repository.dart';
-import 'package:aba/features/game/domain/models/action_item_entity.dart';
+import 'package:aba/core/domain/action_items_repository.dart';
+import 'package:aba/core/domain/models/action_item_entity.dart';
 
 class ActionItemsLocalDataSourceImp implements ActionItemsRepository {
   @override

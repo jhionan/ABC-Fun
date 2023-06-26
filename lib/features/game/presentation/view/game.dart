@@ -1,7 +1,7 @@
 import 'package:aba/core/actions_audio.dart';
 import 'package:aba/core/providers/providers.dart';
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/features/game/domain/models/action_item_entity.dart';
+import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
 import 'package:aba/features/widgets/background_widget.dart';
 import 'package:audioplayers/audioplayers.dart';

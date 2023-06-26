@@ -3,7 +3,7 @@ import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:aba/core/utils/widgets/abc_title_widget.dart';
 import 'package:aba/features/dashboard/presentation/view/widgets/result_card.dart';
-import 'package:aba/features/game/domain/models/action_statistics.dart';
+import 'package:aba/core/domain/models/action_statistics.dart';
 import 'package:flutter/material.dart';
 
 class ResultsWidget extends StatelessWidget {

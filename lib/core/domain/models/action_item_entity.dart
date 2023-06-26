@@ -1,5 +1,6 @@
 import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:flutter/widgets.dart';
+import 'package:realm/realm.dart';
 
 class ActionItemEntity {
   final ActionGroup group;
@@ -28,6 +29,7 @@ class ActionItemEntity {
   }
 }
 
+@RealmModel()
 enum ActionGroup {
   answeringPhone,
   bathing,
