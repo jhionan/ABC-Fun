@@ -64,6 +64,8 @@
             "type": "int"
           }
       }
-  }
-
+  },
+  "loading": "Carregando...",
+  "gameError": "Erro, todos os desafios estão desativados"
+  
 }

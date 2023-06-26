@@ -1,9 +1,9 @@
 part of 'game_bloc.dart';
 
 @immutable
-abstract class GameState {}
+sealed class GameState {}
 
-class GameInitial extends GameState {}
+class GameLoading extends GameState {}
 
 class GameRunning extends GameState {
   final List<ActionItemEntity> items;
@@ -50,7 +50,7 @@ class GameRunning extends GameState {
 }
 
 class GameWrongAnswer extends GameState {
-   final List<ActionItemEntity> items;
+  final List<ActionItemEntity> items;
   final ActionItemEntity correctAnswer;
   final int itemsCount;
   final int errorCount;
@@ -58,7 +58,7 @@ class GameWrongAnswer extends GameState {
   GameWrongAnswer.fromRunningState(GameRunning state)
       : items = state.items,
         correctAnswer = state.correctAnswer,
-        itemsCount = state.itemsCount+1,
+        itemsCount = state.itemsCount + 1,
         errorCount = state.errorCount;
 }
 
@@ -70,3 +70,5 @@ class GameOver extends GameState {
 }
 
 class GameVictory extends GameState {}
+
+class GameError extends GameState {}

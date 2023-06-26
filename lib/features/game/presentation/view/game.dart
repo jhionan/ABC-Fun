@@ -2,6 +2,7 @@ import 'package:aba/core/actions_audio.dart';
 import 'package:aba/core/providers/providers.dart';
 import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/domain/models/action_item_entity.dart';
+import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
 import 'package:aba/features/widgets/background_widget.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -18,14 +19,26 @@ class Game extends StatelessWidget {
       body: SafeArea(
         child: BlocBuilder<GameBloc, GameState>(
           builder: (context, state) {
-            if (state is GameInitial) {
-              Future.microtask(() => context.read<GameBloc>().add(GameEventRestart()));
-              return const Center(child: Text('Initial'));
+            if (state is GameLoading) {
+              return Center(
+                  child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const CircularProgressIndicator(),
+                  SizedBox(
+                    height: context.dimensions.vMargin,
+                  ),
+                  Text(context.intl.loading),
+                ],
+              ));
             }
             if (state is GameVictory) {
               Future.delayed(const Duration(milliseconds: 1000))
                   .then((value) => context.read<GameBloc>().add(GameEventRestart()));
               return Container(color: Colors.green.shade200, child: const Center(child: Text('Victory')));
+            }
+            if(state is GameError) {
+              return Container(color: Colors.red.shade700, child:  Center(child: Text(context.intl.gameError)));
             }
             if (state is GameWrongAnswer) {
               Future.delayed(const Duration(milliseconds: 1000))
@@ -52,7 +65,7 @@ class Game extends StatelessWidget {
                   ));
             }
             if (state is GameRunning) {
-              Future.microtask(() =>  _readAloud(context, state.correctAnswer));
+              Future.microtask(() => _readAloud(context, state.correctAnswer));
               return BackgroundWidget(
                 child: Column(
                   children: [

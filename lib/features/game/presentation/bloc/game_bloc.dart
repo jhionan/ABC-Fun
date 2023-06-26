@@ -9,7 +9,7 @@ part 'game_event.dart';
 part 'game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  GameBloc({required this.repository}) : super(GameInitial()) {
+  GameBloc({required this.repository}) : super(GameLoading()) {
     on<GameEvent>(eventHandler);
     _startGameSetup();
   }
@@ -30,6 +30,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         return;
       case GameEventRestart:
         _phaseGenerator(emit);
+        return;
+      case GameWithError:
+        emit(GameError());
         return;
     }
   }
@@ -63,14 +66,19 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   Future<void> _startGameSetup() async {
-    Set<ActionGroup> containnedItems = <ActionGroup>{};
-    List<ActionItemEntity> event = await repository.getAllItems();
+    Set<ActionGroup> containedItems = <ActionGroup>{};
+    List<ActionItemEntity> event = (await repository.getAllItems()).where((e) {
+      return e.isActive;
+    }).toList();
+    if (event.isEmpty) {
+      add(GameWithError());
+    }
     roundItems.addAll(event
       ..shuffle()
       ..skipWhile(
-        (value) => !containnedItems.add(value.group),
+        (value) => !containedItems.add(value.group),
       ).take(rounds));
     possibleItems.addAll(event);
-    
+    add(GameEventRestart());
   }
 }

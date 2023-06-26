@@ -1,23 +1,39 @@
 import 'package:aba/core/domain/models/action_item_entity.dart';
-import 'package:realm/realm.dart';
+import 'package:isar/isar.dart';
+
 part 'action_custom_item_entity.g.dart';
 
-@RealmModel()
-class _ActionCustomItemEntity implements ActionItemEntity {
-  @override
-  late String name;
-  @override
-  @Ignored()
-  int get dificulty => 2;
-  @override
-  late String imagePath;
+@collection
+class ActionCustomItemEntity implements ActionItemEntity {
+  ActionCustomItemEntity({
+    required this.group,
+    required this.dificulty,
+    required this.imagePath,
+    required this.name,
+    required this.notAllowedWith,
+    required this.isActive,
+  });
 
-  String? audioPath;
-
-  @override
-  @Ignored()
-  ActionGroup get group => ActionGroup.custom;
+  Id? id;
 
   @override
-  List<ActionGroup> notAllowedWith = [];
+  @Enumerated(EnumType.name)
+  ActionGroup group;
+
+  @override
+  int dificulty;
+
+  @override
+  String imagePath;
+
+  @override
+  String name;
+
+  @override
+  @Enumerated(EnumType.name)
+  List<ActionGroup> notAllowedWith;
+
+  @override
+  // TODO: implement isActive
+  bool isActive;
 }
