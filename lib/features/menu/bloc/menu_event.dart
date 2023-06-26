@@ -1,9 +1,10 @@
 part of 'menu_bloc.dart';
 
 enum MenuEvent {
-  start,
+  dashboard,
+  challenges,
+  accountSync,
   settings,
-  score,
   about,
   exit;
 }

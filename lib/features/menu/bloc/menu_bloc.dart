@@ -13,22 +13,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
   }
 
   FutureOr<void> eventHandler(MenuEvent event, Emitter<MenuState> emit) {
-    switch (event) {
-      case MenuEvent.start:
-        // TODO: Handle this case.
-        break;
-      case MenuEvent.settings:
-        // TODO: Handle this case.
-        break;
-      case MenuEvent.score:
-        // TODO: Handle this case.
-        break;
-      case MenuEvent.about:
-        // TODO: Handle this case.
-        break;
-      case MenuEvent.exit:
-        // TODO: Handle this case.
-        break;
-    }
+    
+    
   }
 }

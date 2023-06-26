@@ -6,394 +6,593 @@ class ActionItemsLocalDataSourceImp implements ActionItemsRepository {
   @override
   Future<List<ActionItemEntity>> getAllItems() async {
     return <ActionItemEntity>[
-      const ActionItemEntity(
+      ActionItemEntity(
+        name: ActionGroup.answeringPhone.name,
+        dificulty: 3,
+        group: ActionGroup.answeringPhone,
+        imagePath: ActionImages.answeringPhone,
+      ),
+      ActionItemEntity(
+        name: ActionGroup.bathing.name,
+        dificulty: 2,
+        group: ActionGroup.bathing,
+        imagePath: ActionImages.bathing,
+      ),
+      ActionItemEntity(
+        name: ActionGroup.bathing.name,
+        dificulty: 2,
+        group: ActionGroup.bathing,
+        imagePath: ActionImages.bathing1,
+      ),
+      ActionItemEntity(
+        name: ActionGroup.bathing.name,
+        dificulty: 2,
+        group: ActionGroup.bathing,
+        imagePath: ActionImages.bathing2,
+      ),
+      ActionItemEntity(
+        name: ActionGroup.brushingHair.name,
+        dificulty: 2,
+        group: ActionGroup.brushingHair,
+        imagePath: ActionImages.brushingHair,
+      ),
+      ActionItemEntity(
+        name: ActionGroup.brushingHair.name,
+        dificulty: 2,
+        group: ActionGroup.brushingHair,
+        imagePath: ActionImages.brushingHair1,
+      ),
+      ActionItemEntity(
+        name: ActionGroup.brushingTeeth.name,
+        dificulty: 2,
         group: ActionGroup.brushingTeeth,
-        name: 'Brushing teeth',
-        dificulty: 1,
-        imagePath: Images.brushingTeeth,
+        imagePath: ActionImages.brushingTeeth,
       ),
-      const ActionItemEntity(
+      ActionItemEntity(
+        name: ActionGroup.brushingTeeth.name,
+        dificulty: 2,
         group: ActionGroup.brushingTeeth,
-        name: 'Brushing teeth1',
-        dificulty: 1,
-        imagePath: Images.brushingTeeth1,
+        imagePath: ActionImages.brushingTeeth1,
       ),
-      const ActionItemEntity(
+      ActionItemEntity(
+        name: ActionGroup.brushingTeeth.name,
+        dificulty: 2,
         group: ActionGroup.brushingTeeth,
-        name: 'Brushing teeth2',
-        dificulty: 1,
-        imagePath: Images.brushingTeeth2,
+        imagePath: ActionImages.brushingTeeth2,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.combingHair,
-        name: 'Combing hair',
-        dificulty: 1,
-        imagePath: Images.combingHair,
+      ActionItemEntity(
+        name: ActionGroup.buttoningShirt.name,
+        dificulty: 2,
+        group: ActionGroup.buttoningShirt,
+        imagePath: ActionImages.buttoningShirt,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.combingHair,
-        name: 'Combing hair1',
-        dificulty: 1,
-        imagePath: Images.combingHair1,
+      ActionItemEntity(
+        name: ActionGroup.buttoningShirt.name,
+        dificulty: 2,
+        group: ActionGroup.buttoningShirt,
+        imagePath: ActionImages.buttoningShirt1,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.combingHair,
-        name: 'Combing hair2',
-        dificulty: 1,
-        imagePath: Images.combingHair2,
+      ActionItemEntity(
+        name: ActionGroup.catchingBall.name,
+        dificulty: 2,
+        group: ActionGroup.catchingBall,
+        imagePath: ActionImages.catchingBall,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.drinkingWater,
-        name: 'Drinking water',
-        dificulty: 1,
-        imagePath: Images.drinkingWater,
+      ActionItemEntity(
+        name: ActionGroup.catchingBall.name,
+        dificulty: 2,
+        group: ActionGroup.catchingBall,
+        imagePath: ActionImages.catchingBall1,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.drinkingWater,
-        name: 'Drinking water1',
-        dificulty: 1,
-        imagePath: Images.drinkingWater1,
+      ActionItemEntity(
+        name: ActionGroup.catchingBall.name,
+        dificulty: 2,
+        group: ActionGroup.catchingBall,
+        imagePath: ActionImages.catchingBall2,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.drinkingWater,
-        name: 'Drinking water2',
-        dificulty: 1,
-        imagePath: Images.drinkingWater2,
+      ActionItemEntity(
+        name: ActionGroup.catchingBall.name,
+        dificulty: 2,
+        group: ActionGroup.catchingBall,
+        imagePath: ActionImages.catchingBall3,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.eating,
-        name: 'Eating',
-        dificulty: 1,
-        imagePath: Images.eating,
+      ActionItemEntity(
+        name: ActionGroup.catchingBall.name,
+        dificulty: 2,
+        group: ActionGroup.catchingBall,
+        imagePath: ActionImages.catchingBall4,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.eating,
-        name: 'Eating1',
-        dificulty: 1,
-        imagePath: Images.eating1,
+      ActionItemEntity(
+        name: ActionGroup.catPlayingWithWoolBall.name,
+        dificulty: 2,
+        group: ActionGroup.catPlayingWithWoolBall,
+        imagePath: ActionImages.catPlayingWithWoolBall,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.eating,
-        name: 'Eating2',
-        dificulty: 1,
-        imagePath: Images.eating2,
+      ActionItemEntity(
+        name: ActionGroup.catPlayingWithWoolBall.name,
+        dificulty: 2,
+        group: ActionGroup.catPlayingWithWoolBall,
+        imagePath: ActionImages.catPlayingWithWoolBall1,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.laughing,
-        name: 'Laughing',
-        dificulty: 1,
-        imagePath: Images.laughing,
+      ActionItemEntity(
+        name: ActionGroup.catPlayingWithWoolBall.name,
+        dificulty: 2,
+        group: ActionGroup.catPlayingWithWoolBall,
+        imagePath: ActionImages.catPlayingWithWoolBall2,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.laughing,
-        name: 'Laughing1',
-        dificulty: 1,
-        imagePath: Images.laughing2,
+      ActionItemEntity(
+        name: ActionGroup.chasingButterflies.name,
+        dificulty: 2,
+        group: ActionGroup.chasingButterflies,
+        imagePath: ActionImages.chasingButterflies,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.reading,
-        name: 'Reading',
-        dificulty: 1,
-        imagePath: Images.reading,
+      ActionItemEntity(
+        name: ActionGroup.chasingButterflies.name,
+        dificulty: 2,
+        group: ActionGroup.chasingButterflies,
+        imagePath: ActionImages.chasingButterflies1,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.reading,
-        name: 'Reading1',
-        dificulty: 1,
-        imagePath: Images.reading1,
+      ActionItemEntity(
+        name: ActionGroup.chasingButterflies.name,
+        dificulty: 2,
+        group: ActionGroup.chasingButterflies,
+        imagePath: ActionImages.chasingButterflies2,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.reading,
-        name: 'Reading2',
-        dificulty: 1,
-        imagePath: Images.reading2,
+      ActionItemEntity(
+        name: ActionGroup.chasingButterflies.name,
+        dificulty: 2,
+        group: ActionGroup.chasingButterflies,
+        imagePath: ActionImages.chasingButterflies3,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.sleeping,
-        name: 'Sleeping',
-        dificulty: 1,
-        imagePath: Images.sleeping,
+      ActionItemEntity(
+        name: ActionGroup.chasingButterflies.name,
+        dificulty: 2,
+        group: ActionGroup.chasingButterflies,
+        imagePath: ActionImages.chasingButterflies4,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.sleeping,
-        name: 'Sleeping1',
-        dificulty: 1,
-        imagePath: Images.sleeping1,
+      ActionItemEntity(
+        name: ActionGroup.clappingHands.name,
+        dificulty: 2,
+        group: ActionGroup.clappingHands,
+        imagePath: ActionImages.clappingHands,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.takingShower,
-        name: 'Taking shower',
-        dificulty: 1,
-        imagePath: Images.takingShower,
+      ActionItemEntity(
+        name: ActionGroup.clappingHands.name,
+        dificulty: 2,
+        group: ActionGroup.clappingHands,
+        imagePath: ActionImages.clappingHands1,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.takingShower,
-        name: 'Taking shower1',
-        dificulty: 1,
-        imagePath: Images.takingShower1,
+      ActionItemEntity(
+        name: ActionGroup.clappingHands.name,
+        dificulty: 2,
+        group: ActionGroup.clappingHands,
+        imagePath: ActionImages.clappingHands2,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.takingShower,
-        name: 'Taking shower2',
-        dificulty: 1,
-        imagePath: Images.takingShower2,
+      ActionItemEntity(
+        name: ActionGroup.climbingStairs.name,
+        dificulty: 2,
+        group: ActionGroup.climbingStairs,
+        imagePath: ActionImages.climbingStairs,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.washingHands,
-        name: 'Washing hands',
-        dificulty: 1,
-        imagePath: Images.washingHands,
+      ActionItemEntity(
+        name: ActionGroup.climbingStairs.name,
+        dificulty: 2,
+        group: ActionGroup.climbingStairs,
+        imagePath: ActionImages.climbingStairs1,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.washingHands,
-        name: 'Washing hands1',
-        dificulty: 1,
-        imagePath: Images.washingHands1,
+      ActionItemEntity(
+        name: ActionGroup.climbingStairs.name,
+        dificulty: 2,
+        group: ActionGroup.climbingStairs,
+        imagePath: ActionImages.climbingStairs2,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.washingHands,
-        name: 'Washing hands2',
-        dificulty: 1,
-        imagePath: Images.washingHands2,
+      ActionItemEntity(
+        name: ActionGroup.climbingTree.name,
+        dificulty: 2,
+        group: ActionGroup.climbingTree,
+        imagePath: ActionImages.climbingTree,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.watchingTv,
-        name: 'Watching TV',
-        dificulty: 1,
-        imagePath: Images.watchingTv,
+      ActionItemEntity(
+        name: ActionGroup.climbingTree.name,
+        dificulty: 2,
+        group: ActionGroup.climbingTree,
+        imagePath: ActionImages.climbingTree1,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.watchingTv,
-        name: 'Watching TV1',
-        dificulty: 1,
-        imagePath: Images.watchingTv1,
+      ActionItemEntity(
+        name: ActionGroup.climbingTree.name,
+        dificulty: 2,
+        group: ActionGroup.climbingTree,
+        imagePath: ActionImages.climbingTree2,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.climbing,
-        name: 'Clinbing',
-        dificulty: 1,
-        imagePath: Images.climbing,
+      ActionItemEntity(
+          name: ActionGroup.cooking.name,
+          dificulty: 2,
+          group: ActionGroup.cooking,
+          imagePath: ActionImages.cooking,
+          notAllowedWith: [
+            ActionGroup.eating,
+          ]),
+      ActionItemEntity(
+        name: ActionGroup.cooking.name,
+        dificulty: 2,
+        group: ActionGroup.cooking,
+        imagePath: ActionImages.cooking1,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.climbing,
-        name: 'Clinbing1',
-        dificulty: 1,
-        imagePath: Images.climbing1,
+      ActionItemEntity(
+        name: ActionGroup.cooking.name,
+        dificulty: 2,
+        group: ActionGroup.cooking,
+        imagePath: ActionImages.cooking2,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.climbing,
-        name: 'Clinbing2',
-        dificulty: 1,
-        imagePath: Images.climbing2,
+      ActionItemEntity(
+        name: ActionGroup.cooking.name,
+        dificulty: 2,
+        group: ActionGroup.cooking,
+        imagePath: ActionImages.cooking3,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.coloring,
-        name: 'Coloring',
-        dificulty: 1,
-        imagePath: Images.coloring,
+      ActionItemEntity(
+        name: ActionGroup.cooking.name,
+        dificulty: 2,
+        group: ActionGroup.cooking,
+        imagePath: ActionImages.cooking4,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.coloring,
-        name: 'Coloring1',
-        dificulty: 1,
-        imagePath: Images.coloring1,
+      ActionItemEntity(
+        name: ActionGroup.cooking.name,
+        dificulty: 2,
+        group: ActionGroup.cooking,
+        imagePath: ActionImages.cooking5,
       ),
-      const ActionItemEntity(
-        group: ActionGroup.coloring,
-        name: 'Coloring2',
-        dificulty: 1,
-        imagePath: Images.coloring2,
+      ActionItemEntity(
+        name: ActionGroup.cooking.name,
+        dificulty: 2,
+        group: ActionGroup.cooking,
+        imagePath: ActionImages.cooking6,
       ),
-      //crying
-      const ActionItemEntity(
+      ActionItemEntity(
+        name: ActionGroup.crying.name,
+        dificulty: 2,
         group: ActionGroup.crying,
-        name: 'Crying',
-        dificulty: 1,
-        imagePath: Images.crying,
+        imagePath: ActionImages.crying,
       ),
-      const ActionItemEntity(
+      ActionItemEntity(
+        name: ActionGroup.crying.name,
+        dificulty: 2,
         group: ActionGroup.crying,
-        name: 'Crying1',
-        dificulty: 1,
-        imagePath: Images.crying1,
+        imagePath: ActionImages.crying1,
       ),
-      const ActionItemEntity(
+      ActionItemEntity(
+        name: ActionGroup.crying.name,
+        dificulty: 2,
         group: ActionGroup.crying,
-        name: 'Crying2',
-        dificulty: 1,
-        imagePath: Images.crying2,
+        imagePath: ActionImages.crying2,
       ),
-      //greeting
-      const ActionItemEntity(
-        group: ActionGroup.greeting,
-        name: 'Greeting',
-        dificulty: 1,
-        imagePath: Images.greeting,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.greeting,
-        name: 'Greeting1',
-        dificulty: 1,
-        imagePath: Images.greeting1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.greeting,
-        name: 'Greeting2',
-        dificulty: 1,
-        imagePath: Images.greeting2,
-      ),
-      //hugging
-      const ActionItemEntity(
-        group: ActionGroup.hugging,
-        name: 'Hugging',
-        dificulty: 1,
-        imagePath: Images.hugging,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.hugging,
-        name: 'Hugging1',
-        dificulty: 1,
-        imagePath: Images.hugging1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.hugging,
-        name: 'Hugging2',
-        dificulty: 1,
-        imagePath: Images.hugging2,
-      ),
-      //jumping
-      const ActionItemEntity(
-        group: ActionGroup.jumping,
-        name: 'Jumping',
-        dificulty: 1,
-        imagePath: Images.jumping,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.jumping,
-        name: 'Jumping1',
-        dificulty: 1,
-        imagePath: Images.jumping1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.jumping,
-        name: 'Jumping2',
-        dificulty: 1,
-        imagePath: Images.jumping2,
-      ),
-      //playing
-      const ActionItemEntity(
-        group: ActionGroup.playing,
-        name: 'Playing',
-        dificulty: 1,
-        imagePath: Images.playing,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.playing,
-        name: 'Playing1',
-        dificulty: 1,
-        imagePath: Images.playing1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.playing,
-        name: 'Playing2',
-        dificulty: 1,
-        imagePath: Images.playing2,
-      ),
-      //petting
-      const ActionItemEntity(
-        group: ActionGroup.petting,
-        name: 'Petting',
-        dificulty: 1,
-        imagePath: Images.petting,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.petting,
-        name: 'Petting1',
-        dificulty: 1,
-        imagePath: Images.petting1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.petting,
-        name: 'Petting2',
-        dificulty: 1,
-        imagePath: Images.petting2,
-      ),
-      //screaming
-      const ActionItemEntity(
-        group: ActionGroup.screaming,
-        name: 'Screaming',
-        dificulty: 1,
-        imagePath: Images.screaming,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.screaming,
-        name: 'Screaming1',
-        dificulty: 1,
-        imagePath: Images.screaming1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.screaming,
-        name: 'Screaming2',
-        dificulty: 1,
-        imagePath: Images.screaming2,
-      ),
-      //sitting
-      const ActionItemEntity(
-        group: ActionGroup.sitting,
-        name: 'Sitting',
-        dificulty: 1,
-        imagePath: Images.sitting,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.sitting,
-        name: 'Sitting1',
-        dificulty: 1,
-        imagePath: Images.sitting1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.sitting,
-        name: 'Sitting2',
-        dificulty: 1,
-        imagePath: Images.sitting2,
-      ),
-      //singing
-      const ActionItemEntity(
-        group: ActionGroup.singing,
-        name: 'Singing',
-        dificulty: 1,
-        imagePath: Images.singing,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.singing,
-        name: 'Singing1',
-        dificulty: 1,
-        imagePath: Images.singing1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.singing,
-        name: 'Singing2',
-        dificulty: 1,
-        imagePath: Images.singing2,
-      ),
-      //studying
-      const ActionItemEntity(
-        group: ActionGroup.studying,
-        name: 'Studying',
-        dificulty: 1,
-        imagePath: Images.studying,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.studying,
-        name: 'Studying1',
-        dificulty: 1,
-        imagePath: Images.studying1,
-      ),
-      const ActionItemEntity(
-        group: ActionGroup.studying,
-        name: 'Studying2',
-        dificulty: 1,
-        imagePath: Images.studying2,
-      ),
+      ActionItemEntity(
+          name: ActionGroup.dancing.name, dificulty: 2, group: ActionGroup.dancing, imagePath: ActionImages.dancing),
+      ActionItemEntity(
+          name: ActionGroup.dancing.name, dificulty: 2, group: ActionGroup.dancing, imagePath: ActionImages.dancing1),
+      ActionItemEntity(
+          name: ActionGroup.dancing.name, dificulty: 2, group: ActionGroup.dancing, imagePath: ActionImages.dancing2),
+      ActionItemEntity(
+          name: ActionGroup.dancing.name, dificulty: 2, group: ActionGroup.dancing, imagePath: ActionImages.dancing3),
+      ActionItemEntity(name: ActionGroup.dog.name, dificulty: 1, group: ActionGroup.dog, imagePath: ActionImages.dog),
+      ActionItemEntity(name: ActionGroup.dog.name, dificulty: 1, group: ActionGroup.dog, imagePath: ActionImages.dog1),
+      ActionItemEntity(name: ActionGroup.dog.name, dificulty: 1, group: ActionGroup.dog, imagePath: ActionImages.dog2),
+      ActionItemEntity(name: ActionGroup.dog.name, dificulty: 1, group: ActionGroup.dog, imagePath: ActionImages.dog3),
+      ActionItemEntity(
+          name: ActionGroup.drawing.name, dificulty: 2, group: ActionGroup.drawing, imagePath: ActionImages.drawing),
+      ActionItemEntity(
+          name: ActionGroup.drawing.name, dificulty: 2, group: ActionGroup.drawing, imagePath: ActionImages.drawing1),
+      ActionItemEntity(
+          name: ActionGroup.drawing.name, dificulty: 2, group: ActionGroup.drawing, imagePath: ActionImages.drawing2),
+      ActionItemEntity(
+          name: ActionGroup.drawing.name, dificulty: 2, group: ActionGroup.drawing, imagePath: ActionImages.drawing3),
+      ActionItemEntity(
+          name: ActionGroup.drawing.name, dificulty: 2, group: ActionGroup.drawing, imagePath: ActionImages.drawing4),
+      ActionItemEntity(
+          name: ActionGroup.drinkingWater.name,
+          dificulty: 2,
+          group: ActionGroup.drinkingWater,
+          imagePath: ActionImages.drinkingWater),
+      ActionItemEntity(
+          name: ActionGroup.drinkingWater.name,
+          dificulty: 2,
+          group: ActionGroup.drinkingWater,
+          imagePath: ActionImages.drinkingWater1),
+      ActionItemEntity(
+          name: ActionGroup.drinkingWater.name,
+          dificulty: 2,
+          group: ActionGroup.drinkingWater,
+          imagePath: ActionImages.drinkingWater2),
+      ActionItemEntity(
+          name: ActionGroup.drinkingWater.name,
+          dificulty: 2,
+          group: ActionGroup.drinkingWater,
+          imagePath: ActionImages.drinkingWater3),
+      ActionItemEntity(
+          name: ActionGroup.eating.name, dificulty: 2, group: ActionGroup.eating, imagePath: ActionImages.eating),
+      ActionItemEntity(
+          name: ActionGroup.eating.name, dificulty: 2, group: ActionGroup.eating, imagePath: ActionImages.eating1),
+      ActionItemEntity(
+          name: ActionGroup.eating.name, dificulty: 2, group: ActionGroup.eating, imagePath: ActionImages.eating2),
+      ActionItemEntity(
+          name: ActionGroup.jumpingRope.name,
+          dificulty: 2,
+          group: ActionGroup.jumpingRope,
+          imagePath: ActionImages.jumpingRope),
+      ActionItemEntity(
+          name: ActionGroup.jumpingRope.name,
+          dificulty: 2,
+          group: ActionGroup.jumpingRope,
+          imagePath: ActionImages.jumpingRope1),
+      ActionItemEntity(
+          name: ActionGroup.jumpingRope.name,
+          dificulty: 2,
+          group: ActionGroup.jumpingRope,
+          imagePath: ActionImages.jumpingRope2),
+      ActionItemEntity(
+          name: ActionGroup.playingBlocks.name,
+          dificulty: 2,
+          group: ActionGroup.playingBlocks,
+          imagePath: ActionImages.playingBlocks),
+      ActionItemEntity(
+          name: ActionGroup.playingBlocks.name,
+          dificulty: 2,
+          group: ActionGroup.playingBlocks,
+          imagePath: ActionImages.playingBlocks1),
+      ActionItemEntity(
+          name: ActionGroup.playingBlocks.name,
+          dificulty: 2,
+          group: ActionGroup.playingBlocks,
+          imagePath: ActionImages.playingBlocks2),
+      ActionItemEntity(
+          name: ActionGroup.playingBlocks.name,
+          dificulty: 2,
+          group: ActionGroup.playingBlocks,
+          imagePath: ActionImages.playingBlocks3),
+      ActionItemEntity(
+          name: ActionGroup.playingBlocks.name,
+          dificulty: 2,
+          group: ActionGroup.playingBlocks,
+          imagePath: ActionImages.playingBlocks4),
+      ActionItemEntity(
+          name: ActionGroup.playingWithDog.name,
+          dificulty: 2,
+          group: ActionGroup.playingWithDog,
+          imagePath: ActionImages.playingWithDog),
+      ActionItemEntity(
+          name: ActionGroup.playingWithDog.name,
+          dificulty: 2,
+          group: ActionGroup.playingWithDog,
+          imagePath: ActionImages.playingWithDog1),
+      ActionItemEntity(
+          name: ActionGroup.playingWithDog.name,
+          dificulty: 2,
+          group: ActionGroup.playingWithDog,
+          imagePath: ActionImages.playingWithDog2),
+      ActionItemEntity(
+          name: ActionGroup.readingBook.name,
+          dificulty: 2,
+          group: ActionGroup.readingBook,
+          imagePath: ActionImages.readingBook),
+      ActionItemEntity(
+          name: ActionGroup.readingBook.name,
+          dificulty: 2,
+          group: ActionGroup.readingBook,
+          imagePath: ActionImages.readingBook1),
+      ActionItemEntity(
+          name: ActionGroup.readingBook.name,
+          dificulty: 2,
+          group: ActionGroup.readingBook,
+          imagePath: ActionImages.readingBook2),
+      ActionItemEntity(
+          name: ActionGroup.readingBook.name,
+          dificulty: 2,
+          group: ActionGroup.readingBook,
+          imagePath: ActionImages.readingBook3),
+      ActionItemEntity(
+          name: ActionGroup.readingBook.name,
+          dificulty: 2,
+          group: ActionGroup.readingBook,
+          imagePath: ActionImages.readingBook4),
+      ActionItemEntity(
+          name: ActionGroup.readingBook.name,
+          dificulty: 2,
+          group: ActionGroup.readingBook,
+          imagePath: ActionImages.readingBook5),
+      ActionItemEntity(
+          name: ActionGroup.readingBook.name,
+          dificulty: 2,
+          group: ActionGroup.readingBook,
+          imagePath: ActionImages.readingBook6),
+      ActionItemEntity(
+          name: ActionGroup.readingBook.name,
+          dificulty: 2,
+          group: ActionGroup.readingBook,
+          imagePath: ActionImages.readingBook7),
+      ActionItemEntity(
+          name: ActionGroup.receivingGift.name,
+          dificulty: 2,
+          group: ActionGroup.receivingGift,
+          imagePath: ActionImages.receivingGift),
+      ActionItemEntity(
+          name: ActionGroup.receivingGift.name,
+          dificulty: 2,
+          group: ActionGroup.receivingGift,
+          imagePath: ActionImages.receivingGift1),
+      ActionItemEntity(
+          name: ActionGroup.receivingGift.name,
+          dificulty: 2,
+          group: ActionGroup.receivingGift,
+          imagePath: ActionImages.receivingGift2),
+      ActionItemEntity(
+          name: ActionGroup.receivingGift.name,
+          dificulty: 2,
+          group: ActionGroup.receivingGift,
+          imagePath: ActionImages.receivingGift3),
+      ActionItemEntity(
+          name: ActionGroup.receivingGift.name,
+          dificulty: 2,
+          group: ActionGroup.receivingGift,
+          imagePath: ActionImages.receivingGift4),
+      ActionItemEntity(
+          name: ActionGroup.ridingBike.name,
+          dificulty: 2,
+          group: ActionGroup.ridingBike,
+          imagePath: ActionImages.ridingBike),
+      ActionItemEntity(
+          name: ActionGroup.ridingBike.name,
+          dificulty: 2,
+          group: ActionGroup.ridingBike,
+          imagePath: ActionImages.ridingBike1),
+      ActionItemEntity(
+          name: ActionGroup.ridingBike.name,
+          dificulty: 2,
+          group: ActionGroup.ridingBike,
+          imagePath: ActionImages.ridingBike2),
+      ActionItemEntity(
+          name: ActionGroup.ridingBike.name,
+          dificulty: 2,
+          group: ActionGroup.ridingBike,
+          imagePath: ActionImages.ridingBike3),
+      ActionItemEntity(
+          name: ActionGroup.running.name, dificulty: 2, group: ActionGroup.running, imagePath: ActionImages.running),
+      ActionItemEntity(
+          name: ActionGroup.running.name, dificulty: 2, group: ActionGroup.running, imagePath: ActionImages.running1),
+      ActionItemEntity(
+          name: ActionGroup.running.name, dificulty: 2, group: ActionGroup.running, imagePath: ActionImages.running2),
+      ActionItemEntity(
+          name: ActionGroup.singing.name, dificulty: 2, group: ActionGroup.singing, imagePath: ActionImages.singing),
+      ActionItemEntity(
+          name: ActionGroup.singing.name, dificulty: 2, group: ActionGroup.singing, imagePath: ActionImages.singing1),
+      ActionItemEntity(
+          name: ActionGroup.singing.name, dificulty: 2, group: ActionGroup.singing, imagePath: ActionImages.singing2),
+      ActionItemEntity(
+          name: ActionGroup.sleeping.name, dificulty: 2, group: ActionGroup.sleeping, imagePath: ActionImages.sleeping),
+      ActionItemEntity(
+          name: ActionGroup.sleeping.name,
+          dificulty: 2,
+          group: ActionGroup.sleeping,
+          imagePath: ActionImages.sleeping1),
+      ActionItemEntity(
+          name: ActionGroup.sleeping.name,
+          dificulty: 2,
+          group: ActionGroup.sleeping,
+          imagePath: ActionImages.sleeping2),
+      ActionItemEntity(
+          name: ActionGroup.sleeping.name,
+          dificulty: 2,
+          group: ActionGroup.sleeping,
+          imagePath: ActionImages.sleeping3),
+      ActionItemEntity(
+          name: ActionGroup.usingComputer.name,
+          dificulty: 2,
+          group: ActionGroup.usingComputer,
+          imagePath: ActionImages.usingComputer),
+      ActionItemEntity(
+          name: ActionGroup.usingComputer.name,
+          dificulty: 2,
+          group: ActionGroup.usingComputer,
+          imagePath: ActionImages.usingComputer1),
+      ActionItemEntity(
+          name: ActionGroup.usingComputer.name,
+          dificulty: 2,
+          group: ActionGroup.usingComputer,
+          imagePath: ActionImages.usingComputer2),
+      ActionItemEntity(
+          name: ActionGroup.usingComputer.name,
+          dificulty: 2,
+          group: ActionGroup.usingComputer,
+          imagePath: ActionImages.usingComputer3),
+      ActionItemEntity(
+          name: ActionGroup.usingComputer.name,
+          dificulty: 2,
+          group: ActionGroup.usingComputer,
+          imagePath: ActionImages.usingComputer4),
+      ActionItemEntity(
+          name: ActionGroup.usingComputer.name,
+          dificulty: 2,
+          group: ActionGroup.usingComputer,
+          imagePath: ActionImages.usingComputer5),
+      ActionItemEntity(
+          name: ActionGroup.usingComputer.name,
+          dificulty: 2,
+          group: ActionGroup.usingComputer,
+          imagePath: ActionImages.usingComputer6),
+      ActionItemEntity(
+          name: ActionGroup.usingComputer.name,
+          dificulty: 2,
+          group: ActionGroup.usingComputer,
+          imagePath: ActionImages.usingComputer7),
+      ActionItemEntity(
+          name: ActionGroup.washingDishes.name,
+          dificulty: 2,
+          group: ActionGroup.washingDishes,
+          imagePath: ActionImages.washingDishes),
+      ActionItemEntity(
+          name: ActionGroup.washingDishes.name,
+          dificulty: 2,
+          group: ActionGroup.washingDishes,
+          imagePath: ActionImages.washingDishes1),
+      ActionItemEntity(
+          name: ActionGroup.washingDishes.name,
+          dificulty: 2,
+          group: ActionGroup.washingDishes,
+          imagePath: ActionImages.washingDishes2),
+      ActionItemEntity(
+          name: ActionGroup.washingHands.name,
+          dificulty: 2,
+          group: ActionGroup.washingHands,
+          imagePath: ActionImages.washingHands),
+      ActionItemEntity(
+          name: ActionGroup.washingHands.name,
+          dificulty: 2,
+          group: ActionGroup.washingHands,
+          imagePath: ActionImages.washingHands1),
+      ActionItemEntity(
+          name: ActionGroup.washingHands.name,
+          dificulty: 2,
+          group: ActionGroup.washingHands,
+          imagePath: ActionImages.washingHands2),
+      ActionItemEntity(
+          name: ActionGroup.washingHands.name,
+          dificulty: 2,
+          group: ActionGroup.washingHands,
+          imagePath: ActionImages.washingHands3),
+      ActionItemEntity(
+          name: ActionGroup.washingHands.name,
+          dificulty: 2,
+          group: ActionGroup.washingHands,
+          imagePath: ActionImages.washingHands4),
+      ActionItemEntity(
+          name: ActionGroup.watchingTV.name,
+          dificulty: 2,
+          group: ActionGroup.watchingTV,
+          imagePath: ActionImages.watchingTV),
+      ActionItemEntity(
+          name: ActionGroup.watchingTV.name,
+          dificulty: 2,
+          group: ActionGroup.watchingTV,
+          imagePath: ActionImages.watchingTV1),
+      ActionItemEntity(
+          name: ActionGroup.watchingTV.name,
+          dificulty: 2,
+          group: ActionGroup.watchingTV,
+          imagePath: ActionImages.watchingTV2),
+      ActionItemEntity(
+          name: ActionGroup.wateringPlants.name,
+          dificulty: 2,
+          group: ActionGroup.wateringPlants,
+          imagePath: ActionImages.wateringPlants),
+      ActionItemEntity(
+          name: ActionGroup.wateringPlants.name,
+          dificulty: 2,
+          group: ActionGroup.wateringPlants,
+          imagePath: ActionImages.wateringPlants1),
+      ActionItemEntity(
+          name: ActionGroup.wateringPlants.name,
+          dificulty: 2,
+          group: ActionGroup.wateringPlants,
+          imagePath: ActionImages.wateringPlants2),
     ];
   }
 

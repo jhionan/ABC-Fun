@@ -15,7 +15,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
   final ActionItemsRepository repository;
   final int itemsCount = 6;
-  final int rounds = 10;
+  final int rounds = 3;
   int currentRound = 0;
   int totalMoves = 0;
   double get finalScorePercentage => rounds / totalMoves * 100;
@@ -39,7 +39,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     if (state is GameRunning && event.item == (state as GameRunning).correctAnswer && currentRound < rounds) {
       return GameVictory();
     }
-    if (state is GameRunning && event.item != (state as GameRunning).correctAnswer && currentRound < rounds) {
+    if (state is GameRunning && event.item != (state as GameRunning).correctAnswer && currentRound <= rounds) {
       return GameWrongAnswer.fromRunningState(state as GameRunning);
     }
     return GameOver(scorePercentage: finalScorePercentage);
@@ -71,5 +71,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         (value) => !containnedItems.add(value.group),
       ).take(rounds));
     possibleItems.addAll(event);
+    
   }
 }
