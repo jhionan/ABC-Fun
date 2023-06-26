@@ -50,5 +50,20 @@
   "actionWashingDishes": "Lavando louça",
   "actionWashingHands": "Lavando as mãos",
   "actionWatchingTV": "Assistindo TV",
-  "actionWateringPlants": "Regando plantas"
+  "actionWateringPlants": "Regando plantas",
+  "buttonBack": "Voltar",
+  "challengeTitle": "Editor de Desafios",
+  "challengeDescription": "Aqui você encontra todos os temas e fotos que são utilizadas para gerar os desafios, você pode criar novos temas de acordo com a necessidade e contexto de sua criança",
+  "challengeButtonCreateChallenge": "Criar Desafio",
+  "buttonEdit": "Editar",
+  "buttonDelete": "Excluir",
+  "challengeItemCardImagesQuantity": "{count, plural, =1{1 imagem} other {{count} imagens}}",
+  "@challengeItemCardImagesQuantity" : {
+    "placeholders": {
+          "count": {
+            "type": "int"
+          }
+      }
+  }
+
 }

@@ -3,6 +3,7 @@ import 'package:aba/core/providers/providers.dart';
 import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/features/game/domain/models/action_item_entity.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
+import 'package:aba/features/widgets/background_widget.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,55 +53,57 @@ class Game extends StatelessWidget {
             }
             if (state is GameRunning) {
               Future.microtask(() =>  _readAloud(context, state.correctAnswer));
-              return Column(
-                children: [
-                  InkWell(
-                    onTap: () => _readAloud(context, state.correctAnswer),
-                    child: Container(
-                      color: Colors.white,
-                      margin: EdgeInsets.all(context.dimensions.vMargin),
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.play_circle_outline_sharp,
-                            size: 32,
-                          ),
-                          SizedBox(
-                            width: context.dimensions.hMargin / 2,
-                          ),
-                          Text(
-                            state.correctAnswer.actionName(context),
-                            style: const TextStyle(fontSize: 32),
-                          ),
-                        ],
+              return BackgroundWidget(
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () => _readAloud(context, state.correctAnswer),
+                      child: Container(
+                        color: Colors.white,
+                        margin: EdgeInsets.all(context.dimensions.vMargin),
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.play_circle_outline_sharp,
+                              size: 32,
+                            ),
+                            SizedBox(
+                              width: context.dimensions.hMargin / 2,
+                            ),
+                            Text(
+                              state.correctAnswer.actionName(context),
+                              style: const TextStyle(fontSize: 32),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: LayoutBuilder(builder: (context, contraints) {
-                      return GridView(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, childAspectRatio: 1, mainAxisExtent: contraints.maxHeight / 3),
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: state.items.map((e) {
-                          return GestureDetector(
-                            onTap: () => context.read<GameBloc>().add(GameEventOnItemTapped(item: e)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Center(
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(24),
-                                    child: Image.asset(e.imagePath, fit: BoxFit.contain)),
+                    Expanded(
+                      child: LayoutBuilder(builder: (context, contraints) {
+                        return GridView(
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, childAspectRatio: 1, mainAxisExtent: contraints.maxHeight / 3),
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: state.items.map((e) {
+                            return GestureDetector(
+                              onTap: () => context.read<GameBloc>().add(GameEventOnItemTapped(item: e)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Center(
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(24),
+                                      child: Image.asset(e.imagePath, fit: BoxFit.contain)),
+                                ),
                               ),
-                            ),
-                          );
-                        }).toList(),
-                      );
-                    }),
-                  ),
-                ],
+                            );
+                          }).toList(),
+                        );
+                      }),
+                    ),
+                  ],
+                ),
               );
             }
             return const SizedBox.shrink();

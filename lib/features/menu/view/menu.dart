@@ -1,7 +1,9 @@
 import 'package:aba/core/images.dart';
+import 'package:aba/core/navigation/abc_router.gr.dart';
 import 'package:aba/core/theme/abc_colors.dart';
 import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
 import 'package:aba/features/menu/bloc/menu_bloc.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -47,10 +49,15 @@ class _MenuState extends State<Menu> {
                 ),
               )
             : null,
-        drawer: MenuDrawer(),
+        drawer: MenuDrawer(
+          onMenuSelected: _navigate,
+        ),
         body: Row(
           children: [
-            if (type.isDesktop) MenuDrawer(),
+            if (type.isDesktop)
+              MenuDrawer(
+                onMenuSelected: _navigate,
+              ),
             Expanded(child: widget.child),
           ],
         ),
@@ -58,11 +65,24 @@ class _MenuState extends State<Menu> {
     });
   }
 
-  _navigateToGame(BuildContext context, MenuEvent e) {}
+  void _navigate(BuildContext context, MenuSelectedPage event) {
+    switch (event) {
+      case MenuSelectedPage.dashboard:
+        context.router.replace(const Dashboard());
+      case MenuSelectedPage.settings:
+      case MenuSelectedPage.challenges:
+        context.router.replace(const ChallengeRoute());
+      case MenuSelectedPage.about:
+      case MenuSelectedPage.accountSync:
+    }
+  }
 }
 
 class MenuDrawer extends StatelessWidget {
-  const MenuDrawer({super.key});
+  const MenuDrawer({super.key, required this.onMenuSelected});
+
+  final void Function(BuildContext context, MenuSelectedPage event) onMenuSelected;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -86,7 +106,7 @@ class MenuDrawer extends StatelessWidget {
                 height: 40,
               ),
               onTap: () {
-                // context.router.push(DashboardRoute());
+                onMenuSelected(context, MenuSelectedPage.dashboard);
               },
             ),
             ListTile(
@@ -97,7 +117,7 @@ class MenuDrawer extends StatelessWidget {
                 height: 40,
               ),
               onTap: () {
-                // context.router.push(ChallengesRoute());
+                onMenuSelected(context, MenuSelectedPage.challenges);
               },
             ),
             ListTile(
@@ -108,7 +128,7 @@ class MenuDrawer extends StatelessWidget {
                 height: 40,
               ),
               onTap: () {
-                //  context.router.push(SettingsRoute());
+                onMenuSelected(context, MenuSelectedPage.settings);
               },
             ),
             ListTile(
@@ -130,7 +150,7 @@ class MenuDrawer extends StatelessWidget {
                 height: 40,
               ),
               onTap: () {
-                // context.router.push(ExitRoute());
+                onMenuSelected(context, MenuSelectedPage.accountSync);
               },
             ),
           ],
@@ -139,3 +159,5 @@ class MenuDrawer extends StatelessWidget {
     );
   }
 }
+
+enum MenuSelectedPage { dashboard, settings, challenges, about, accountSync }
