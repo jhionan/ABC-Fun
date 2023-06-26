@@ -638,7 +638,7 @@ packages:
     source: hosted
     version: "1.2.0"
   realm_generator:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: realm_generator
       sha256: "6301e0cfefd5b57b0f979f3c4e4545e060bc8bf6170d84971a5bfb6621e057f8"
