@@ -18,6 +18,7 @@ class AbcRouter extends $AbcRouter {
           title: (context, data) => 'Menu',
           children: [
             AutoRoute(page: Dashboard.page, path: AbcRoute.dashboard.pathFragment, initial: true),
+            AutoRoute(page: ChallengeRoute.page, path: AbcRoute.challenges.pathFragment),
           ],
         ),
         AutoRoute(page: GameRoute.page, path: '/${AbcRoute.game.pathFragment}')
@@ -25,9 +26,10 @@ class AbcRouter extends $AbcRouter {
 }
 
 enum AbcRoute {
-  menu('menu'),
+  menu(''),
   dashboard('dashboard'),
-  game('game');
+  game('game'),
+  challenges('challenges');
 
   const AbcRoute(this.pathFragment);
   final String pathFragment;
