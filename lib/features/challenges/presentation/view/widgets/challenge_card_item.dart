@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:aba/features/game/domain/models/action_item_entity.dart';
 import 'package:aba/features/widgets/abc_button.dart';
@@ -60,7 +59,7 @@ class ChallengeCardItem extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -74,7 +73,7 @@ class ChallengeCardItem extends StatelessWidget {
                         },
                       );
                     }),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 AbcButton.secondary(

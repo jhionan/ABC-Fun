@@ -58,7 +58,7 @@ class AbcTitleCard extends StatelessWidget {
               height: context.dimensions.hMargin,
             ),
             AbcCard(
-              padding: EdgeInsets.all(24),
+              padding: const EdgeInsets.all(24),
               child: Flex(direction: type.isHandset ? Axis.vertical : Axis.horizontal, children: [
                 Flexible(
                   child: Text(

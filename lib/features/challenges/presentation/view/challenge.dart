@@ -6,7 +6,6 @@ import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:aba/core/utils/widgets/abc_scaffold.dart';
 import 'package:aba/core/utils/widgets/abc_title_card.dart';
-import 'package:aba/core/utils/widgets/abc_title_widget.dart';
 import 'package:aba/features/challenges/presentation/view/widgets/challenge_card_item.dart';
 import 'package:aba/features/game/domain/models/action_item_entity.dart';
 import 'package:aba/features/widgets/abc_button.dart';
@@ -54,129 +53,131 @@ class Challenge extends StatelessWidget {
             Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               runAlignment: WrapAlignment.spaceBetween,
-              runSpacing: context.dimensions.vMargin/2,
+              runSpacing: context.dimensions.vMargin / 2,
               spacing: context.dimensions.hMargin,
               children: [
                 ChallengeCardItem(
-              isActivated: test.stream,
-              onValueChanged: test2.sink,
-              items: [
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth,
+                  isActivated: test.stream,
+                  onValueChanged: test2.sink,
+                  items: [
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth1,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth2,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth2,
+                    ),
+                  ],
                 ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth1,
+                ChallengeCardItem(
+                  isActivated: test.stream,
+                  onValueChanged: test2.sink,
+                  items: [
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth1,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth2,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth2,
+                    ),
+                  ],
                 ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth2,
+                ChallengeCardItem(
+                  isActivated: test.stream,
+                  onValueChanged: test2.sink,
+                  items: [
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth1,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth2,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth2,
+                    ),
+                  ],
                 ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth2,
-                ),
-              ],
-            ),ChallengeCardItem(
-              isActivated: test.stream,
-              onValueChanged: test2.sink,
-              items: [
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth1,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth2,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth2,
-                ),
-              ],
-            ),ChallengeCardItem(
-              isActivated: test.stream,
-              onValueChanged: test2.sink,
-              items: [
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth1,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth2,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth2,
-                ),
-              ],
-            ),ChallengeCardItem(
-              isActivated: test.stream,
-              onValueChanged: test2.sink,
-              items: [
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth1,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth2,
-                ),
-                ActionItemEntity(
-                  name: ActionGroup.brushingTeeth.name,
-                  dificulty: 2,
-                  group: ActionGroup.brushingTeeth,
-                  imagePath: ActionImages.brushingTeeth2,
+                ChallengeCardItem(
+                  isActivated: test.stream,
+                  onValueChanged: test2.sink,
+                  items: [
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth1,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth2,
+                    ),
+                    ActionItemEntity(
+                      name: ActionGroup.brushingTeeth.name,
+                      dificulty: 2,
+                      group: ActionGroup.brushingTeeth,
+                      imagePath: ActionImages.brushingTeeth2,
+                    ),
+                  ],
                 ),
               ],
             ),
-              ],
-            ),
-            
           ],
         );
       },
