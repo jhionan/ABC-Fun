@@ -15,6 +15,7 @@ class ActionItemsLocalDataSourceImp extends ActionItemsRepository {
     }
   }
 
+  @override
   Future<void> addAllItems(List<ActionItemEntity> items) async {
     if (items.every((element) => element is ActionCustomItemEntity)) {
       actionCustomItemDao.insertMany(items as List<ActionCustomItemEntity>);
@@ -23,20 +24,22 @@ class ActionItemsLocalDataSourceImp extends ActionItemsRepository {
 
   @override
   Future<void> deleteItem(ActionItemEntity item) async {
-    if(item is ActionCustomItemEntity) {
+    if (item is ActionCustomItemEntity) {
       actionCustomItemDao.delete(item);
     }
   }
 
   @override
   Future<void> deleteManyItems(List<ActionItemEntity> items) async {
-    if(items.every((element) => element is ActionCustomItemEntity,)) {
+    if (items.every(
+      (element) => element is ActionCustomItemEntity,
+    )) {
       actionCustomItemDao.deleteMany(items as List<ActionCustomItemEntity>);
     }
   }
 
   @override
   Future<List<ActionItemEntity>> getAllItems() {
-   return actionCustomItemDao.getAllItems();
+    return actionCustomItemDao.getAllItems();
   }
 }

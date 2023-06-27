@@ -66,6 +66,7 @@
       }
   },
   "loading": "Carregando...",
-  "gameError": "Erro, todos os desafios estão desativados"
+  "gameError": "Erro, todos os desafios estão desativados",
+  "gameErrorMin2": "Erro, é necessário no mínimo 2 desafios ativos para o correto funcionamento do jogo"
   
 }

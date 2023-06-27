@@ -52,4 +52,9 @@ class ActionItemsRepositoryImp implements ActionItemsRepository {
             ))
         .toList());
   }
+  
+  @override
+  Future<void> addAllItems(List<ActionItemEntity> items) {
+    return localDataSource.addAllItems(items);
+  }
 }

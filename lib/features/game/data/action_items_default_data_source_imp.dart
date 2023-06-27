@@ -613,4 +613,10 @@ class ActionItemsDefaultDataSourceImp implements ActionItemsRepository {
     // TODO: implement deleteManyItems
     throw UnimplementedError();
   }
+  
+  @override
+  Future<void> addAllItems(List<ActionItemEntity> items) {
+    // TODO: implement addAllItems
+    throw UnimplementedError();
+  }
 }
