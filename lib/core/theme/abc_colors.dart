@@ -17,4 +17,5 @@ final class AbcColors {
   static const Color onBackground = text;
   static const Color surface = Colors.white;
   static const Color onSurface = text;
+  static const Color hintText = Color(0xFF818181);
 }
