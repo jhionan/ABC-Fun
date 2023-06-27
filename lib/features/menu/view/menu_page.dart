@@ -27,28 +27,23 @@ extension MenuNamesExt on MenuEvent {
   }
 }
 
-class Menu extends StatefulWidget {
-  const Menu({super.key, required this.child});
+class MenuPage extends StatefulWidget {
+  const MenuPage({super.key, required this.child});
   final Widget child;
 
   @override
-  State<Menu> createState() => _MenuState();
+  State<MenuPage> createState() => _MenuPageState();
 }
 
-class _MenuState extends State<Menu> {
+class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return AdaptativeScreenBuilder(builder: (context, type) {
       return Scaffold(
-        appBar: type.isTablet
-            ? AppBar(
-                title: BlocBuilder<MenuBloc, MenuState>(
-                  builder: (context, state) {
-                    return Text('Menu $state');
-                  },
-                ),
-              )
-            : null,
+        appBar: AppBar(
+          iconTheme: const IconThemeData(color: AbcColors.primary),
+          backgroundColor: type.isHandset ? Colors.transparent : null,
+        ),
         drawer: MenuDrawer(
           onMenuSelected: _navigate,
         ),
@@ -68,10 +63,12 @@ class _MenuState extends State<Menu> {
   void _navigate(BuildContext context, MenuSelectedPage event) {
     switch (event) {
       case MenuSelectedPage.dashboard:
-        context.router.replace(const Dashboard());
+        context.router.pop();
+        context.router.replace(const DashboardRoute());
       case MenuSelectedPage.settings:
       case MenuSelectedPage.challenges:
-        context.router.replace(const ChallengeRoute());
+        context.router.pop();
+        context.router.replace(const ChallengeProviderRoute());
       case MenuSelectedPage.about:
       case MenuSelectedPage.accountSync:
     }

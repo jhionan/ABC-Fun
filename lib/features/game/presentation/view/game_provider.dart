@@ -4,7 +4,7 @@ import 'package:aba/features/game/data/action_items_default_data_source_imp.dart
 import 'package:aba/features/game/data/action_items_local_data_source_imp.dart';
 import 'package:aba/features/game/data/action_items_repository.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
-import 'package:aba/features/game/presentation/view/game.dart';
+import 'package:aba/features/game/presentation/view/game_page.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +29,7 @@ class GameProvider extends StatelessWidget {
           ),
         ),
       ),
-      child: const Game(),
+      child: const GamePage(),
     );
   }
 }

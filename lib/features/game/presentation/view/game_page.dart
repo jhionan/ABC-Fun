@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Game extends StatelessWidget {
-  const Game({super.key});
+class GamePage extends StatelessWidget {
+  const GamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,8 @@ class Game extends StatelessWidget {
                   .then((value) => context.read<GameBloc>().add(GameEventRestart()));
               return Container(color: Colors.green.shade200, child: const Center(child: Text('Victory')));
             }
-            if(state is GameError) {
-              return Container(color: Colors.red.shade700, child:  Center(child: Text(context.intl.gameError)));
+            if (state is GameError) {
+              return Container(color: Colors.red.shade700, child: Center(child: Text(context.intl.gameError)));
             }
             if (state is GameWrongAnswer) {
               Future.delayed(const Duration(milliseconds: 1000))
