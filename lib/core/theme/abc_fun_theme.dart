@@ -33,6 +33,18 @@ class AbcTheme {
         shadow: AbcColors.dropShadow,
       ),
       textTheme: GoogleFonts.interTextTheme(),
+      inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(200),
+        ),
+        fillColor: Colors.white,
+        filled: true,
+        hintStyle: GoogleFonts.inter(
+          color: AbcColors.hintText,
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
     );
   }
 
