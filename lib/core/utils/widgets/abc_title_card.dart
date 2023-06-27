@@ -11,6 +11,7 @@ class AbcTitleCard extends StatelessWidget {
     required this.imageUrl,
     required this.title,
     required this.description,
+    this.descriptionStyle,
     this.direction = Axis.horizontal,
   });
 
@@ -19,6 +20,7 @@ class AbcTitleCard extends StatelessWidget {
   final String description;
   final Widget? child;
   final Axis direction;
+  final TextStyle? descriptionStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,7 @@ class AbcTitleCard extends StatelessWidget {
                 ),
                 Text(
                   description,
+                  style: descriptionStyle,
                 ),
                 SizedBox(
                   height: context.dimensions.hMargin,
@@ -63,6 +66,7 @@ class AbcTitleCard extends StatelessWidget {
                 Flexible(
                   child: Text(
                     description,
+                    style: descriptionStyle,
                   ),
                 ),
                 SizedBox(
