@@ -53,20 +53,50 @@
   "actionWateringPlants": "Regando plantas",
   "buttonBack": "Voltar",
   "challengeTitle": "Editor de Desafios",
-  "challengeDescription": "Aqui você encontra todos os temas e fotos que são utilizadas para gerar os desafios, você pode criar novos temas de acordo com a necessidade e contexto de sua criança",
+  "challengeDescription": "Aqui você encontra todos os temas e imagens que são utilizadas para gerar os desafios, você pode criar novos temas de acordo com a necessidade e contexto de sua criança",
   "challengeButtonCreateChallenge": "Criar Desafio",
   "buttonEdit": "Editar",
   "buttonDelete": "Excluir",
   "challengeItemCardImagesQuantity": "{count, plural, =1{1 imagem} other {{count} imagens}}",
-  "@challengeItemCardImagesQuantity" : {
+  "@challengeItemCardImagesQuantity": {
     "placeholders": {
-          "count": {
-            "type": "int"
-          }
+      "count": {
+        "type": "int"
       }
+    }
   },
   "loading": "Carregando...",
   "gameError": "Erro, todos os desafios estão desativados",
-  "gameErrorMin2": "Erro, é necessário no mínimo 2 desafios ativos para o correto funcionamento do jogo"
-  
+  "gameErrorMin2": "Erro, é necessário no mínimo 2 desafios ativos para o correto funcionamento do jogo",
+  "createNewChallengePageTitle": "Criar desafio",
+  "createNewChallengePageDescription": "Crie uma ação, selecione imagens que demonstram esta ação",
+  "createNewChallengePageActionName": "Nome da Ação",
+  "createNewChallengePageActionNameHint": "ex: Dormindo, comendo",
+  "createNewChallengePageActionImage": "Imagens da ação",
+  "createNewChallengePageActionImageHint": "Carregue imagens que exemplifique claramente a ação criada, isso é extremamente importante para o funcionamento do desafio (limite 4 imagens)",
+  "buttonLoadImages": "Carregar imagens",
+  "buttonComplete": "Concluir",
+  "syncAccountPageTitle": "Sincronizar contas",
+  "settingsPageTitle": "Configurações de fase",
+  "settingsPageDescription": "Configure o numero de fases por round e dificuldade (número de imagens)",
+  "settingsPagePhasesTitle": "Número de fases",
+  "settingsPagePhases": "{n, plural, =1{1 fase} other {{n} fases}}",
+  "@settingsPagePhases": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsPageImagesQuantityTitle": "Quantidade de imagens",
+  "settingsPageImagesQuantity": "{n, plural, =1{1 imagem} other {{n} imagens}}",
+  "@settingsPageImagesQuantity": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsPageRewardTitle": "Recompensa",
+  "settingsPageRewardDescription": "Configure uma imagem especifica para quando houver acerto"
 }
