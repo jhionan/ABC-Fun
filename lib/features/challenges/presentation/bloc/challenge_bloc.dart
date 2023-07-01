@@ -28,6 +28,10 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
     if (event is ChallengeToggleActionEvent) {
       _toggle(event.actionName, emit);
     }
+
+    if (event is CreateNewChallengeNewActionData) {
+      _createNewChallengeData(event, emit);
+    }
   }
 
   void _init() async {
@@ -36,7 +40,7 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
         (e) => e.name);
 
     // _activeActions = _actions.where((element) => element.isActive).map((e) => e.name).toSet();
-    add(ChallengeLoadedEvent());
+    add(const ChallengeLoadedEvent());
   }
 
   void _toggle(String actionName, Emitter<ChallengeState> emit) async {
@@ -69,5 +73,22 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
       return false;
     }
     return true;
+  }
+
+  void _createNewChallengeData(CreateNewChallengeNewActionData event, Emitter<ChallengeState> emit) {
+    if (state is ChallengeNewActionDataState) {
+      final state = this.state as ChallengeNewActionDataState;
+      emit(ChallengeNewActionDataState(
+        imagePaths: event.imagePaths ?? state.imagePaths,
+        title: event.title?? state.title,
+        audioPath: event.audioPath ?? state.audioPath,
+      ));
+      return;
+    }
+    emit(ChallengeNewActionDataState(
+        imagePaths: event.imagePaths,
+        title: event.title?? '',
+        audioPath: event.audioPath,
+      ));
   }
 }

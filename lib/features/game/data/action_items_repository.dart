@@ -15,14 +15,13 @@ class ActionItemsRepositoryImp implements ActionItemsRepository {
 
   @override
   Future<List<ActionItemEntity>> getAllItems() async {
-      
     List<ActionItemEntity> local = await localDataSource.getAllItems();
 
     if (local.isEmpty) {
       _seedDb();
       return defaultDataSource.getAllItems();
     }
-     return local;
+    return local;
   }
 
   @override
@@ -46,13 +45,14 @@ class ActionItemsRepositoryImp implements ActionItemsRepository {
               dificulty: e.dificulty,
               group: e.group,
               imagePath: e.imagePath,
+              audioBytes: e.audioBytes,
               name: e.name,
               notAllowedWith: e.notAllowedWith,
               isActive: e.isActive,
             ))
         .toList());
   }
-  
+
   @override
   Future<void> addAllItems(List<ActionItemEntity> items) {
     return localDataSource.addAllItems(items);

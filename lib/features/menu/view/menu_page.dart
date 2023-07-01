@@ -39,9 +39,11 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return AdaptativeScreenBuilder(builder: (context, type) {
       return Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           iconTheme: const IconThemeData(color: AbcColors.primary),
-          backgroundColor: type.isHandset ? Colors.transparent : null,
+          backgroundColor: Colors.transparent,
+          leading: type.isDesktop ? const SizedBox.shrink() : null,
         ),
         drawer: MenuDrawer(
           onMenuSelected: _navigate,
@@ -69,6 +71,7 @@ class _MenuPageState extends State<MenuPage> {
         context.router.pop();
         context.router.replace(const ChallengeProviderRoute());
       case MenuSelectedPage.about:
+        context.router.replace(const AboutRoute());
       case MenuSelectedPage.accountSync:
     }
   }
@@ -135,7 +138,7 @@ class MenuDrawer extends StatelessWidget {
                 height: 40,
               ),
               onTap: () {
-                //  context.router.push(AboutRoute());
+                onMenuSelected(context, MenuSelectedPage.about);
               },
             ),
             ListTile(

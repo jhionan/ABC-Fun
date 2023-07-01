@@ -18,3 +18,14 @@ class ChallengeErrorState extends ChallengeState {
   });
   final Map<String, List<ActionCustomItemEntity>> actionsGroupedByName;
 }
+
+class ChallengeNewActionDataState extends ChallengeState {
+  ChallengeNewActionDataState({
+    required this.imagePaths,
+    required this.title,
+    required this.audioPath,
+  });
+  final List<String>? imagePaths;
+  final String title;
+  final String? audioPath;
+}

@@ -8,9 +8,12 @@ import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
 import 'package:aba/features/challenges/presentation/bloc/challenge_bloc.dart';
 import 'package:aba/features/widgets/abc_button.dart';
 import 'package:aba/features/widgets/abc_card.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:record/record.dart' as audio;
 
 @RoutePage()
 class CreateNewChallengePage extends StatefulWidget {
@@ -21,17 +24,17 @@ class CreateNewChallengePage extends StatefulWidget {
 }
 
 class _CreateNewChallengePageState extends State<CreateNewChallengePage> {
-  late final TextEditingController _nameController;
+  late final TextEditingController _titleController;
 
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController();
+    _titleController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _nameController.dispose();
+    _titleController.dispose();
     super.dispose();
   }
 
@@ -42,57 +45,7 @@ class _CreateNewChallengePageState extends State<CreateNewChallengePage> {
     return AbcScaffold(
       adaptativeBuilder: (context, screenType) {
         bool isHandset = screenType.isHandset;
-        Widget body = Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              context.intl.createNewChallengePageActionName,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                hintText: context.intl.createNewChallengePageActionNameHint,
-              ),
-            ),
-            SizedBox(
-              height: context.dimensions.hMargin,
-            ),
-            if (!isHandset)
-              Text(
-                context.intl.createNewChallengePageActionImage,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            const SizedBox(
-              height: 4,
-            ),
-            if (isHandset)
-              Text(
-                context.intl.createNewChallengePageActionImageHint,
-                // style: Theme.of(context).textTheme.bodyLarge,
-              )
-            else
-              AbcCard(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(
-                    context.intl.createNewChallengePageActionImageHint,
-                    // style: Theme.of(context).textTheme.bodyLarge,
-                  )),
-            SizedBox(
-              height: context.dimensions.hMargin,
-            ),
-            Align(
-              alignment: isHandset ? Alignment.center : Alignment.centerLeft,
-              child: AbcButton(
-                text: context.intl.buttonLoadImages,
-                onPressed: () => _selectImages(context),
-              ),
-            ),
-          ],
-        );
+
         return Column(
           children: [
             Align(
@@ -113,17 +66,213 @@ class _CreateNewChallengePageState extends State<CreateNewChallengePage> {
                     color: AbcColors.primary,
                   ),
               direction: Axis.vertical,
-              child: isHandset ? body : null,
+              child: isHandset
+                  ? _CreateNewChallengeBody(
+                      isHandset: isHandset,
+                      titleController: _titleController,
+                      bloc: bloc,
+                    )
+                  : null,
             ),
             SizedBox(
               height: context.dimensions.vMargin,
             ),
-            if (!isHandset) body,
+            if (!isHandset)
+              _CreateNewChallengeBody(
+                isHandset: isHandset,
+                titleController: _titleController,
+                bloc: bloc,
+              ),
           ],
         );
       },
     );
   }
+}
 
-  void _selectImages(BuildContext context) {}
+class _CreateNewChallengeBody extends StatelessWidget {
+  const _CreateNewChallengeBody({
+    required this.isHandset,
+    required this.titleController,
+    required this.bloc,
+  });
+  final bool isHandset;
+  final TextEditingController titleController;
+  final ChallengeBloc bloc;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _ActionTitle(
+          titleController: titleController,
+        ),
+
+        SizedBox(
+          height: context.dimensions.vMargin,
+        ),
+        //Record Audio
+        const _RecordActionAudio(),
+
+        SizedBox(
+          height: context.dimensions.hMargin,
+        ),
+        ..._buildImageAction(context),
+        SizedBox(
+          height: context.dimensions.hMargin,
+        ),
+      ],
+    );
+  }
+
+  void _selectImages(BuildContext context) async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'jpge', 'webp'],
+    );
+    if (result != null && result.files.isNotEmpty) {
+      {
+        bloc.add(CreateNewChallengeNewActionData(
+            imagePaths: result.files.where((e) => e.path != null).map((e) => e.path!).toList(),
+            audioPath: '',
+            title: titleController.text));
+      }
+    }
+  }
+
+  List<Widget> _buildImageAction(BuildContext context) {
+    return [
+      if (!isHandset)
+        Text(
+          context.intl.createNewChallengePageActionImage,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      const SizedBox(
+        height: 4,
+      ),
+      if (isHandset)
+        Text(
+          context.intl.createNewChallengePageActionImageHint,
+          // style: Theme.of(context).textTheme.bodyLarge,
+        )
+      else
+        AbcCard(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              context.intl.createNewChallengePageActionImageHint,
+              // style: Theme.of(context).textTheme.bodyLarge,
+            )),
+      SizedBox(
+        height: context.dimensions.hMargin,
+      ),
+      Align(
+        alignment: isHandset ? Alignment.center : Alignment.centerLeft,
+        child: AbcButton(
+          text: context.intl.buttonLoadImages,
+          onPressed: () => _selectImages(context),
+        ),
+      ),
+    ];
+  }
+}
+
+class _ActionTitle extends StatelessWidget {
+  const _ActionTitle({required this.titleController});
+  final TextEditingController titleController;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          context.intl.createNewChallengePageActionName,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        const SizedBox(
+          height: 4,
+        ),
+        TextField(
+          controller: titleController,
+          decoration: InputDecoration(
+            hintText: context.intl.createNewChallengePageActionNameHint,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _RecordActionAudio extends StatefulWidget {
+  const _RecordActionAudio();
+
+  @override
+  State<_RecordActionAudio> createState() => _RecordActionAudioState();
+}
+
+class _RecordActionAudioState extends State<_RecordActionAudio> {
+  final audio.Record record = audio.Record();
+  @override
+  void dispose() {
+    record.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ChallengeBloc bloc = context.read<ChallengeBloc>();
+    return AdaptativeScreenBuilder(builder: (context, screenType) {
+      bool isHandset = screenType.isHandset;
+      return Column(
+        children: [
+          if (!isHandset)
+            Text(
+              context.intl.createNewChallengePageActionAudio,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          const SizedBox(
+            height: 4,
+          ),
+          if (isHandset)
+            Text(
+              context.intl.createNewChallengePageActionAudioHint,
+              // style: Theme.of(context).textTheme.bodyLarge,
+            )
+          else
+            AbcCard(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  context.intl.createNewChallengePageActionAudioHint,
+                  // style: Theme.of(context).textTheme.bodyLarge,
+                )),
+          SizedBox(
+            height: context.dimensions.hMargin,
+          ),
+          Align(
+            alignment: isHandset ? Alignment.center : Alignment.centerLeft,
+            child: IconButton.filledTonal(
+                onPressed: () => _recordAudio(context, bloc), icon: const Icon(Icons.mic_rounded)),
+          ),
+        ],
+      );
+    });
+  }
+
+  Future<void> _recordAudio(BuildContext context, ChallengeBloc bloc) async {
+    // if (await Permission.microphone.request().isGranted && await Permission.storage.request().isGranted) {
+
+    if (!await record.isRecording()) {
+      await record.start();
+    } else {
+      String? audioPath = await record.stop();
+      bloc.add(
+        CreateNewChallengeNewActionData(
+          audioPath: audioPath,
+        ),
+      );
+      if(audioPath != null) {
+      AudioPlayer audioPlayer = AudioPlayer();
+      audioPlayer.play(DeviceFileSource(audioPath!),);
+
+      }
+    }
+  }
 }
