@@ -1,11 +1,16 @@
 import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'package:isar/isar.dart';
 
 class ActionItemEntity {
   final ActionGroup group;
   final String name;
   final String imagePath;
+  @ignore
+  final Uint8List? imageBytes;
+  @ignore
+  final Uint8List? audioBytes;
   final int dificulty;
   final List<ActionGroup> notAllowedWith;
   final bool isActive;
@@ -14,6 +19,8 @@ class ActionItemEntity {
     required this.group,
     required this.name,
     required this.imagePath,
+    this.imageBytes,
+    this.audioBytes,
     required this.dificulty,
     this.isActive = true,
     this.notAllowedWith = const [],
