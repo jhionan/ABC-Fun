@@ -1,10 +1,10 @@
 {
-"appTitle": "ABC Spaß",
+"appTitle": "ABC Fun",
 "menuTitle": "Menü",
 "menuAccountSync": "Konto synchronisieren",
 "menuSettings": "Einstellungen",
 "menuChallenges": "Herausforderungen",
-"menuDashboard": "Dashboard",
+"menuDashboard": "Startseite",
 "reportWidgetByTheme": "Leistung nach Thema",
 "reportWidgetByThemeErrors": "Fehler",
 "resultWidget": "Gesamtergebnisse",
@@ -16,16 +16,16 @@
 "menuScore": "Punktzahl",
 "playCardDescription": "Hallo, bereit für viele Herausforderungen heute?",
 "playCardButton": "Spielen",
-"actionAnsweringPhone": "Telefonanruf entgegennehmen",
+"actionAnsweringPhone": "Telefon beantworten",
 "actionBathing": "Baden",
-"actionBlowingBubbles": "Seifenblasen machen",
-"actionBrushingHair": "Haare bürsten",
+"actionBlowingBubbles": "Seifenblasen pusten",
+"actionBrushingHair": "Haare kämmen",
 "actionBrushingTeeth": "Zähne putzen",
 "actionButtoningShirt": "Hemd zuknöpfen",
 "actionCatPlayingWithWoolBall": "Katze spielt mit Wollball",
 "actionCatchingBall": "Ball fangen",
 "actionChasingButterflies": "Schmetterlingen hinterherjagen",
-"actionClappingHands": "Klatschen",
+"actionClappingHands": "Hände klatschen",
 "actionClearingTable": "Tisch abräumen",
 "actionClimbingStairs": "Treppen steigen",
 "actionClimbingTree": "Auf einen Baum klettern",
@@ -33,12 +33,12 @@
 "actionCrying": "Weinen",
 "actionDancing": "Tanzen",
 "actionDog": "Hund",
-"actionDrawing": "Malen",
+"actionDrawing": "Zeichnen",
 "actionDrinkingWater": "Wasser trinken",
 "actionEating": "Essen",
 "actionJumpingRope": "Seilspringen",
 "actionPlayingBlocks": "Mit Bausteinen spielen",
-"actionPlayingWithDog": "Mit einem Hund spielen",
+"actionPlayingWithDog": "Mit Hund spielen",
 "actionReadingBook": "Buch lesen",
 "actionReceivingGift": "Geschenk erhalten",
 "actionRidingBike": "Fahrrad fahren",
@@ -50,5 +50,57 @@
 "actionWashingDishes": "Geschirr spülen",
 "actionWashingHands": "Hände waschen",
 "actionWatchingTV": "Fernsehen",
-"actionWateringPlants": "Pflanzen gießen"
+"actionWateringPlants": "Pflanzen gießen",
+"buttonBack": "Zurück",
+"challengeTitle": "Herausforderungseditor",
+"challengeDescription": "Hier finden Sie alle Themen und Bilder, die zur Generierung der Herausforderungen verwendet werden. Sie können neue Themen entsprechend den Bedürfnissen und dem Kontext Ihres Kindes erstellen.",
+"challengeButtonCreateChallenge": "Herausforderung erstellen",
+"buttonEdit": "Bearbeiten",
+"buttonDelete": "Löschen",
+"challengeItemCardImagesQuantity": "{count, plural, =1{1 Bild} other {{count} Bilder}}",
+"@challengeItemCardImagesQuantity": {
+"placeholders": {
+"count": {
+"type": "int"
+}
+}
+},
+"loading": "Laden...",
+"gameError": "Fehler, alle Herausforderungen sind deaktiviert",
+"gameErrorMin2": "Fehler, es sind mindestens 2 aktive Herausforderungen erforderlich, damit das Spiel ordnungsgemäß funktioniert",
+"createNewChallengePageTitle": "Herausforderung erstellen",
+"createNewChallengePageDescription": "Erstellen Sie eine Aktion und wählen Sie Bilder aus, die diese Aktion darstellen",
+"createNewChallengePageActionName": "Aktionsname",
+"createNewChallengePageActionNameHint": "z.B. Schlafen, Essen",
+"createNewChallengePageActionAudio": "Audio aufnehmen",
+"createNewChallengePageActionAudioHint": "Nehmen Sie ein Audio auf, das die erstellte Aktion klar veranschaulicht. Das Audio ermöglicht es nicht alphabetisierten Kindern, die App eigenständig zu nutzen, und fördert die kognitive Verstärkung.",
+"createNewChallengePageActionImage": "Aktion Bilder",
+"createNewChallengePageActionImageHint": "Laden Sie Bilder hoch, die die erstellte Aktion deutlich veranschaulichen. Dies ist äußerst wichtig für das Funktionieren der Herausforderung (maximal 4 Bilder).",
+"buttonLoadImages": "Bilder laden",
+"buttonComplete": "Abschließen",
+"syncAccountPageTitle": "Konten synchronisieren",
+"settingsPageTitle": "Phaseneinstellungen",
+"settingsPageDescription": "Konfigurieren Sie die Anzahl der Phasen pro Runde und den Schwierigkeitsgrad (Anzahl der Bilder).",
+"settingsPagePhasesTitle": "Anzahl der Phasen",
+"settingsPagePhases": "{n, plural, =1{1 Phase} other {{n} Phasen}}",
+"@settingsPagePhases": {
+"placeholders": {
+"n": {
+"type": "int"
+}
+}
+},
+"settingsPageImagesQuantityTitle": "Anzahl der Bilder",
+"settingsPageImagesQuantity": "{n, plural, =1{1 Bild} other {{n} Bilder}}",
+"@settingsPageImagesQuantity": {
+"placeholders": {
+"n": {
+"type": "int"
+}
+}
+},
+"settingsPageRewardTitle": "Belohnung",
+"settingsPageRewardDescription": "Legen Sie ein bestimmtes Bild fest, wenn die Antwort richtig ist",
+"aboutPageTitle": "Über",
+"aboutPageDescription": "ABC Fun ist ein innovatives Spiel, das auf der Methode der Angewandten Verhaltensanalyse (ABA) basiert. Es wurde mit dem Ziel entwickelt, autistischen Kindern beim Lernprozess zu helfen. Es wurde mit Hingabe von Jhionan Rian Lara dos Santos und Bruno Stefanis Leal entwickelt und unter der Anleitung von Dr. Alexander Robert Kutzke im Rahmen ihres Abschlusses im Studiengang Analyse und Entwicklung von Systemen an der Bundesuniversität von Paraná (UFPR) erstellt.\n\n\nABC Fun bietet ein interaktives und ansprechendes Erlebnis. Das Spiel ABC Fun kombiniert die Prinzipien der ABA-Methode mit spielerischen und interaktiven Elementen, die speziell auf die Bedürfnisse autistischer Kinder zugeschnitten sind. Durch eine Reihe sorgfältig gestalteter Aktivitäten. Das Spiel wurde von Guilherme Antônio Constantino entwickelt, der von Professor Dr. Ricardo Z. N. Vêncio betreut wurde, für den Studiengang Biomedizinische Informatik an der Fakultät für Medizin in Ribeirão Preto der Universität São Paulo im Jahr 2021."
 }

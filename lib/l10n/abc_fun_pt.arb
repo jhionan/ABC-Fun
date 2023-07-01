@@ -72,6 +72,8 @@
   "createNewChallengePageDescription": "Crie uma ação, selecione imagens que demonstram esta ação",
   "createNewChallengePageActionName": "Nome da Ação",
   "createNewChallengePageActionNameHint": "ex: Dormindo, comendo",
+  "createNewChallengePageActionAudio": "Grave um áudio",
+  "createNewChallengePageActionAudioHint": "Grave um áudio que exemplifique claramente a ação criada, o audio dá autonomia para crianças não alfabetizadas utilizarem sozinhas e ajuda no reforço cognitivo.",
   "createNewChallengePageActionImage": "Imagens da ação",
   "createNewChallengePageActionImageHint": "Carregue imagens que exemplifique claramente a ação criada, isso é extremamente importante para o funcionamento do desafio (limite 4 imagens)",
   "buttonLoadImages": "Carregar imagens",
@@ -98,5 +100,7 @@
     }
   },
   "settingsPageRewardTitle": "Recompensa",
-  "settingsPageRewardDescription": "Configure uma imagem especifica para quando houver acerto"
+  "settingsPageRewardDescription": "Configure uma imagem especifica para quando houver acerto",
+  "aboutPageTitle": "Sobre",
+  "aboutPageDescription": "ABC Fun é um jogo inovador baseado no método ABA (Análise do Comportamento Aplicada)\nfoi desenvolvido com o objetivo de auxiliar crianças autistas no processo de aprendizado.\nCriado com dedicação por Jhionan Rian Lara dos Santos e Bruno Stefanis Leal, e orientados pelo Dr Alexander Robert Kutzke como parte de sua conclusão no curso de Análise e Desenvolvimento de Sistemas da Universidade Federal do Paraná (UFPR).\n\n\nO ABC Fun oferece uma experiência interativa e envolvente. O jogo ABC Fun combina os princípios do método ABA com elementos lúdicos e interativos, adaptados especificamente para atender às necessidades das crianças autistas. Através de uma série de atividades cuidadosamente projetadas. A concepção desse jogo foi feita pelo aluno Guilherme Antônio Constantino, orientado pelo Professor Doutor Ricardo Z. N. Vêncio, para o curso de Informática Biomédica da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo, no ano de 2021"
 }
