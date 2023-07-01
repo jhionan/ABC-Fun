@@ -9,30 +9,36 @@ class AbcScaffold extends StatelessWidget {
     required this.adaptativeBuilder,
   });
 
-  final Widget Function(BuildContext context, AdaptativeScreenType screenType) adaptativeBuilder;
+  final AdaptativeBuilder adaptativeBuilder;
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: AdaptativeScreenBuilder(
-      builder: (context, type) {
-        bool isHandset = type == AdaptativeScreenType.handset;
-        return BackgroundWidget(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(top: context.dimensions.vMargin),
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.all(context.dimensions.hMargin),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: isHandset ? context.dimensions.max2ColumnsWidth / 2 : context.dimensions.max2ColumnsWidth,
+    return Scaffold(body: SafeArea(
+      child: AdaptativeScreenBuilder(
+        builder: (context, type, _) {
+          bool isHandset = type == AdaptativeScreenType.handset;
+          return BackgroundWidget(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(top: context.dimensions.vMargin),
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.all(context.dimensions.hMargin),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: isHandset ? context.dimensions.max2ColumnsWidth / 2 : context.dimensions.max2ColumnsWidth,
+                    ),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return adaptativeBuilder(context, type, constraints);
+                      }
+                    ),
                   ),
-                  child: adaptativeBuilder(context, type),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     ));
   }
 }

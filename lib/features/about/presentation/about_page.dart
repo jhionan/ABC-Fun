@@ -12,7 +12,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AbcScaffold(
-      adaptativeBuilder: (context, screenType) {
+      adaptativeBuilder: (context, screenType, _) {
         return Column(
           children: [
             AbcTitleCard(

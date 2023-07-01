@@ -2,6 +2,7 @@ import 'package:aba/core/images.dart';
 import 'package:aba/core/theme/abc_colors.dart';
 import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
+import 'package:aba/core/utils/helpers/path_provider_helper/path_provider_helper.dart';
 import 'package:aba/core/utils/widgets/abc_scaffold.dart';
 import 'package:aba/core/utils/widgets/abc_title_card.dart';
 import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
@@ -11,6 +12,7 @@ import 'package:aba/features/widgets/abc_card.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:record/record.dart' as audio;
@@ -43,7 +45,7 @@ class _CreateNewChallengePageState extends State<CreateNewChallengePage> {
     ChallengeBloc bloc = context.read<ChallengeBloc>();
 
     return AbcScaffold(
-      adaptativeBuilder: (context, screenType) {
+      adaptativeBuilder: (context, screenType, _) {
         bool isHandset = screenType.isHandset;
 
         return Column(
@@ -219,7 +221,7 @@ class _RecordActionAudioState extends State<_RecordActionAudio> {
   @override
   Widget build(BuildContext context) {
     ChallengeBloc bloc = context.read<ChallengeBloc>();
-    return AdaptativeScreenBuilder(builder: (context, screenType) {
+    return AdaptativeScreenBuilder(builder: (context, screenType, _) {
       bool isHandset = screenType.isHandset;
       return Column(
         children: [
@@ -268,10 +270,10 @@ class _RecordActionAudioState extends State<_RecordActionAudio> {
           audioPath: audioPath,
         ),
       );
-      if(audioPath != null) {
-      AudioPlayer audioPlayer = AudioPlayer();
-      audioPlayer.play(DeviceFileSource(audioPath!),);
-
+      if (audioPath != null) {
+        bloc.add(CreateNewChallengeNewActionData(
+          audioPath: audioPath,
+        ));
       }
     }
   }

@@ -13,45 +13,41 @@ class ResultsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     TotalActionResults totalActionResults =
         TotalActionResults(averangeCorrect: 50, totalShown: 15, completedRounds: 10);
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: context.dimensions.maxHorizontalWidth,
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.dimensions.hMargin, vertical: context.dimensions.vMargin),
-        child: Column(
-          children: [
-            AbcTitleWidget.small(
-              imageUrl: Images.supportIcon,
-              title: context.intl.resultWidget,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: context.dimensions.hMargin, vertical: context.dimensions.vMargin),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AbcTitleWidget.small(
+            imageUrl: Images.supportIcon,
+            title: context.intl.resultWidget,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: context.dimensions.vMargin),
+            child: ResultCard(
+              imageUrl: Images.averageResultsIcon,
+              text: context.intl.resultCardAverange,
+              result: totalActionResults.averangeCorrect,
+              type: ResultCardType.large,
             ),
-            Padding(
-              padding: EdgeInsets.only(top: context.dimensions.vMargin),
-              child: ResultCard(
-                imageUrl: Images.averageResultsIcon,
-                text: context.intl.resultCardAverange,
-                result: totalActionResults.averangeCorrect,
-                type: ResultCardType.large,
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: context.dimensions.vMargin),
+            child: ResultCard(
+              imageUrl: Images.totalChallengesResults,
+              text: context.intl.resultCardDoneChallanges,
+              result: totalActionResults.totalShown,
             ),
-            Padding(
-              padding: EdgeInsets.only(top: context.dimensions.vMargin),
-              child: ResultCard(
-                imageUrl: Images.totalChallengesResults,
-                text: context.intl.resultCardDoneChallanges,
-                result: totalActionResults.totalShown,
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: context.dimensions.vMargin),
+            child: ResultCard(
+              imageUrl: Images.totalAverangeSuccessResults,
+              text: context.intl.resultCardSucessChallenges,
+              result: totalActionResults.completedRounds,
             ),
-            Padding(
-              padding: EdgeInsets.only(top: context.dimensions.vMargin),
-              child: ResultCard(
-                imageUrl: Images.totalAverangeSuccessResults,
-                text: context.intl.resultCardSucessChallenges,
-                result: totalActionResults.completedRounds,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

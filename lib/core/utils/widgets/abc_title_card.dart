@@ -25,7 +25,7 @@ class AbcTitleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptativeScreenBuilder(
-      builder: (context, type) {
+      builder: (context, type, _) {
         bool isHandset = type == AdaptativeScreenType.handset;
         if (isHandset) {
           return AbcCard(

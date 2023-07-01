@@ -14,7 +14,7 @@ class PlayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return AbcCard(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 64),
-      child: AdaptativeScreenBuilder(builder: (context, type) {
+      child: AdaptativeScreenBuilder(builder: (context, type, _) {
         Text playCard = Text(
           AppLocalizations.of(context).playCardDescription,
           style: const TextStyle(

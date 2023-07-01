@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appRouter = provider.read<AbcRouter>(Providers.appRouter);
-    return AdaptativeScreenBuilder(builder: (context, type) {
+    return AdaptativeScreenBuilder(builder: (context, type, _) {
       return DimensionsProvider(
         dimensions: switch (type) {
           AdaptativeScreenType.handset => Dimensions.handSet(),

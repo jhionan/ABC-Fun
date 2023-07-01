@@ -7,7 +7,7 @@ class AbcMobileDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptativeScreenBuilder(builder: (context, type) {
+    return AdaptativeScreenBuilder(builder: (context, type, _) {
       if (type.isHandset) {
         return Padding(
           padding: EdgeInsets.all(context.dimensions.hMargin),

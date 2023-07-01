@@ -37,7 +37,7 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
-    return AdaptativeScreenBuilder(builder: (context, type) {
+    return AdaptativeScreenBuilder(builder: (context, type, _) {
       return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -71,6 +71,7 @@ class _MenuPageState extends State<MenuPage> {
         context.router.pop();
         context.router.replace(const ChallengeProviderRoute());
       case MenuSelectedPage.about:
+       context.router.pop();
         context.router.replace(const AboutRoute());
       case MenuSelectedPage.accountSync:
     }

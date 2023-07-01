@@ -59,7 +59,7 @@ class AbcTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptativeScreenBuilder(builder: (context, screenType) {
+    return AdaptativeScreenBuilder(builder: (context, screenType, _) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

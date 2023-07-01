@@ -23,7 +23,7 @@ class ChallengePage extends StatelessWidget {
   Widget build(BuildContext context) {
     ChallengeBloc bloc = context.read<ChallengeBloc>();
     return AbcScaffold(
-      adaptativeBuilder: (context, type) {
+      adaptativeBuilder: (context, type, _) {
         return Column(
           children: [
             Align(
