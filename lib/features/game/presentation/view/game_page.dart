@@ -65,33 +65,12 @@ class GamePage extends StatelessWidget {
                   ));
             }
             if (state is GameRunning) {
-              Future.microtask(() => _readAloud(context, state.correctAnswer));
               return BackgroundWidget(
                 child: Column(
                   children: [
-                    InkWell(
-                      onTap: () => _readAloud(context, state.correctAnswer),
-                      child: Container(
-                        color: Colors.white,
-                        margin: EdgeInsets.all(context.dimensions.vMargin),
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.play_circle_outline_sharp,
-                              size: 32,
-                            ),
-                            SizedBox(
-                              width: context.dimensions.hMargin / 2,
-                            ),
-                            Text(
-                              state.correctAnswer.actionName(context),
-                              style: const TextStyle(fontSize: 32),
-                            ),
-                          ],
-                        ),
-                      ),
+                    _ActionTitle(
+                      gameRunningState: state,
+                      key: ValueKey(state.correctAnswer),
                     ),
                     Expanded(
                       child: LayoutBuilder(builder: (context, contraints) {
@@ -129,14 +108,71 @@ class GamePage extends StatelessWidget {
   void _navigateToMenu(BuildContext context) {
     Navigator.of(context).pop();
   }
+}
+
+class _ActionTitle extends StatefulWidget {
+  const _ActionTitle({
+    super.key,
+    required this.gameRunningState,
+  });
+
+  final GameRunning gameRunningState;
+
+  @override
+  State<_ActionTitle> createState() => _ActionTitleState();
+}
+
+class _ActionTitleState extends State<_ActionTitle> {
+  final AudioPlayer audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Future.delayed(const Duration(milliseconds: 1000))
+        .then((value) => _readAloud(context, widget.gameRunningState.correctAnswer));
+    return InkWell(
+      onTap: () => _readAloud(context, widget.gameRunningState.correctAnswer),
+      child: Container(
+        color: Colors.white,
+        margin: EdgeInsets.all(context.dimensions.vMargin),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.play_circle_outline_sharp,
+              size: 32,
+            ),
+            SizedBox(
+              width: context.dimensions.hMargin / 2,
+            ),
+            Flexible(
+              child: Text(
+                widget.gameRunningState.correctAnswer.actionName(context),
+                style: const TextStyle(fontSize: 32),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   void _readAloud(BuildContext context, ActionItemEntity action) {
     ActionAudio audioPathProvider = provider.read<ActionAudio>(Providers.actionAudio);
     String audioPath = audioPathProvider.audioPathOrEmpty(action, context);
-    AudioPlayer audioPlayer = provider.read<AudioPlayer>(Providers.audioPlayer);
     if (audioPath.isNotEmpty && action.group != ActionGroup.custom) {
       audioPlayer.play(AssetSource(audioPath.replaceAll('assets/', '')));
     }
-  
   }
 }
