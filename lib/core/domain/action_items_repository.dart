@@ -1,6 +1,6 @@
 import 'package:aba/core/domain/models/action_item_entity.dart';
 
-abstract class ActionItemsRepository {
+abstract interface class ActionItemsRepository {
   Future<List<ActionItemEntity>> getAllItems();
   Future<void> addItem(ActionItemEntity item);
   Future<void> addAllItems(List<ActionItemEntity> items);
