@@ -1,6 +1,6 @@
 import 'package:aba/core/theme/abc_colors.dart';
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/features/widgets/abc_card.dart';
+import 'package:aba/core/utils/widgets/abc_card.dart';
 import 'package:flutter/material.dart';
 
 enum ResultCardType {
