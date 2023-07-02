@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
 import 'package:aba/core/domain/action_items_repository.dart';
 import 'package:aba/core/domain/models/action_item_entity.dart';
+import 'package:aba/core/providers/providers.dart';
+import 'package:aba/core/utils/extensions/string_ext.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -15,6 +17,7 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
     on<ChallengeEvent>(handleEvent);
     _init();
   }
+  static const int _maxImageSelection = 4;
 
   final ActionItemsRepository actionItemsRepository;
   Map<String, List<ActionCustomItemEntity>> _actions = {};
@@ -29,25 +32,35 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
       _toggle(event.actionName, emit);
     }
 
-    if (event is CreateNewChallengeNewActionData) {
+    if (event is CreateNewChallengeNewActionDataEvent) {
       _createNewChallengeData(event, emit);
+    }
+    if (event is CreateNewChallengeSaveEvent) {
+      _saveNewChallenge(emit);
+    }
+    if (event is ChallengeInitialEvent) {
+      _init();
+    }
+    if (event is CreateNewChallengeCompleteEvent) {
+      emit(ChallengeNewActionSavedState());
     }
   }
 
   void _init() async {
     _actions = groupBy(
         List.castFrom<ActionItemEntity, ActionCustomItemEntity>(await actionItemsRepository.getAllItems()),
-        (e) => e.name);
+        (e) => e.name.toLowerCase());
 
-    // _activeActions = _actions.where((element) => element.isActive).map((e) => e.name).toSet();
-    add(const ChallengeLoadedEvent());
+    if (!isClosed) {
+      add(const ChallengeLoadedEvent());
+    }
   }
 
   void _toggle(String actionName, Emitter<ChallengeState> emit) async {
     for (var element in _actions[actionName]!) {
       element.isActive = !element.isActive;
     }
-    if (_haveMin2Active(actionName, emit)) {
+    if (_haveAtLeast2Active(actionName, emit)) {
       emit(ChallengeLoadedState(
         actionsGroupedByName: _actions,
       ));
@@ -55,7 +68,7 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
     }
   }
 
-  bool _haveMin2Active(String actionName, Emitter<ChallengeState> emit) {
+  bool _haveAtLeast2Active(String actionName, Emitter<ChallengeState> emit) {
     int totalActives = _actions.values.fold<int>(0, (previousValue, element) {
       if (element.first.isActive) {
         return previousValue + 1;
@@ -75,20 +88,52 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
     return true;
   }
 
-  void _createNewChallengeData(CreateNewChallengeNewActionData event, Emitter<ChallengeState> emit) {
+  void _createNewChallengeData(CreateNewChallengeNewActionDataEvent event, Emitter<ChallengeState> emit) {
     if (state is ChallengeNewActionDataState) {
       final state = this.state as ChallengeNewActionDataState;
+      List<String> images = List.from([...state.imagePaths, ...event.imagePaths ?? []].take(4));
+
       emit(ChallengeNewActionDataState(
-        imagePaths: event.imagePaths ?? state.imagePaths,
-        title: event.title?? state.title,
-        audioPath: event.audioPath ?? state.audioPath,
-      ));
+          imagePaths: images.take(_maxImageSelection).toList(),
+          title: event.title ?? state.title,
+          audioPath: event.audioPath ?? state.audioPath,
+          errorNeedTitle: false));
       return;
     }
     emit(ChallengeNewActionDataState(
-        imagePaths: event.imagePaths,
-        title: event.title?? '',
+        imagePaths: event.imagePaths ?? [],
+        title: event.title ?? '',
         audioPath: event.audioPath,
-      ));
+        errorNeedTitle: false));
+  }
+
+  Future<void> _saveNewChallenge(Emitter<ChallengeState> emit) async {
+    if (state is ChallengeNewActionDataState) {
+      final state = this.state as ChallengeNewActionDataState;
+      if (state.title.isEmpty) {
+        emit(ChallengeNewActionDataState(
+            imagePaths: state.imagePaths,
+            title: state.title.capitalize(),
+            audioPath: state.audioPath,
+            errorNeedTitle: true));
+        return;
+      }
+
+      for (String imagePath in state.imagePaths) {
+        await actionItemsRepository.addItem(ActionCustomItemEntity(
+            name: state.title,
+            isActive: true,
+            group: ActionGroup.custom,
+            dificulty: 2,
+            imagePath: '',
+            imageBytes: await provider.read(Providers.pathProviderHelper).getBytesFromFilePath(imagePath),
+            audioBytes: state.audioPath != null
+                ? await provider.read(Providers.pathProviderHelper).getBytesFromFilePath(state.audioPath!)
+                : null,
+            notAllowedWith: []));
+      }
+      if (isClosed) return;
+      add(const CreateNewChallengeCompleteEvent());
+    }
   }
 }

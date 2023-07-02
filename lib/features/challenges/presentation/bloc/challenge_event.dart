@@ -18,9 +18,17 @@ class ChallengeToggleActionEvent extends ChallengeEvent {
   final String actionName;
 }
 
-class CreateNewChallengeNewActionData extends ChallengeEvent {
-  const CreateNewChallengeNewActionData({ this.imagePaths,  this.title,  this.audioPath});
+class CreateNewChallengeNewActionDataEvent extends ChallengeEvent {
+  const CreateNewChallengeNewActionDataEvent({this.imagePaths, this.title, this.audioPath});
   final List<String>? imagePaths;
   final String? title;
   final String? audioPath;
+}
+
+class CreateNewChallengeSaveEvent extends ChallengeEvent {
+  const CreateNewChallengeSaveEvent();
+}
+
+class CreateNewChallengeCompleteEvent extends ChallengeEvent {
+  const CreateNewChallengeCompleteEvent();
 }

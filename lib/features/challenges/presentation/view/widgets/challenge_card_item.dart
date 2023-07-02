@@ -1,8 +1,10 @@
+import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
 import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:aba/core/theme/abc_colors.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/features/widgets/abc_button.dart';
-import 'package:aba/features/widgets/abc_card.dart';
+import 'package:aba/core/utils/widgets/abc_button.dart';
+import 'package:aba/core/utils/widgets/abc_card.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ChallengeCardItem extends StatelessWidget {
@@ -40,7 +42,7 @@ class ChallengeCardItem extends StatelessWidget {
                     crossAxisSpacing: 0,
                     mainAxisSpacing: 0,
                   ),
-                  children: items.map((e) => Image.asset(e.imagePath)).toList()),
+                  children: items.map((e) => _imageFromEntityType(e)).toList()),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,15 +75,29 @@ class ChallengeCardItem extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                if(items.first.group == ActionGroup.custom)
-                AbcButton.secondary(
-                  text: context.intl.buttonEdit,
-                )
+                if (items.first.group == ActionGroup.custom)
+                  AbcButton.secondary(
+                    text: context.intl.buttonEdit,
+                  )
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _imageFromEntityType(ActionItemEntity e) {
+    if (e.group == ActionGroup.custom) {
+      ActionCustomItemEntity item = e as ActionCustomItemEntity;
+      return Image.memory(
+        Uint8List.fromList(item.imageBytes!),
+        key: UniqueKey(),
+      );
+    }
+    return Image.asset(
+      e.imagePath,
+      key: UniqueKey(),
     );
   }
 }

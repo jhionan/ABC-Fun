@@ -21,11 +21,15 @@ class ChallengeErrorState extends ChallengeState {
 
 class ChallengeNewActionDataState extends ChallengeState {
   ChallengeNewActionDataState({
-    required this.imagePaths,
+    this.imagePaths = const [],
     required this.title,
     required this.audioPath,
+    required this.errorNeedTitle,
   });
-  final List<String>? imagePaths;
+  final List<String> imagePaths;
   final String title;
   final String? audioPath;
+  final bool errorNeedTitle;
 }
+
+class ChallengeNewActionSavedState extends ChallengeState {}
