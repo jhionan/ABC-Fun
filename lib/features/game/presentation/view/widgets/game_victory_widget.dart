@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:aba/core/images.dart';
-import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:aba/core/domain/view/widgets/abc_card.dart';
-import 'package:aba/core/domain/view/widgets/background_widget.dart';
+import 'package:abc_fun/core/images.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/utils/extensions/context_ext.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
+import 'package:abc_fun/core/domain/view/widgets/background_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

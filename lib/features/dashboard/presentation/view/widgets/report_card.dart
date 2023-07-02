@@ -1,9 +1,9 @@
-import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/core/domain/view/widgets/abc_card.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/utils/extensions/context_ext.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
 
-import 'package:aba/core/domain/models/action_statistics.dart';
+import 'package:abc_fun/core/domain/models/action_statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

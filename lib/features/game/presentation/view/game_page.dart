@@ -1,10 +1,10 @@
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
-import 'package:aba/features/game/presentation/view/widgets/game_over_widget.dart';
-import 'package:aba/features/game/presentation/view/widgets/game_running_widget.dart';
-import 'package:aba/features/game/presentation/view/widgets/game_victory_widget.dart';
-import 'package:aba/features/game/presentation/view/widgets/game_wrong_answer_widget.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/utils/extensions/context_ext.dart';
+import 'package:abc_fun/features/game/presentation/bloc/game_bloc.dart';
+import 'package:abc_fun/features/game/presentation/view/widgets/game_over_widget.dart';
+import 'package:abc_fun/features/game/presentation/view/widgets/game_running_widget.dart';
+import 'package:abc_fun/features/game/presentation/view/widgets/game_victory_widget.dart';
+import 'package:abc_fun/features/game/presentation/view/widgets/game_wrong_answer_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +50,7 @@ class GamePage extends StatelessWidget {
             }
             if (state is GameOver) {
               Future.delayed(const Duration(milliseconds: 2000)).then((value) => context.router.popUntilRoot());
-              return GameOverWidget();
+              return const GameOverWidget();
               return Container(
                   color: Colors.blue.shade200,
                   child: Column(

@@ -1,4 +1,4 @@
-import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
 
 abstract interface class ActionItemsRepository {
   Future<List<ActionCustomItemEntity>> getAllItems();

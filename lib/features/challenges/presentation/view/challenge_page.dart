@@ -1,16 +1,16 @@
 import 'dart:async';
 
-import 'package:aba/core/images.dart';
-import 'package:aba/core/navigation/abc_router.gr.dart';
-import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/core/domain/view/widgets/abc_scaffold.dart';
-import 'package:aba/core/domain/view/widgets/abc_title_card.dart';
-import 'package:aba/features/challenges/presentation/bloc/challenge_bloc.dart';
-import 'package:aba/features/challenges/presentation/view/widgets/challenge_card_item.dart';
-import 'package:aba/core/domain/view/widgets/abc_button.dart';
-import 'package:aba/core/domain/view/widgets/abc_divider.dart';
+import 'package:abc_fun/core/images.dart';
+import 'package:abc_fun/core/navigation/abc_router.gr.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/utils/extensions/context_ext.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_scaffold.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_title_card.dart';
+import 'package:abc_fun/features/challenges/presentation/bloc/challenge_bloc.dart';
+import 'package:abc_fun/features/challenges/presentation/view/widgets/challenge_card_item.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_button.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_divider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,22 +54,19 @@ class ChallengePage extends StatelessWidget {
               bloc: bloc,
               builder: (context, state) {
                 if (state is ChallengeLoadedState) {
-                  return LayoutBuilder(
-                    builder: (context, constraints) {
-
-                      return Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          runAlignment: WrapAlignment.spaceBetween,
-                          runSpacing: context.dimensions.vMargin / 2,
-                          spacing: context.dimensions.hMargin,
-                          children: state.actionsGroupedByName.keys.map((e) {
-                            return ChallengeCardItem(
-                              items: state.actionsGroupedByName[e]!,
-                              onValueChanged: (value) => bloc.add(ChallengeToggleActionEvent(e)),
-                            );
-                          }).toList());
-                    }
-                  );
+                  return LayoutBuilder(builder: (context, constraints) {
+                    return Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        runAlignment: WrapAlignment.spaceBetween,
+                        runSpacing: context.dimensions.vMargin / 2,
+                        spacing: context.dimensions.hMargin,
+                        children: state.actionsGroupedByName.keys.map((e) {
+                          return ChallengeCardItem(
+                            items: state.actionsGroupedByName[e]!,
+                            onValueChanged: (value) => bloc.add(ChallengeToggleActionEvent(e)),
+                          );
+                        }).toList());
+                  });
                 }
                 if (state is ChallengeErrorState) {
                   Future.microtask(() => showDialog(
@@ -112,7 +109,7 @@ class ChallengePage extends StatelessWidget {
       },
     );
   }
-  
+
   void _navigateToCreateNewChallenge(BuildContext context) {
     context.router.push(const CreateNewChallengeRoute());
   }

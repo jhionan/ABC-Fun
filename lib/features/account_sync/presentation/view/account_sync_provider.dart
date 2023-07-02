@@ -1,5 +1,5 @@
-import 'package:aba/features/account_sync/presentation/bloc/account_sync_bloc.dart';
-import 'package:aba/features/account_sync/presentation/view/account_sync_page.dart';
+import 'package:abc_fun/features/account_sync/presentation/bloc/account_sync_bloc.dart';
+import 'package:abc_fun/features/account_sync/presentation/view/account_sync_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

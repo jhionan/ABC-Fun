@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "app.foca.aba" "\0"
-            VALUE "FileDescription", "aba" "\0"
+            VALUE "CompanyName", "app.foca.abc_fun" "\0"
+            VALUE "FileDescription", "ABC Fun" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "aba" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 app.foca.aba. All rights reserved." "\0"
-            VALUE "OriginalFilename", "aba.exe" "\0"
-            VALUE "ProductName", "aba" "\0"
+            VALUE "InternalName", "ABC Fun" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 app.foca.abc_fun. All rights reserved." "\0"
+            VALUE "OriginalFilename", "ABC Fun.exe" "\0"
+            VALUE "ProductName", "ABC Fun" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

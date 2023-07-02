@@ -1,9 +1,9 @@
-import 'package:aba/core/images.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/core/domain/view/widgets/abc_title_widget.dart';
-import 'package:aba/features/dashboard/presentation/view/widgets/report_card.dart';
-import 'package:aba/core/domain/models/action_statistics.dart';
+import 'package:abc_fun/core/images.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/utils/extensions/context_ext.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_title_widget.dart';
+import 'package:abc_fun/features/dashboard/presentation/view/widgets/report_card.dart';
+import 'package:abc_fun/core/domain/models/action_statistics.dart';
 import 'package:flutter/widgets.dart';
 
 class ReportWidget extends StatelessWidget {

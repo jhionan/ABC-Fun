@@ -8,21 +8,22 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:aba/features/about/presentation/about_page.dart' as _i4;
-import 'package:aba/features/account_sync/presentation/view/account_sync_provider.dart'
+import 'package:abc_fun/features/about/presentation/about_page.dart' as _i5;
+import 'package:abc_fun/features/account_sync/presentation/view/account_sync_provider.dart'
     as _i9;
-import 'package:aba/features/challenges/presentation/view/challenge_page.dart'
-    as _i2;
-import 'package:aba/features/challenges/presentation/view/challenge_provider.dart'
-    as _i1;
-import 'package:aba/features/challenges/presentation/view/create_new_challenge_page.dart'
+import 'package:abc_fun/features/challenges/presentation/view/challenge_page.dart'
     as _i3;
-import 'package:aba/features/dashboard/presentation/view/dashboard_page.dart'
+import 'package:abc_fun/features/challenges/presentation/view/challenge_provider.dart'
+    as _i2;
+import 'package:abc_fun/features/challenges/presentation/view/create_new_challenge_page.dart'
+    as _i4;
+import 'package:abc_fun/features/dashboard/presentation/view/dashboard_page.dart'
+    as _i7;
+import 'package:abc_fun/features/game/presentation/view/game_provider.dart'
     as _i6;
-import 'package:aba/features/game/presentation/view/game_provider.dart' as _i5;
-import 'package:aba/features/menu/bloc/menu_provider.dart' as _i7;
-import 'package:aba/features/settings/presentation/view/settings_provider.dart'
-    as _i8;
+import 'package:abc_fun/features/menu/bloc/menu_provider.dart' as _i8;
+import 'package:abc_fun/features/settings/presentation/view/settings_provider.dart'
+    as _i1;
 import 'package:auto_route/auto_route.dart' as _i10;
 
 abstract class $AbcRouter extends _i10.RootStackRouter {
@@ -30,52 +31,52 @@ abstract class $AbcRouter extends _i10.RootStackRouter {
 
   @override
   final Map<String, _i10.PageFactory> pagesMap = {
+    SettingsRoute.name: (routeData) {
+      return _i10.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i1.SettingsProvider(),
+      );
+    },
     ChallengeProviderRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(child: const _i1.ChallengeProvider()),
+        child: _i10.WrappedRoute(child: const _i2.ChallengeProvider()),
       );
     },
     ChallengeRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.ChallengePage(),
+        child: const _i3.ChallengePage(),
       );
     },
     CreateNewChallengeRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.CreateNewChallengePage(),
+        child: const _i4.CreateNewChallengePage(),
       );
     },
     AboutRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.AboutPage(),
+        child: const _i5.AboutPage(),
       );
     },
     GameRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.GameProvider(),
+        child: const _i6.GameProvider(),
       );
     },
     DashboardRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.DashboardPage(),
+        child: const _i7.DashboardPage(),
       );
     },
     MenuRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.MenuProvider(),
-      );
-    },
-    SettingsRoute.name: (routeData) {
-      return _i10.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i8.SettingsProvider(),
+        child: const _i8.MenuProvider(),
       );
     },
     AccountSyncRoute.name: (routeData) {
@@ -88,7 +89,21 @@ abstract class $AbcRouter extends _i10.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.ChallengeProvider]
+/// [_i1.SettingsProvider]
+class SettingsRoute extends _i10.PageRouteInfo<void> {
+  const SettingsRoute({List<_i10.PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsRoute';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i2.ChallengeProvider]
 class ChallengeProviderRoute extends _i10.PageRouteInfo<void> {
   const ChallengeProviderRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -102,7 +117,7 @@ class ChallengeProviderRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.ChallengePage]
+/// [_i3.ChallengePage]
 class ChallengeRoute extends _i10.PageRouteInfo<void> {
   const ChallengeRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -116,7 +131,7 @@ class ChallengeRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.CreateNewChallengePage]
+/// [_i4.CreateNewChallengePage]
 class CreateNewChallengeRoute extends _i10.PageRouteInfo<void> {
   const CreateNewChallengeRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -130,7 +145,7 @@ class CreateNewChallengeRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.AboutPage]
+/// [_i5.AboutPage]
 class AboutRoute extends _i10.PageRouteInfo<void> {
   const AboutRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -144,7 +159,7 @@ class AboutRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.GameProvider]
+/// [_i6.GameProvider]
 class GameRoute extends _i10.PageRouteInfo<void> {
   const GameRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -158,7 +173,7 @@ class GameRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.DashboardPage]
+/// [_i7.DashboardPage]
 class DashboardRoute extends _i10.PageRouteInfo<void> {
   const DashboardRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -172,7 +187,7 @@ class DashboardRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.MenuProvider]
+/// [_i8.MenuProvider]
 class MenuRoute extends _i10.PageRouteInfo<void> {
   const MenuRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -181,20 +196,6 @@ class MenuRoute extends _i10.PageRouteInfo<void> {
         );
 
   static const String name = 'MenuRoute';
-
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i8.SettingsProvider]
-class SettingsRoute extends _i10.PageRouteInfo<void> {
-  const SettingsRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          SettingsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SettingsRoute';
 
   static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }

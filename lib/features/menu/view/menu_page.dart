@@ -1,8 +1,8 @@
-import 'package:aba/core/images.dart';
-import 'package:aba/core/navigation/abc_router.gr.dart';
-import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:aba/features/menu/bloc/menu_bloc.dart';
+import 'package:abc_fun/core/images.dart';
+import 'package:abc_fun/core/navigation/abc_router.gr.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/features/menu/bloc/menu_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -67,16 +67,16 @@ class _MenuPageState extends State<MenuPage> {
         context.router.pop();
         context.router.replace(const DashboardRoute());
       case MenuSelectedPage.settings:
-       context.router.pop();
+        context.router.pop();
         context.router.replace(const SettingsRoute());
       case MenuSelectedPage.challenges:
         context.router.pop();
         context.router.replace(const ChallengeProviderRoute());
       case MenuSelectedPage.about:
-       context.router.pop();
+        context.router.pop();
         context.router.replace(const AboutRoute());
       case MenuSelectedPage.accountSync:
-       context.router.pop();
+        context.router.pop();
         context.router.replace(const AccountSyncRoute());
     }
   }

@@ -1,11 +1,13 @@
-import 'package:aba/core/navigation/abc_router.dart';
-import 'package:aba/core/providers/providers.dart';
-import 'package:aba/core/theme/abc_fun_theme.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/core/navigation/abc_router.dart';
+import 'package:abc_fun/core/providers/providers.dart';
+import 'package:abc_fun/core/theme/abc_fun_theme.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:riverpod/riverpod.dart';
@@ -16,11 +18,16 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top],
+  );
   provider = ProviderContainer();
   setPathUrlStrategy();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseAuth.instanceFor(app: Firebase.app(), persistence: Persistence.LOCAL);
 
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
@@ -31,8 +38,6 @@ Future<void> main() async {
     return true;
   };
   runApp(const MyApp());
-
-  
 }
 
 class MyApp extends StatelessWidget {

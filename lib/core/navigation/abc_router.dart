@@ -1,4 +1,4 @@
-import 'package:aba/core/navigation/abc_router.gr.dart';
+import 'package:abc_fun/core/navigation/abc_router.gr.dart';
 
 import 'package:auto_route/auto_route.dart';
 

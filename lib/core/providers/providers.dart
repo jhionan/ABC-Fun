@@ -1,7 +1,7 @@
-import 'package:aba/core/actions_audio.dart';
-import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
-import 'package:aba/core/navigation/abc_router.dart';
-import 'package:aba/core/utils/helpers/path_provider_helper/path_provider_helper.dart';
+import 'package:abc_fun/core/actions_audio.dart';
+import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/navigation/abc_router.dart';
+import 'package:abc_fun/core/utils/helpers/path_provider_helper/path_provider_helper.dart';
 import 'package:isar/isar.dart';
 import 'package:riverpod/riverpod.dart';
 
@@ -21,12 +21,11 @@ final class Providers {
   });
 
   static final db = Provider<Future<Isar>>((ref) async {
-    final path = await   ref.read<PathProviderHelper>(pathProviderHelper).getApplicationDocumentsDirectoryPath();
+    final path = await ref.read<PathProviderHelper>(pathProviderHelper).getApplicationDocumentsDirectoryPath();
     final isar = await Isar.open(
       [ActionCustomItemEntitySchema],
       directory: path,
     );
     return isar;
   });
-
 }

@@ -1,5 +1,5 @@
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:flutter/material.dart';
 
 class AbcMobileDivider extends StatelessWidget {

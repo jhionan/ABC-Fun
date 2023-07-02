@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
-import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
-import 'package:aba/core/domain/models/action_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 import 'package:flutter/material.dart';
 
 class GameRunningImage extends StatelessWidget {
@@ -14,9 +14,7 @@ class GameRunningImage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(
-        child: ClipRRect(
-            borderRadius: BorderRadius.circular(24),
-            child: _imageFromEntityType(actionItemEntity)),
+        child: ClipRRect(borderRadius: BorderRadius.circular(24), child: _imageFromEntityType(actionItemEntity)),
       ),
     );
   }

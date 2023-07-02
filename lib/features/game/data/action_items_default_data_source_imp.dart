@@ -1,7 +1,7 @@
-import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
-import 'package:aba/core/images.dart';
-import 'package:aba/core/domain/action_items_repository.dart';
-import 'package:aba/core/domain/models/action_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/images.dart';
+import 'package:abc_fun/core/domain/action_items_repository.dart';
+import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 
 class ActionItemsDefaultDataSourceImp implements ActionItemsRepository {
   @override
@@ -594,7 +594,16 @@ class ActionItemsDefaultDataSourceImp implements ActionItemsRepository {
           dificulty: 2,
           group: ActionGroup.wateringPlants,
           imagePath: ActionImages.wateringPlants2),
-    ].cast();
+    ]
+        .map((e) => ActionCustomItemEntity(
+              dificulty: e.dificulty,
+              group: e.group,
+              imagePath: e.imagePath,
+              name: e.name,
+              notAllowedWith: e.notAllowedWith,
+              isActive: e.isActive,
+            ))
+        .toList();
   }
 
   @override
@@ -614,7 +623,7 @@ class ActionItemsDefaultDataSourceImp implements ActionItemsRepository {
     // TODO: implement deleteManyItems
     throw UnimplementedError();
   }
-  
+
   @override
   Future<void> addAllItems(List<ActionCustomItemEntity> items) {
     // TODO: implement addAllItems

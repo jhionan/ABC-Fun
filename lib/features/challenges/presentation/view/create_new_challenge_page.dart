@@ -1,15 +1,15 @@
 import 'dart:io';
 
-import 'package:aba/core/images.dart';
-import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/core/domain/view/widgets/abc_scaffold.dart';
-import 'package:aba/core/domain/view/widgets/abc_title_card.dart';
-import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:aba/features/challenges/presentation/bloc/challenge_bloc.dart';
-import 'package:aba/core/domain/view/widgets/abc_button.dart';
-import 'package:aba/core/domain/view/widgets/abc_card.dart';
+import 'package:abc_fun/core/images.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/utils/extensions/context_ext.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_scaffold.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_title_card.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/features/challenges/presentation/bloc/challenge_bloc.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_button.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:file_picker/file_picker.dart';
@@ -417,8 +417,7 @@ class _RecordActionAudioState extends State<_RecordActionAudio> with TickerProvi
   }
 
   Future<void> _recordAudio(BuildContext context, ChallengeBloc bloc) async {
-    if (Platform.isMacOS ||
-        await Permission.microphone.request().isGranted && await Permission.storage.request().isGranted) {
+    if (Platform.isMacOS || await Permission.microphone.request().isGranted) {
       if (!await record.isRecording()) {
         _recordingAnimationController.repeat();
         setState(() {

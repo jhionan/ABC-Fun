@@ -1,4 +1,4 @@
-import 'package:aba/core/domain/view/widgets/abc_scaffold.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -8,9 +8,9 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AbcScaffold(
       adaptativeBuilder: (context, type, constraints) {
-        return Column(
+        return const Column(
           children: [
-            const Text('Settings Page'),
+            Text('Settings Page'),
           ],
         );
       },

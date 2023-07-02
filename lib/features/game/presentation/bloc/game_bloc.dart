@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:aba/core/domain/action_items_repository.dart';
-import 'package:aba/core/domain/models/action_item_entity.dart';
+import 'package:abc_fun/core/domain/action_items_repository.dart';
+import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,7 +58,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     List<ActionItemEntity> phaseItems = <ActionItemEntity>[
       roundItems[currentRound],
       ...possibleItems.where((element) {
-        return element.name.toLowerCase() != roundItems[currentRound].name.toLowerCase() && containnedItems.add(element.name.toLowerCase());
+        return element.name.toLowerCase() != roundItems[currentRound].name.toLowerCase() &&
+            containnedItems.add(element.name.toLowerCase());
       }).take(itemsCount - 1)
     ];
     emit(GameRunning(correctAnswer: roundItems[currentRound], items: phaseItems..shuffle()));

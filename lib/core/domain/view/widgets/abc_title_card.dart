@@ -1,7 +1,7 @@
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/domain/view/widgets/abc_title_widget.dart';
-import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:aba/core/domain/view/widgets/abc_card.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_title_widget.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
 import 'package:flutter/widgets.dart';
 
 class AbcTitleCard extends StatelessWidget {
@@ -12,12 +12,12 @@ class AbcTitleCard extends StatelessWidget {
     required this.title,
     required this.description,
     this.descriptionStyle,
-    this.direction = Axis.horizontal,
+    this.direction = Axis.vertical,
   });
 
   final String imageUrl;
   final String title;
-  final String description;
+  final String? description;
   final Widget? child;
   final Axis direction;
   final TextStyle? descriptionStyle;
@@ -39,10 +39,11 @@ class AbcTitleCard extends StatelessWidget {
                 SizedBox(
                   height: context.dimensions.hMargin,
                 ),
-                Text(
-                  description,
-                  style: descriptionStyle,
-                ),
+                if (description != null)
+                  Text(
+                    description!,
+                    style: descriptionStyle,
+                  ),
                 SizedBox(
                   height: context.dimensions.hMargin,
                 ),
@@ -62,13 +63,14 @@ class AbcTitleCard extends StatelessWidget {
             ),
             AbcCard(
               padding: const EdgeInsets.all(24),
-              child: Flex(direction: type.isHandset ? Axis.vertical : Axis.horizontal, children: [
-                Flexible(
-                  child: Text(
-                    description,
-                    style: descriptionStyle,
+              child: Row(children: [
+                if (description != null)
+                  Flexible(
+                    child: Text(
+                      description!,
+                      style: descriptionStyle,
+                    ),
                   ),
-                ),
                 SizedBox(
                   width: context.dimensions.hMargin,
                   height: context.dimensions.vMargin,

@@ -1,4 +1,4 @@
-package app.foca.aba.aba
+package app.foca.abc_fun
 
 import io.flutter.embedding.android.FlutterActivity
 
