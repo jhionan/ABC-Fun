@@ -1,11 +1,10 @@
 import 'package:aba/core/images.dart';
 import 'package:aba/core/navigation/abc_router.gr.dart';
 import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
+import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:aba/features/menu/bloc/menu_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 extension MenuNamesExt on MenuEvent {
@@ -27,28 +26,25 @@ extension MenuNamesExt on MenuEvent {
   }
 }
 
-class Menu extends StatefulWidget {
-  const Menu({super.key, required this.child});
+class MenuPage extends StatefulWidget {
+  const MenuPage({super.key, required this.child});
   final Widget child;
 
   @override
-  State<Menu> createState() => _MenuState();
+  State<MenuPage> createState() => _MenuPageState();
 }
 
-class _MenuState extends State<Menu> {
+class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
-    return AdaptativeScreenBuilder(builder: (context, type) {
+    return AdaptativeScreenBuilder(builder: (context, type, _) {
       return Scaffold(
-        appBar: type.isTablet
-            ? AppBar(
-                title: BlocBuilder<MenuBloc, MenuState>(
-                  builder: (context, state) {
-                    return Text('Menu $state');
-                  },
-                ),
-              )
-            : null,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          iconTheme: const IconThemeData(color: AbcColors.primary),
+          backgroundColor: Colors.transparent,
+          leading: type.isDesktop ? const SizedBox.shrink() : null,
+        ),
         drawer: MenuDrawer(
           onMenuSelected: _navigate,
         ),
@@ -68,11 +64,15 @@ class _MenuState extends State<Menu> {
   void _navigate(BuildContext context, MenuSelectedPage event) {
     switch (event) {
       case MenuSelectedPage.dashboard:
-        context.router.replace(const Dashboard());
+        context.router.pop();
+        context.router.replace(const DashboardRoute());
       case MenuSelectedPage.settings:
       case MenuSelectedPage.challenges:
-        context.router.replace(const ChallengeRoute());
+        context.router.pop();
+        context.router.replace(const ChallengeProviderRoute());
       case MenuSelectedPage.about:
+       context.router.pop();
+        context.router.replace(const AboutRoute());
       case MenuSelectedPage.accountSync:
     }
   }
@@ -139,7 +139,7 @@ class MenuDrawer extends StatelessWidget {
                 height: 40,
               ),
               onTap: () {
-                //  context.router.push(AboutRoute());
+                onMenuSelected(context, MenuSelectedPage.about);
               },
             ),
             ListTile(

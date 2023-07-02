@@ -1,24 +1,23 @@
-import 'dart:async';
-
+import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
+import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/features/game/domain/models/action_item_entity.dart';
-import 'package:aba/features/widgets/abc_button.dart';
-import 'package:aba/features/widgets/abc_card.dart';
+import 'package:aba/core/domain/view/widgets/abc_button.dart';
+import 'package:aba/core/domain/view/widgets/abc_card.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ChallengeCardItem extends StatelessWidget {
   const ChallengeCardItem({
     super.key,
     required this.items,
-    required this.isActivated,
     required this.onValueChanged,
+    this.activeItems = const {},
   });
 
   final List<ActionItemEntity> items;
-  final Stream<bool> isActivated;
-  final StreamSink<(ActionGroup, bool)> onValueChanged;
+  final Set<String> activeItems;
+  final void Function(bool value) onValueChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +42,21 @@ class ChallengeCardItem extends StatelessWidget {
                     crossAxisSpacing: 0,
                     mainAxisSpacing: 0,
                   ),
-                  children: items.map((e) => Image.asset(e.imagePath)).toList()),
+                  children: items.map((e) => _imageFromEntityType(e)).toList()),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  items.first.actionName(context),
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AbcColors.primary,
-                      ),
+                SizedBox(
+                  width: 120,
+                  child: Text(
+                    items.first.actionName(context),
+                    maxLines: 3,
+                    softWrap: true,
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: AbcColors.primary,
+                        ),
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Text(
@@ -60,31 +64,40 @@ class ChallengeCardItem extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                StreamBuilder<bool>(
-                    stream: isActivated,
-                    builder: (context, snapshot) {
-                      return Switch(
-                        value: snapshot.data ?? false,
-                        onChanged: (value) {
-                          onValueChanged.add((items.first.group, value));
-                        },
-                      );
-                    }),
-                SizedBox(
+                Switch(
+                  value: items.first.isActive,
+                  onChanged: onValueChanged,
+                ),
+                const SizedBox(
                   height: 16,
                 ),
-                AbcButton.secondary(
-                  text: context.intl.buttonEdit,
-                )
+                if (items.first.group == ActionGroup.custom)
+                  AbcButton.secondary(
+                    text: context.intl.buttonEdit,
+                  )
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _imageFromEntityType(ActionItemEntity e) {
+    if (e.group == ActionGroup.custom) {
+      ActionCustomItemEntity item = e as ActionCustomItemEntity;
+      return Image.memory(
+        Uint8List.fromList(item.imageBytes!),
+        key: UniqueKey(),
+      );
+    }
+    return Image.asset(
+      e.imagePath,
+      key: UniqueKey(),
     );
   }
 }

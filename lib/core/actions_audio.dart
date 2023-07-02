@@ -1,24 +1,24 @@
-import 'package:aba/features/game/domain/models/action_item_entity.dart';
+import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:flutter/widgets.dart';
 
 final class ActionAudio {
   String audioPathOrEmpty(ActionItemEntity actionGroup, BuildContext context) {
-    if (!_baseAudioName.containsKey(actionGroup.group)) {
+    if (!_baseAudioPathName.containsKey(actionGroup.group)) {
       return '';
     }
     switch (Localizations.localeOf(context).languageCode) {
       case 'en':
-        return _enBasePath + _baseAudioName[actionGroup.group]!;
+        return _enBasePath + _baseAudioPathName[actionGroup.group]!;
       case 'es':
-        return _esBasePath + _baseAudioName[actionGroup.group]!;
+        return _esBasePath + _baseAudioPathName[actionGroup.group]!;
       case 'de':
-        return _deBasePath + _baseAudioName[actionGroup.group]!;
+        return _deBasePath + _baseAudioPathName[actionGroup.group]!;
       case 'pt':
-        return _ptBasePath + _baseAudioName[actionGroup.group]!;
+        return _ptBasePath + _baseAudioPathName[actionGroup.group]!;
       case 'fr':
-        return _frBasePath + _baseAudioName[actionGroup.group]!;
+        return _frBasePath + _baseAudioPathName[actionGroup.group]!;
       default:
-        return _enBasePath + _baseAudioName[actionGroup.group]!;
+        return _enBasePath + _baseAudioPathName[actionGroup.group]!;
     }
   }
 
@@ -28,7 +28,7 @@ final class ActionAudio {
   final String _frBasePath = 'assets/actions_audio/fr/';
   final String _ptBasePath = 'assets/actions_audio/pt/';
 
-  final Map<ActionGroup, String> _baseAudioName = {
+  final Map<ActionGroup, String> _baseAudioPathName = {
     ActionGroup.answeringPhone: 'actionAnsweringPhone.mp3',
     ActionGroup.bathing: 'actionBathing.mp3',
     ActionGroup.blowingBubbles: 'actionBlowingBubbles.mp3',
@@ -44,7 +44,6 @@ final class ActionAudio {
     ActionGroup.climbingTree: 'actionClimbingTree.mp3',
     ActionGroup.cooking: 'actionCooking.mp3',
     ActionGroup.crying: 'actionCrying.mp3',
-    ActionGroup.custom: 'actionCustom.mp3',
     ActionGroup.dancing: 'actionDancing.mp3',
     ActionGroup.dog: 'actionDog.mp3',
     ActionGroup.drawing: 'actionDrawing.mp3',

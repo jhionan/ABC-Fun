@@ -1,4 +1,4 @@
-import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
+import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:flutter/material.dart';
 
 class AbcTitleWidget extends StatelessWidget {
@@ -59,7 +59,7 @@ class AbcTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptativeScreenBuilder(builder: (context, screenType) {
+    return AdaptativeScreenBuilder(builder: (context, screenType, _) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

@@ -12,9 +12,8 @@ class GameEventOnItemTapped extends GameEvent {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
-    return other is GameEventOnItemTapped &&
-      other.item == item;
+
+    return other is GameEventOnItemTapped && other.item == item;
   }
 
   @override
@@ -22,3 +21,5 @@ class GameEventOnItemTapped extends GameEvent {
 }
 
 class GameEventRestart extends GameEvent {}
+
+class GameWithError extends GameEvent {}

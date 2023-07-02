@@ -1,7 +1,7 @@
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/widgets/abc_title_widget.dart';
-import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
-import 'package:aba/features/widgets/abc_card.dart';
+import 'package:aba/core/domain/view/widgets/abc_title_widget.dart';
+import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:aba/core/domain/view/widgets/abc_card.dart';
 import 'package:flutter/widgets.dart';
 
 class AbcTitleCard extends StatelessWidget {
@@ -11,6 +11,7 @@ class AbcTitleCard extends StatelessWidget {
     required this.imageUrl,
     required this.title,
     required this.description,
+    this.descriptionStyle,
     this.direction = Axis.horizontal,
   });
 
@@ -19,11 +20,12 @@ class AbcTitleCard extends StatelessWidget {
   final String description;
   final Widget? child;
   final Axis direction;
+  final TextStyle? descriptionStyle;
 
   @override
   Widget build(BuildContext context) {
     return AdaptativeScreenBuilder(
-      builder: (context, type) {
+      builder: (context, type, _) {
         bool isHandset = type == AdaptativeScreenType.handset;
         if (isHandset) {
           return AbcCard(
@@ -39,6 +41,7 @@ class AbcTitleCard extends StatelessWidget {
                 ),
                 Text(
                   description,
+                  style: descriptionStyle,
                 ),
                 SizedBox(
                   height: context.dimensions.hMargin,
@@ -58,11 +61,12 @@ class AbcTitleCard extends StatelessWidget {
               height: context.dimensions.hMargin,
             ),
             AbcCard(
-              padding: EdgeInsets.all(24),
+              padding: const EdgeInsets.all(24),
               child: Flex(direction: type.isHandset ? Axis.vertical : Axis.horizontal, children: [
                 Flexible(
                   child: Text(
                     description,
+                    style: descriptionStyle,
                   ),
                 ),
                 SizedBox(

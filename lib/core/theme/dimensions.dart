@@ -39,7 +39,7 @@ class Dimensions {
       standartCardHeight: 64,
       bigCardHeight: 96,
       maxHorizontalWidth: 338,
-      max2ColumnsWidth: 725
+      max2ColumnsWidth: 726
     );
   }
 

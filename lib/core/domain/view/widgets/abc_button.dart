@@ -23,6 +23,15 @@ class AbcButton extends StatelessWidget {
         minWidth: minWidth,
         maxWidth: maxWidth,
       );
+  factory AbcButton.green({Key? key, required String text, VoidCallback? onPressed, double? minWidth, double? maxWidth}) =>
+      AbcButton._(
+        key: key,
+        text: text,
+        onPressed: onPressed,
+        minWidth: minWidth,
+        maxWidth: maxWidth,
+        backgroundColor: AbcColors.green,
+      );
 
   factory AbcButton.secondary({
     Key? key,

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 typedef AdaptativeBuilder = Widget Function(
   BuildContext context,
   AdaptativeScreenType type,
+  BoxConstraints constraints,
 );
 
 enum AdaptativeScreenType {
@@ -35,9 +36,9 @@ class AdaptativeScreenBuilder extends StatelessWidget {
       builder: (context, constraints) {
         final double screenWidth = View.of(context).physicalSize.width;
         return switch (screenWidth) {
-          <= AdaptativeScreenType.handSetBreakpoint => builder(context, AdaptativeScreenType.handset),
-          <= AdaptativeScreenType.tabletBreakpoint => builder(context, AdaptativeScreenType.tablet),
-          _ => builder(context, AdaptativeScreenType.desktop)
+          <= AdaptativeScreenType.handSetBreakpoint => builder(context, AdaptativeScreenType.handset, constraints),
+          <= AdaptativeScreenType.tabletBreakpoint => builder(context, AdaptativeScreenType.tablet, constraints),
+          _ => builder(context, AdaptativeScreenType.desktop, constraints)
         };
       },
     );

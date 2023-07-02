@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 final class AbcColors {
   const AbcColors._();
-  static const Color green = Color(0xFF25BB22);
+  static const Color green = Color.fromARGB(255, 14, 84, 12);
   static const Color text = Color(0xFF1F1F1F);
   static const Color dropShadow = Color(0x549FB4FF);
 
@@ -17,4 +17,5 @@ final class AbcColors {
   static const Color onBackground = text;
   static const Color surface = Colors.white;
   static const Color onSurface = text;
+  static const Color hintText = Color(0xFF818181);
 }

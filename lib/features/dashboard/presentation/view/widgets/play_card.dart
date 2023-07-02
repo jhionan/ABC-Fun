@@ -1,8 +1,8 @@
 import 'package:aba/core/navigation/abc_router.gr.dart';
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
-import 'package:aba/features/widgets/abc_button.dart';
-import 'package:aba/features/widgets/abc_card.dart';
+import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:aba/core/domain/view/widgets/abc_button.dart';
+import 'package:aba/core/domain/view/widgets/abc_card.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,7 +14,7 @@ class PlayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return AbcCard(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 64),
-      child: AdaptativeScreenBuilder(builder: (context, type) {
+      child: AdaptativeScreenBuilder(builder: (context, type, _) {
         Text playCard = Text(
           AppLocalizations.of(context).playCardDescription,
           style: const TextStyle(

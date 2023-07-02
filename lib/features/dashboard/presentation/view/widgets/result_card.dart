@@ -1,6 +1,6 @@
 import 'package:aba/core/theme/abc_colors.dart';
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/features/widgets/abc_card.dart';
+import 'package:aba/core/domain/view/widgets/abc_card.dart';
 import 'package:flutter/material.dart';
 
 enum ResultCardType {
@@ -25,41 +25,47 @@ class ResultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return AbcCard(
       padding: EdgeInsets.only(
-        top: getMarginByType(context),
-        bottom: getMarginByType(context),
-        left: getMarginByType(context),
+        top: getPaddingByType(context),
+        bottom: getPaddingByType(context),
+        left: getPaddingByType(context),
         right: 32,
       ),
-      child: Row(
+      child: Column(
         children: [
-          Image.asset(
-            imageUrl,
-            width: getImageSizeByType(),
-            height: getImageSizeByType(),
-            fit: BoxFit.fitHeight,
-          ),
           const SizedBox(
-            width: 4,
+            width: double.infinity,
           ),
-          Expanded(
-            child: Text(
-              text,
-              style: const TextStyle(
-                fontWeight: FontWeight.w700,
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Image.asset(
+                imageUrl,
+                width: getImageSizeByType(),
+                height: getImageSizeByType(),
+                fit: BoxFit.fitHeight,
               ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const SizedBox(
-            width: 4,
-          ),
-          Text(
-            result.round().toString(),
-            style: TextStyle(
-              fontSize: getResultFontSizeByType(),
-              color: AbcColors.primary,
-              fontWeight: FontWeight.w700,
-            ),
+              const SizedBox(
+                width: 8,
+              ),
+              Text(
+                text,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                width: 4,
+              ),
+              Text(
+                result.round().toString(),
+                style: TextStyle(
+                  fontSize: getResultFontSizeByType(),
+                  color: AbcColors.primary,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -74,7 +80,7 @@ class ResultCard extends StatelessWidget {
     return switch (type) { ResultCardType.large => 55.0, ResultCardType.standard => 40.0 };
   }
 
-  double getMarginByType(BuildContext context) {
+  double getPaddingByType(BuildContext context) {
     return switch (type) {
       ResultCardType.large => context.dimensions.hMargin,
       ResultCardType.standard => context.dimensions.hMargin / 2

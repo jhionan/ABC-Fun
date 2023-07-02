@@ -1,25 +1,30 @@
 import 'package:aba/core/utils/extensions/context_ext.dart';
+import 'package:aba/core/utils/extensions/string_ext.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 class ActionItemEntity {
   final ActionGroup group;
   final String name;
   final String imagePath;
+
   final int dificulty;
   final List<ActionGroup> notAllowedWith;
+  final bool isActive;
 
   const ActionItemEntity({
     required this.group,
     required this.name,
     required this.imagePath,
     required this.dificulty,
+    this.isActive = true,
     this.notAllowedWith = const [],
   });
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is ActionItemEntity && other.group == group && other.name == name;
+    return other is ActionItemEntity && other.group == group && other.name.toLowerCase() == name.toLowerCase();
   }
 
   @override
@@ -65,6 +70,10 @@ enum ActionGroup {
   washingHands,
   watchingTV,
   wateringPlants;
+
+  factory ActionGroup.fromString(String value) {
+    return ActionGroup.values.firstWhere((e) => describeEnum(e) == value);
+  }
 }
 
 extension ActionGroupNameEx on ActionItemEntity {
@@ -85,7 +94,7 @@ extension ActionGroupNameEx on ActionItemEntity {
       ActionGroup.climbingTree => context.intl.actionClimbingTree,
       ActionGroup.cooking => context.intl.actionCooking,
       ActionGroup.crying => context.intl.actionCrying,
-      ActionGroup.custom => name,
+      ActionGroup.custom => name.capitalize(),
       ActionGroup.dancing => context.intl.actionDancing,
       ActionGroup.dog => context.intl.actionDog,
       ActionGroup.drawing => context.intl.actionDrawing,

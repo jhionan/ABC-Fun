@@ -28,5 +28,13 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need this permission to pick image from your gallery to being able to customize your actions</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need this permission to pick image from your gallery to being able to customize your actions</string>
+	<key>com.apple.security.files.user-selected.read-only</key>
+  	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need to access to the microphone to record audio file</string>
 </dict>
 </plist>
