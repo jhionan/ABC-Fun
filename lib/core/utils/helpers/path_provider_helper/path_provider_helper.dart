@@ -12,6 +12,7 @@ class PathProviderHelper implements PathProviderHelperInterface {
 
   @override
   Future<Uint8List> getBytesFromFilePath(String filePath) async {
-    return PathProviderImp().getBytesFromFilePath(filePath);
+        filePath.replaceAll('file://', '');
+    return PathProviderImp().getBytesFromFilePath(filePath.replaceAll('file://', ''));
   }
 }
