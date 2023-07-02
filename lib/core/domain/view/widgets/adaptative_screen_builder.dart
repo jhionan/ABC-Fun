@@ -34,7 +34,7 @@ class AdaptativeScreenBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final double screenWidth = View.of(context).physicalSize.width;
+        final double screenWidth = View.of(context).physicalSize.width / MediaQuery.of(context).devicePixelRatio;
         return switch (screenWidth) {
           <= AdaptativeScreenType.handSetBreakpoint => builder(context, AdaptativeScreenType.handset, constraints),
           <= AdaptativeScreenType.tabletBreakpoint => builder(context, AdaptativeScreenType.tablet, constraints),
