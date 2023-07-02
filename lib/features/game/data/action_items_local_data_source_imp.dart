@@ -39,7 +39,7 @@ class ActionItemsLocalDataSourceImp implements ActionItemsRepository {
   }
 
   @override
-  Future<List<ActionItemEntity>> getAllItems() {
+  Future<List<ActionCustomItemEntity>> getAllItems() {
     return actionCustomItemDao.getAllItems();
   }
 }

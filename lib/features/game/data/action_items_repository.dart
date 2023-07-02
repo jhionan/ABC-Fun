@@ -14,8 +14,8 @@ class ActionItemsRepositoryImp implements ActionItemsRepository {
   });
 
   @override
-  Future<List<ActionItemEntity>> getAllItems() async {
-    List<ActionItemEntity> local = await localDataSource.getAllItems();
+  Future<List<ActionCustomItemEntity>> getAllItems() async {
+    List<ActionCustomItemEntity> local = await localDataSource.getAllItems();
 
     if (local.isEmpty) {
       _seedDb();
@@ -45,7 +45,6 @@ class ActionItemsRepositoryImp implements ActionItemsRepository {
               dificulty: e.dificulty,
               group: e.group,
               imagePath: e.imagePath,
-              audioBytes: e.audioBytes,
               name: e.name,
               notAllowedWith: e.notAllowedWith,
               isActive: e.isActive,

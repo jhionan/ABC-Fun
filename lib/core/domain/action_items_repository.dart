@@ -1,9 +1,9 @@
-import 'package:aba/core/domain/models/action_item_entity.dart';
+import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
 
 abstract interface class ActionItemsRepository {
-  Future<List<ActionItemEntity>> getAllItems();
-  Future<void> addItem(ActionItemEntity item);
-  Future<void> addAllItems(List<ActionItemEntity> items);
-  Future<void> deleteItem(ActionItemEntity item);
-  Future<void> deleteManyItems(List<ActionItemEntity> items);
+  Future<List<ActionCustomItemEntity>> getAllItems();
+  Future<void> addItem(ActionCustomItemEntity item);
+  Future<void> addAllItems(List<ActionCustomItemEntity> items);
+  Future<void> deleteItem(ActionCustomItemEntity item);
+  Future<void> deleteManyItems(List<ActionCustomItemEntity> items);
 }

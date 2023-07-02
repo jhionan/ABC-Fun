@@ -1,10 +1,11 @@
+import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
 import 'package:aba/core/images.dart';
 import 'package:aba/core/domain/action_items_repository.dart';
 import 'package:aba/core/domain/models/action_item_entity.dart';
 
 class ActionItemsDefaultDataSourceImp implements ActionItemsRepository {
   @override
-  Future<List<ActionItemEntity>> getAllItems() async {
+  Future<List<ActionCustomItemEntity>> getAllItems() async {
     return <ActionItemEntity>[
       ActionItemEntity(
         name: ActionGroup.answeringPhone.name,
@@ -593,29 +594,29 @@ class ActionItemsDefaultDataSourceImp implements ActionItemsRepository {
           dificulty: 2,
           group: ActionGroup.wateringPlants,
           imagePath: ActionImages.wateringPlants2),
-    ];
+    ].cast();
   }
 
   @override
-  Future<void> addItem(ActionItemEntity item) {
+  Future<void> addItem(ActionCustomItemEntity item) {
     // TODO: implement addItem
     throw UnimplementedError();
   }
 
   @override
-  Future<void> deleteItem(ActionItemEntity item) {
+  Future<void> deleteItem(ActionCustomItemEntity item) {
     // TODO: implement deleteItem
     throw UnimplementedError();
   }
 
   @override
-  Future<void> deleteManyItems(List<ActionItemEntity> items) {
+  Future<void> deleteManyItems(List<ActionCustomItemEntity> items) {
     // TODO: implement deleteManyItems
     throw UnimplementedError();
   }
   
   @override
-  Future<void> addAllItems(List<ActionItemEntity> items) {
+  Future<void> addAllItems(List<ActionCustomItemEntity> items) {
     // TODO: implement addAllItems
     throw UnimplementedError();
   }

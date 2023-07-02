@@ -18,39 +18,49 @@ const ActionCustomItemEntitySchema = CollectionSchema(
   name: r'ActionCustomItemEntity',
   id: 272646321258518201,
   properties: {
-    r'dificulty': PropertySchema(
+    r'audioBytes': PropertySchema(
       id: 0,
+      name: r'audioBytes',
+      type: IsarType.byteList,
+    ),
+    r'dificulty': PropertySchema(
+      id: 1,
       name: r'dificulty',
       type: IsarType.long,
     ),
     r'group': PropertySchema(
-      id: 1,
+      id: 2,
       name: r'group',
       type: IsarType.string,
       enumMap: _ActionCustomItemEntitygroupEnumValueMap,
     ),
     r'hashCode': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'hashCode',
       type: IsarType.long,
     ),
+    r'imageBytes': PropertySchema(
+      id: 4,
+      name: r'imageBytes',
+      type: IsarType.byteList,
+    ),
     r'imagePath': PropertySchema(
-      id: 3,
+      id: 5,
       name: r'imagePath',
       type: IsarType.string,
     ),
     r'isActive': PropertySchema(
-      id: 4,
+      id: 6,
       name: r'isActive',
       type: IsarType.bool,
     ),
     r'name': PropertySchema(
-      id: 5,
+      id: 7,
       name: r'name',
       type: IsarType.string,
     ),
     r'notAllowedWith': PropertySchema(
-      id: 6,
+      id: 8,
       name: r'notAllowedWith',
       type: IsarType.stringList,
       enumMap: _ActionCustomItemEntitynotAllowedWithEnumValueMap,
@@ -76,7 +86,19 @@ int _actionCustomItemEntityEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
+  {
+    final value = object.audioBytes;
+    if (value != null) {
+      bytesCount += 3 + value.length;
+    }
+  }
   bytesCount += 3 + object.group.name.length * 3;
+  {
+    final value = object.imageBytes;
+    if (value != null) {
+      bytesCount += 3 + value.length;
+    }
+  }
   bytesCount += 3 + object.imagePath.length * 3;
   bytesCount += 3 + object.name.length * 3;
   bytesCount += 3 + object.notAllowedWith.length * 3;
@@ -95,14 +117,16 @@ void _actionCustomItemEntitySerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeLong(offsets[0], object.dificulty);
-  writer.writeString(offsets[1], object.group.name);
-  writer.writeLong(offsets[2], object.hashCode);
-  writer.writeString(offsets[3], object.imagePath);
-  writer.writeBool(offsets[4], object.isActive);
-  writer.writeString(offsets[5], object.name);
+  writer.writeByteList(offsets[0], object.audioBytes);
+  writer.writeLong(offsets[1], object.dificulty);
+  writer.writeString(offsets[2], object.group.name);
+  writer.writeLong(offsets[3], object.hashCode);
+  writer.writeByteList(offsets[4], object.imageBytes);
+  writer.writeString(offsets[5], object.imagePath);
+  writer.writeBool(offsets[6], object.isActive);
+  writer.writeString(offsets[7], object.name);
   writer.writeStringList(
-      offsets[6], object.notAllowedWith.map((e) => e.name).toList());
+      offsets[8], object.notAllowedWith.map((e) => e.name).toList());
 }
 
 ActionCustomItemEntity _actionCustomItemEntityDeserialize(
@@ -112,15 +136,17 @@ ActionCustomItemEntity _actionCustomItemEntityDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = ActionCustomItemEntity(
-    dificulty: reader.readLong(offsets[0]),
+    audioBytes: reader.readByteList(offsets[0]),
+    dificulty: reader.readLong(offsets[1]),
     group: _ActionCustomItemEntitygroupValueEnumMap[
-            reader.readStringOrNull(offsets[1])] ??
+            reader.readStringOrNull(offsets[2])] ??
         ActionGroup.answeringPhone,
-    imagePath: reader.readString(offsets[3]),
-    isActive: reader.readBool(offsets[4]),
-    name: reader.readString(offsets[5]),
+    imageBytes: reader.readByteList(offsets[4]),
+    imagePath: reader.readString(offsets[5]),
+    isActive: reader.readBool(offsets[6]),
+    name: reader.readString(offsets[7]),
     notAllowedWith: reader
-            .readStringList(offsets[6])
+            .readStringList(offsets[8])
             ?.map((e) =>
                 _ActionCustomItemEntitynotAllowedWithValueEnumMap[e] ??
                 ActionGroup.answeringPhone)
@@ -139,20 +165,24 @@ P _actionCustomItemEntityDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readLong(offset)) as P;
+      return (reader.readByteList(offset)) as P;
     case 1:
+      return (reader.readLong(offset)) as P;
+    case 2:
       return (_ActionCustomItemEntitygroupValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ActionGroup.answeringPhone) as P;
-    case 2:
-      return (reader.readLong(offset)) as P;
     case 3:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 4:
-      return (reader.readBool(offset)) as P;
+      return (reader.readByteList(offset)) as P;
     case 5:
       return (reader.readString(offset)) as P;
     case 6:
+      return (reader.readBool(offset)) as P;
+    case 7:
+      return (reader.readString(offset)) as P;
+    case 8:
       return (reader
               .readStringList(offset)
               ?.map((e) =>
@@ -415,6 +445,169 @@ extension ActionCustomItemEntityQueryWhere on QueryBuilder<
 
 extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     ActionCustomItemEntity, ActionCustomItemEntity, QFilterCondition> {
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'audioBytes',
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'audioBytes',
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesElementEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'audioBytes',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesElementGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'audioBytes',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesElementLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'audioBytes',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesElementBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'audioBytes',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesLengthEqualTo(int length) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'audioBytes',
+        length,
+        true,
+        length,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'audioBytes',
+        0,
+        true,
+        0,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'audioBytes',
+        0,
+        false,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesLengthLessThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'audioBytes',
+        0,
+        true,
+        length,
+        include,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesLengthGreaterThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'audioBytes',
+        length,
+        include,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> audioBytesLengthBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'audioBytes',
+        lower,
+        includeLower,
+        upper,
+        includeUpper,
+      );
+    });
+  }
+
   QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
       QAfterFilterCondition> dificultyEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
@@ -736,6 +929,169 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
         upper: upper,
         includeUpper: includeUpper,
       ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'imageBytes',
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'imageBytes',
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesElementEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'imageBytes',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesElementGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'imageBytes',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesElementLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'imageBytes',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesElementBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'imageBytes',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesLengthEqualTo(int length) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'imageBytes',
+        length,
+        true,
+        length,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'imageBytes',
+        0,
+        true,
+        0,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'imageBytes',
+        0,
+        false,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesLengthLessThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'imageBytes',
+        0,
+        true,
+        length,
+        include,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesLengthGreaterThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'imageBytes',
+        length,
+        include,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
+      QAfterFilterCondition> imageBytesLengthBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'imageBytes',
+        lower,
+        includeLower,
+        upper,
+        includeUpper,
+      );
     });
   }
 
@@ -1451,6 +1807,13 @@ extension ActionCustomItemEntityQuerySortThenBy on QueryBuilder<
 extension ActionCustomItemEntityQueryWhereDistinct
     on QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct> {
   QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
+      distinctByAudioBytes() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'audioBytes');
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
       distinctByDificulty() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dificulty');
@@ -1468,6 +1831,13 @@ extension ActionCustomItemEntityQueryWhereDistinct
       distinctByHashCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'hashCode');
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
+      distinctByImageBytes() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'imageBytes');
     });
   }
 
@@ -1508,6 +1878,13 @@ extension ActionCustomItemEntityQueryProperty on QueryBuilder<
     });
   }
 
+  QueryBuilder<ActionCustomItemEntity, List<int>?, QQueryOperations>
+      audioBytesProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'audioBytes');
+    });
+  }
+
   QueryBuilder<ActionCustomItemEntity, int, QQueryOperations>
       dificultyProperty() {
     return QueryBuilder.apply(this, (query) {
@@ -1526,6 +1903,13 @@ extension ActionCustomItemEntityQueryProperty on QueryBuilder<
       hashCodeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'hashCode');
+    });
+  }
+
+  QueryBuilder<ActionCustomItemEntity, List<int>?, QQueryOperations>
+      imageBytesProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'imageBytes');
     });
   }
 
