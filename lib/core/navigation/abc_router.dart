@@ -25,6 +25,14 @@ class AbcRouter extends $AbcRouter {
             AutoRoute(
               page: AboutRoute.page,
               path: AbcRoute.about.pathFragment,
+            ),
+            AutoRoute(
+              page: AccountSyncRoute.page,
+              path: AbcRoute.accountSync.pathFragment,
+            ),
+            AutoRoute(
+              page: SettingsRoute.page,
+              path: AbcRoute.settings.pathFragment,
             )
           ],
         ),
@@ -37,6 +45,8 @@ enum AbcRoute {
   dashboard('dashboard'),
   game('game'),
   challenges('challenges'),
+  settings('settings'),
+  accountSync('account-sync'),
   about('about');
 
   const AbcRoute(this.pathFragment);

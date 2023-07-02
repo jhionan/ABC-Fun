@@ -67,6 +67,8 @@ class _MenuPageState extends State<MenuPage> {
         context.router.pop();
         context.router.replace(const DashboardRoute());
       case MenuSelectedPage.settings:
+       context.router.pop();
+        context.router.replace(const SettingsRoute());
       case MenuSelectedPage.challenges:
         context.router.pop();
         context.router.replace(const ChallengeProviderRoute());
@@ -74,6 +76,8 @@ class _MenuPageState extends State<MenuPage> {
        context.router.pop();
         context.router.replace(const AboutRoute());
       case MenuSelectedPage.accountSync:
+       context.router.pop();
+        context.router.replace(const AccountSyncRoute());
     }
   }
 }
