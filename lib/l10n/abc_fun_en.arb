@@ -79,11 +79,11 @@
     "buttonLoadImages": "Load Images",
     "buttonComplete": "Complete",
     "syncAccountPageTitle": "Sync Accounts",
-    "settingsPageTitle": "Phase Settings",
-    "settingsPageDescription": "Configure the number of phases per round and difficulty (number of images).",
-    "settingsPagePhasesTitle": "Number of Phases",
-    "settingsPagePhases": "{n, plural, =1{1 phase} other {{n} phases}}",
-    "@settingsPagePhases": {
+    "settingsPageTitle": "Stage Settings",
+    "settingsPageDescription": "Configure the number of stages per round and difficulty (number of images).",
+    "settingsPageStagesTitle": "Number of stages",
+    "settingsPageStages": "{n, plural, =1{1 stage} other {{n} stages}}",
+    "@settingsPageStages": {
         "placeholders": {
             "n": {
                 "type": "int"

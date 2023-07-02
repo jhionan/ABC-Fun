@@ -81,9 +81,9 @@
   "syncAccountPageTitle": "Sincronizar contas",
   "settingsPageTitle": "Configurações de fase",
   "settingsPageDescription": "Configure o numero de fases por round e dificuldade (número de imagens)",
-  "settingsPagePhasesTitle": "Número de fases",
-  "settingsPagePhases": "{n, plural, =1{1 fase} other {{n} fases}}",
-  "@settingsPagePhases": {
+  "settingsPageStagesTitle": "Número de fases",
+  "settingsPageStages": "{n, plural, =1{1 fase} other {{n} fases}}",
+  "@settingsPageStages": {
     "placeholders": {
       "n": {
         "type": "int"
