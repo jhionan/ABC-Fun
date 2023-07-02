@@ -21,7 +21,7 @@ import 'package:abc_fun/features/dashboard/presentation/view/dashboard_page.dart
     as _i7;
 import 'package:abc_fun/features/game/presentation/view/game_provider.dart'
     as _i6;
-import 'package:abc_fun/features/menu/bloc/menu_provider.dart' as _i8;
+import 'package:abc_fun/features/menu/view/menu_page.dart' as _i8;
 import 'package:abc_fun/features/settings/presentation/view/settings_provider.dart'
     as _i1;
 import 'package:auto_route/auto_route.dart' as _i10;
@@ -76,7 +76,7 @@ abstract class $AbcRouter extends _i10.RootStackRouter {
     MenuRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i8.MenuProvider(),
+        child: const _i8.MenuPage(),
       );
     },
     AccountSyncRoute.name: (routeData) {
@@ -187,7 +187,7 @@ class DashboardRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.MenuProvider]
+/// [_i8.MenuPage]
 class MenuRoute extends _i10.PageRouteInfo<void> {
   const MenuRoute({List<_i10.PageRouteInfo>? children})
       : super(

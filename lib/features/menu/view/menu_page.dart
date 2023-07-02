@@ -1,34 +1,14 @@
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:abc_fun/core/images.dart';
 import 'package:abc_fun/core/navigation/abc_router.gr.dart';
 import 'package:abc_fun/core/theme/abc_colors.dart';
-import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:abc_fun/features/menu/bloc/menu_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-extension MenuNamesExt on MenuEvent {
-  String name(BuildContext context) {
-    switch (this) {
-      case MenuEvent.dashboard:
-        return AppLocalizations.of(context).menuDashboard;
-      case MenuEvent.settings:
-        return AppLocalizations.of(context).menuSettings;
-      case MenuEvent.challenges:
-        return AppLocalizations.of(context).menuChallenges;
-      case MenuEvent.about:
-        return AppLocalizations.of(context).menuAbout;
-      case MenuEvent.exit:
-        return AppLocalizations.of(context).menuExit;
-      case MenuEvent.accountSync:
-        return AppLocalizations.of(context).menuAccountSync;
-    }
-  }
-}
-
+@RoutePage()
 class MenuPage extends StatefulWidget {
-  const MenuPage({super.key, required this.child});
-  final Widget child;
+  const MenuPage({super.key});
 
   @override
   State<MenuPage> createState() => _MenuPageState();
@@ -54,7 +34,7 @@ class _MenuPageState extends State<MenuPage> {
               MenuDrawer(
                 onMenuSelected: _navigate,
               ),
-            Expanded(child: widget.child),
+            const Expanded(child: AutoRouter()),
           ],
         ),
       );
@@ -102,7 +82,7 @@ class MenuDrawer extends StatelessWidget {
               child: Image.asset(Images.logo),
             ),
             ListTile(
-              title: Text(MenuEvent.dashboard.name(context)),
+              title: Text(AppLocalizations.of(context).menuDashboard),
               // titleTextStyle: TextStyle(fontSize: 20, color: AbcColors.text),
               leading: Image.asset(
                 Images.dashboardIcon,
@@ -114,7 +94,7 @@ class MenuDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text(MenuEvent.challenges.name(context)),
+              title: Text(AppLocalizations.of(context).menuChallenges),
               leading: Image.asset(
                 Images.performanceIcon,
                 width: 40,
@@ -125,7 +105,7 @@ class MenuDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text(MenuEvent.settings.name(context)),
+              title: Text(AppLocalizations.of(context).menuSettings),
               leading: Image.asset(
                 Images.settingsIcon,
                 width: 40,
@@ -136,7 +116,7 @@ class MenuDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text(MenuEvent.about.name(context)),
+              title: Text(AppLocalizations.of(context).menuAbout),
               leading: Image.asset(
                 Images.supportIcon,
                 width: 40,
@@ -147,7 +127,7 @@ class MenuDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text(MenuEvent.accountSync.name(context)),
+              title: Text(AppLocalizations.of(context).menuAccountSync),
               leading: Image.asset(
                 Images.accountSync,
                 width: 40,
