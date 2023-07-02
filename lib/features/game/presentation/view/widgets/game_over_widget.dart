@@ -5,8 +5,8 @@ import 'package:aba/core/theme/abc_colors.dart';
 import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
-import 'package:aba/features/widgets/abc_card.dart';
-import 'package:aba/features/widgets/background_widget.dart';
+import 'package:aba/core/utils/widgets/abc_card.dart';
+import 'package:aba/core/utils/widgets/background_widget.dart';
 import 'package:flutter/material.dart';
 
 class GameOverWidget extends StatelessWidget {

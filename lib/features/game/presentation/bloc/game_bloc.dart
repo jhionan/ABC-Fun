@@ -15,7 +15,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
   final ActionItemsRepository repository;
   final int itemsCount = 6;
-  final int rounds = 3;
+  final int rounds = 2;
   int currentRound = 0;
   int totalMoves = 0;
   double get finalScorePercentage => rounds / totalMoves * 100;
@@ -53,12 +53,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       emit(GameRunning.fromWrongAnswerState(state as GameWrongAnswer));
       return;
     }
-    Set<ActionGroup> containnedItems = <ActionGroup>{roundItems[currentRound].group};
+    Set<String> containnedItems = <String>{roundItems[currentRound].name.toLowerCase()};
     possibleItems.shuffle();
     List<ActionItemEntity> phaseItems = <ActionItemEntity>[
       roundItems[currentRound],
       ...possibleItems.where((element) {
-        return element.group != roundItems[currentRound].group && containnedItems.add(element.group);
+        return element.name.toLowerCase() != roundItems[currentRound].name.toLowerCase() && containnedItems.add(element.name.toLowerCase());
       }).take(itemsCount - 1)
     ];
     emit(GameRunning(correctAnswer: roundItems[currentRound], items: phaseItems..shuffle()));
@@ -66,7 +66,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   Future<void> _startGameSetup() async {
-    Set<ActionGroup> containedItems = <ActionGroup>{};
+    Set<String> containedItems = <String>{};
     List<ActionItemEntity> event = (await repository.getAllItems()).where((e) {
       return e.isActive;
     }).toList();
@@ -76,7 +76,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     roundItems.addAll(event
       ..shuffle()
       ..skipWhile(
-        (value) => !containedItems.add(value.group),
+        (value) => !containedItems.add(value.name.toLowerCase()),
       ).take(rounds));
     possibleItems.addAll(event);
     add(GameEventRestart());

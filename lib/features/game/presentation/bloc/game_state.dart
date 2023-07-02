@@ -69,6 +69,9 @@ class GameOver extends GameState {
   });
 }
 
-class GameVictory extends GameState {}
+class GameVictory extends GameState {
+  GameVictory({this.image});
+  final Uint8List? image;
+}
 
 class GameError extends GameState {}

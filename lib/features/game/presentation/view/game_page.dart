@@ -1,15 +1,10 @@
-import 'package:aba/core/actions_audio.dart';
-import 'package:aba/core/providers/providers.dart';
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
 import 'package:aba/features/game/presentation/view/widgets/game_over_widget.dart';
 import 'package:aba/features/game/presentation/view/widgets/game_running_widget.dart';
 import 'package:aba/features/game/presentation/view/widgets/game_victory_widget.dart';
 import 'package:aba/features/game/presentation/view/widgets/game_wrong_answer_widget.dart';
-import 'package:aba/features/widgets/background_widget.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

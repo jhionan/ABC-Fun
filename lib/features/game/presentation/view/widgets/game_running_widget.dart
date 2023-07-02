@@ -1,14 +1,19 @@
+import 'dart:io';
+
 import 'package:aba/core/actions_audio.dart';
+import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
 import 'package:aba/core/domain/models/action_item_entity.dart';
 import 'package:aba/core/providers/providers.dart';
 import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
 import 'package:aba/features/game/presentation/view/widgets/game_running_image.dart';
-import 'package:aba/features/widgets/background_widget.dart';
+import 'package:aba/core/utils/widgets/background_widget.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:riverpod/riverpod.dart';
 
 class GameRunningWidget extends StatelessWidget {
   const GameRunningWidget({
@@ -90,13 +95,17 @@ class _ActionTitleState extends State<_ActionTitle> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.play_circle_outline_sharp,
-              size: 32,
-            ),
-            SizedBox(
-              width: context.dimensions.hMargin / 2,
-            ),
+            if (widget.gameRunningState.correctAnswer.group != ActionGroup.custom ||
+                (widget.gameRunningState.correctAnswer is ActionCustomItemEntity &&
+                    (widget.gameRunningState.correctAnswer as ActionCustomItemEntity).audioBytes != null)) ...[
+              const Icon(
+                Icons.play_circle_outline_sharp,
+                size: 32,
+              ),
+              SizedBox(
+                width: context.dimensions.hMargin / 2,
+              ),
+            ],
             Flexible(
               child: Text(
                 widget.gameRunningState.correctAnswer.actionName(context),
@@ -109,11 +118,16 @@ class _ActionTitleState extends State<_ActionTitle> {
     );
   }
 
-  void _readAloud(BuildContext context, ActionItemEntity action) {
+  Future<void> _readAloud(BuildContext context, ActionItemEntity action) async {
     ActionAudio audioPathProvider = provider.read<ActionAudio>(Providers.actionAudio);
     String audioPath = audioPathProvider.audioPathOrEmpty(action, context);
     if (audioPath.isNotEmpty && action.group != ActionGroup.custom) {
       audioPlayer.play(AssetSource(audioPath.replaceAll('assets/', '')));
+    }
+    if (action.group == ActionGroup.custom && action is ActionCustomItemEntity && action.audioBytes != null) {
+      try {
+        audioPlayer.play(BytesSource(Uint8List.fromList(action.audioBytes!)));
+      } catch (e) {}
     }
   }
 }
