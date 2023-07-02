@@ -1,4 +1,4 @@
-import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
+import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:flutter/material.dart';
 
 class AbcTitleWidget extends StatelessWidget {

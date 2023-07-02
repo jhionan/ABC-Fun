@@ -1,8 +1,8 @@
 import 'package:aba/core/navigation/abc_router.gr.dart';
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
-import 'package:aba/core/utils/widgets/abc_button.dart';
-import 'package:aba/core/utils/widgets/abc_card.dart';
+import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:aba/core/domain/view/widgets/abc_button.dart';
+import 'package:aba/core/domain/view/widgets/abc_card.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

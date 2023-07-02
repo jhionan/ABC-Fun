@@ -1,19 +1,16 @@
-import 'dart:io';
-
 import 'package:aba/core/actions_audio.dart';
 import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
 import 'package:aba/core/domain/models/action_item_entity.dart';
+import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:aba/core/domain/view/widgets/background_widget.dart';
 import 'package:aba/core/providers/providers.dart';
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
 import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
 import 'package:aba/features/game/presentation/view/widgets/game_running_image.dart';
-import 'package:aba/core/utils/widgets/background_widget.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:riverpod/riverpod.dart';
 
 class GameRunningWidget extends StatelessWidget {
   const GameRunningWidget({
@@ -127,7 +124,7 @@ class _ActionTitleState extends State<_ActionTitle> {
     if (action.group == ActionGroup.custom && action is ActionCustomItemEntity && action.audioBytes != null) {
       try {
         audioPlayer.play(BytesSource(Uint8List.fromList(action.audioBytes!)));
-      } catch (e) {}
+      } catch (_) {}
     }
   }
 }

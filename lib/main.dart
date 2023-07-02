@@ -2,7 +2,7 @@ import 'package:aba/core/navigation/abc_router.dart';
 import 'package:aba/core/providers/providers.dart';
 import 'package:aba/core/theme/abc_fun_theme.dart';
 import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
+import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

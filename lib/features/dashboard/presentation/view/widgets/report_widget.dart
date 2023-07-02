@@ -1,7 +1,7 @@
 import 'package:aba/core/images.dart';
 import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/core/utils/widgets/abc_title_widget.dart';
+import 'package:aba/core/domain/view/widgets/abc_title_widget.dart';
 import 'package:aba/features/dashboard/presentation/view/widgets/report_card.dart';
 import 'package:aba/core/domain/models/action_statistics.dart';
 import 'package:flutter/widgets.dart';
