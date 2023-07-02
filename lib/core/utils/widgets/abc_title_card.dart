@@ -1,7 +1,7 @@
 import 'package:aba/core/theme/dimensions.dart';
 import 'package:aba/core/utils/widgets/abc_title_widget.dart';
 import 'package:aba/core/utils/widgets/adaptative_screen_builder.dart';
-import 'package:aba/features/widgets/abc_card.dart';
+import 'package:aba/core/utils/widgets/abc_card.dart';
 import 'package:flutter/widgets.dart';
 
 class AbcTitleCard extends StatelessWidget {
