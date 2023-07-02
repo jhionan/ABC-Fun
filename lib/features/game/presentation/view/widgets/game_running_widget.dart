@@ -81,8 +81,9 @@ class _ActionTitleState extends State<_ActionTitle> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 1000))
-        .then((value) => _readAloud(context, widget.gameRunningState.correctAnswer));
+    Future.microtask(() {
+      _readAloud(context, widget.gameRunningState.correctAnswer);
+    });
     return InkWell(
       onTap: () => _readAloud(context, widget.gameRunningState.correctAnswer),
       child: Container(
