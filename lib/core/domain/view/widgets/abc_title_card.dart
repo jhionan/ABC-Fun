@@ -5,21 +5,20 @@ import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
 import 'package:flutter/widgets.dart';
 
 class AbcTitleCard extends StatelessWidget {
-  const AbcTitleCard({
-    super.key,
-    this.child,
-    required this.imageUrl,
-    required this.title,
-    required this.description,
-    this.descriptionStyle,
-    this.direction = Axis.vertical,
-  });
+  const AbcTitleCard(
+      {super.key,
+      this.child,
+      required this.imageUrl,
+      required this.title,
+      required this.description,
+      this.descriptionStyle,
+      this.childBellow});
 
   final String imageUrl;
   final String title;
   final String? description;
   final Widget? child;
-  final Axis direction;
+  final Widget? childBellow;
   final TextStyle? descriptionStyle;
 
   @override
@@ -48,6 +47,7 @@ class AbcTitleCard extends StatelessWidget {
                   height: context.dimensions.hMargin,
                 ),
                 child ?? const SizedBox.shrink(),
+                childBellow ?? const SizedBox.shrink(),
               ],
             ),
           );
@@ -63,20 +63,29 @@ class AbcTitleCard extends StatelessWidget {
             ),
             AbcCard(
               padding: const EdgeInsets.all(24),
-              child: Row(children: [
-                if (description != null)
-                  Flexible(
-                    child: Text(
-                      description!,
-                      style: descriptionStyle,
-                    ),
-                  ),
-                SizedBox(
-                  width: context.dimensions.hMargin,
-                  height: context.dimensions.vMargin,
-                ),
-                child ?? const SizedBox.shrink(),
-              ]),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  if(description != null || child != null)
+                  Row(children: [
+                    if (description != null)
+                      Flexible(
+                        child: Text(
+                          description!,
+                          style: descriptionStyle,
+                        ),
+                      ),
+                    if (child != null) ...[
+                      SizedBox(
+                        width: context.dimensions.hMargin,
+                        height: context.dimensions.vMargin,
+                      ),
+                      child ?? const SizedBox.shrink()
+                    ],
+                  ]),
+                  childBellow ?? const SizedBox.shrink(),
+                ],
+              ),
             ),
           ],
         );

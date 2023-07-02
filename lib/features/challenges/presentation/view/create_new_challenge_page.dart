@@ -70,7 +70,6 @@ class _CreateNewChallengePageState extends State<CreateNewChallengePage> {
               descriptionStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AbcColors.primary,
                   ),
-              direction: Axis.vertical,
               child: isHandset
                   ? _CreateNewChallengeBody(
                       isHandset: isHandset,

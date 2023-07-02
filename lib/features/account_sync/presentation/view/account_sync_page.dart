@@ -35,8 +35,8 @@ class AccountSyncPage extends StatelessWidget {
               description: '',
               descriptionStyle: Theme.of(context).textTheme.bodyLarge,
               imageUrl: Images.accountSync,
-              child: SizedBox(
-                width: context.dimensions.maxHorizontalWidth,
+              childBellow: SizedBox(
+                width: double.infinity,
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.all(16),

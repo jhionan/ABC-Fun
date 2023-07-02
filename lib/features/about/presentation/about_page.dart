@@ -33,7 +33,6 @@ class AboutPage extends StatelessWidget {
               description: context.intl.aboutPageDescription,
               descriptionStyle: Theme.of(context).textTheme.bodyLarge,
               imageUrl: Images.supportIcon,
-              direction: Axis.horizontal,
             )
           ],
         );

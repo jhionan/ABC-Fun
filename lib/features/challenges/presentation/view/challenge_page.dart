@@ -40,7 +40,6 @@ class ChallengePage extends StatelessWidget {
               imageUrl: Images.performanceIcon,
               title: context.intl.challengeTitle,
               description: context.intl.challengeDescription,
-              direction: Axis.horizontal,
               child: AbcButton(
                 onPressed: () => _navigateToCreateNewChallenge(context),
                 text: context.intl.challengeButtonCreateChallenge,
