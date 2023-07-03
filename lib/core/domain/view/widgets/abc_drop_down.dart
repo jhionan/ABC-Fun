@@ -27,34 +27,38 @@ class AbcDropDown<T> extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        DropdownButton<T>(
-          hint: Text(label),
-          items: items
-              .map((e) => DropdownMenuItem<T>(
-                    value: e.value,
-                    child: Text(e.name),
-                  ))
-              .toList(),
-          onChanged: onSelected,
-          value: value,
-          iconEnabledColor: Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
-          underline: const SizedBox.shrink(),
-          selectedItemBuilder: (context) => items
-              .map<Widget>(
-                (e) => Container(
-                  width: context.dimensions.maxHorizontalWidth * 0.8,
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: Theme.of(context).primaryColor,
-                        width: 1,
-                      )),
-                  child: Center(child: Text(e.name)),
-                ),
-              )
-              .toList(),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            return DropdownButton<T>(
+              hint: Text(label),
+              items: items
+                  .map((e) => DropdownMenuItem<T>(
+                        value: e.value,
+                        child: Text(e.name),
+                      ))
+                  .toList(),
+              onChanged: onSelected,
+              value: value,
+              iconEnabledColor: Colors.transparent,
+              borderRadius: BorderRadius.circular(20),
+              underline: const SizedBox.shrink(),
+              selectedItemBuilder: (context) => items
+                  .map<Widget>(
+                    (e) => Container(
+                      width: constraints.maxWidth*0.90,
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 1,
+                          )),
+                      child: Center(child: Text(e.name)),
+                    ),
+                  )
+                  .toList(),
+            );
+          }
         ),
       ],
     );
