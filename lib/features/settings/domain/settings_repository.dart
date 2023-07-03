@@ -1,11 +1,7 @@
-import 'dart:typed_data';
+import 'package:abc_fun/features/account_sync/presentation/domain/model/settings_entity.dart';
 
 abstract interface class SettingsRepository {
-  int get selectedStageQuantity;
-  int get selectedActionsPerStage;
-  Uint8List? get rewardImageBytes;
-  
-  Future<void> saveStageQuantity(int stageQuantity);
-  Future<void> saveActionsPerStage(int actionsPerStage);
-  Future<void> saveRewardImageBytes(Uint8List rewardImageBytes);
+  Future<SettingsEntity?> getSettings();
+  Future<void> insertSettings(SettingsEntity settingsEntity);
+  Future<void> deleteSettings(SettingsEntity settingsEntity);
 }
