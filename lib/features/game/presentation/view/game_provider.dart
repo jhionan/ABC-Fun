@@ -1,11 +1,8 @@
-import 'package:abc_fun/core/db/daos/action_custom_item_dao.dart';
 import 'package:abc_fun/core/db/daos/settings_dao.dart';
-import 'package:abc_fun/core/db/db_imp/isar_db_action_custom_item_imp.dart';
 import 'package:abc_fun/core/db/db_imp/isar_db_settings_imp.dart';
+import 'package:abc_fun/core/domain/action_items_repository.dart';
 import 'package:abc_fun/core/providers/providers.dart';
-import 'package:abc_fun/features/game/data/action_items_default_data_source.dart';
-import 'package:abc_fun/features/game/data/action_items_local_data_source.dart';
-import 'package:abc_fun/features/game/data/action_items_repository.dart';
+import 'package:abc_fun/features/game/domain/game_session_repository.dart';
 import 'package:abc_fun/features/game/presentation/bloc/game_bloc.dart';
 import 'package:abc_fun/features/game/presentation/view/game_page.dart';
 import 'package:abc_fun/features/settings/data/settings_default_data_source.dart';
@@ -26,13 +23,11 @@ class GameProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<GameBloc>(
       create: (context) => GameBloc(
-        actionEntityRepository: ActionItemsRepositoryImp(
-          defaultDataSource: ActionItemsDefaultDataSource(),
-          localDataSource: ActionItemsLocalDataSource(
-            ActionCustomItemDao(
-              IsarDbActionCustomItemImp(provider.read<Future<Isar>>(Providers.isarDb)),
-            ),
-          ),
+        actionEntityRepository: provider.read<ActionItemsRepository>(
+          Providers.actionItemsRepository,
+        ),
+        gameSessionRepository: provider.read<GameSessionRepository>(
+          Providers.gameSessionRepository,
         ),
         settingsRepository: SettingsRepositoryImp(
           settingsDefaultDataSource: SettingsDefaultDataSource(),

@@ -100,6 +100,6 @@ class GameOverWidget extends StatelessWidget {
   }
 
   void _playAgain(BuildContext context) {
-    BlocProvider.of<GameBloc>(context).add(GameRestartStageEvent());
+    BlocProvider.of<GameBloc>(context).add(GamePlayAgainEvent());
   }
 }

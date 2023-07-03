@@ -10,7 +10,12 @@ class GameRunning extends GameState {
   final ActionItemEntity correctAnswer;
   final int itemsCount;
   final int errorCount;
-  GameRunning({required this.items, required this.correctAnswer, this.itemsCount = 6, this.errorCount = 0,});
+  GameRunning({
+    required this.items,
+    required this.correctAnswer,
+    this.itemsCount = 6,
+    this.errorCount = 0,
+  });
 
   GameRunning.fromWrongAnswerState(GameWrongAnswer state)
       : items = state.items,
@@ -54,7 +59,6 @@ class GameWrongAnswer extends GameState {
   final ActionItemEntity correctAnswer;
   final int itemsCount;
   final int errorCount;
-  
 
   GameWrongAnswer.fromRunningState(GameRunning state)
       : items = state.items,
@@ -63,12 +67,7 @@ class GameWrongAnswer extends GameState {
         errorCount = state.errorCount;
 }
 
-class GameOver extends GameState {
-  final double scorePercentage;
-  GameOver({
-    required this.scorePercentage,
-  });
-}
+class GameOver extends GameState {}
 
 class GameVictory extends GameState {
   GameVictory({this.image});
