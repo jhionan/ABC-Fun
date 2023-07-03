@@ -10,18 +10,18 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:abc_fun/features/about/presentation/about_page.dart' as _i5;
 import 'package:abc_fun/features/account_sync/presentation/view/account_sync_provider.dart'
-    as _i9;
+    as _i8;
 import 'package:abc_fun/features/challenges/presentation/view/challenge_page.dart'
     as _i3;
 import 'package:abc_fun/features/challenges/presentation/view/challenge_provider.dart'
     as _i2;
 import 'package:abc_fun/features/challenges/presentation/view/create_new_challenge_page.dart'
     as _i4;
-import 'package:abc_fun/features/dashboard/presentation/view/dashboard_page.dart'
-    as _i7;
+import 'package:abc_fun/features/dashboard/presentation/view/dashboard_provider.dart'
+    as _i9;
 import 'package:abc_fun/features/game/presentation/view/game_provider.dart'
     as _i6;
-import 'package:abc_fun/features/menu/view/menu_page.dart' as _i8;
+import 'package:abc_fun/features/menu/view/menu_page.dart' as _i7;
 import 'package:abc_fun/features/settings/presentation/view/settings_provider.dart'
     as _i1;
 import 'package:auto_route/auto_route.dart' as _i10;
@@ -67,22 +67,22 @@ abstract class $AbcRouter extends _i10.RootStackRouter {
         child: const _i6.GameProvider(),
       );
     },
-    DashboardRoute.name: (routeData) {
-      return _i10.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i7.DashboardPage(),
-      );
-    },
     MenuRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i8.MenuPage(),
+        child: const _i7.MenuPage(),
       );
     },
     AccountSyncRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.AccountSyncProvider(),
+        child: const _i8.AccountSyncProvider(),
+      );
+    },
+    DashboardRoute.name: (routeData) {
+      return _i10.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i9.DashboardProvider(),
       );
     },
   };
@@ -173,21 +173,7 @@ class GameRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.DashboardPage]
-class DashboardRoute extends _i10.PageRouteInfo<void> {
-  const DashboardRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          DashboardRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'DashboardRoute';
-
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i8.MenuPage]
+/// [_i7.MenuPage]
 class MenuRoute extends _i10.PageRouteInfo<void> {
   const MenuRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -201,7 +187,7 @@ class MenuRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.AccountSyncProvider]
+/// [_i8.AccountSyncProvider]
 class AccountSyncRoute extends _i10.PageRouteInfo<void> {
   const AccountSyncRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -210,6 +196,20 @@ class AccountSyncRoute extends _i10.PageRouteInfo<void> {
         );
 
   static const String name = 'AccountSyncRoute';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i9.DashboardProvider]
+class DashboardRoute extends _i10.PageRouteInfo<void> {
+  const DashboardRoute({List<_i10.PageRouteInfo>? children})
+      : super(
+          DashboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DashboardRoute';
 
   static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }

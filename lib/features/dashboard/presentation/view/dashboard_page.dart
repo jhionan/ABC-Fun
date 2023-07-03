@@ -6,11 +6,8 @@ import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart'
 import 'package:abc_fun/features/dashboard/presentation/view/widgets/play_card.dart';
 import 'package:abc_fun/features/dashboard/presentation/view/widgets/results_widget.dart';
 import 'package:abc_fun/core/domain/view/widgets/abc_divider.dart';
-import 'package:auto_route/annotations.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-@RoutePage()
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 

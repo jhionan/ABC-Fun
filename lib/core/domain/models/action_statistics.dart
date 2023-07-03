@@ -23,7 +23,7 @@ final class TotalActionResults {
     required this.completedRounds,
   });
 
-  final double totalShown;
+  final int totalShown;
   final double averangeCorrect;
-  final double completedRounds;
+  final int completedRounds;
 }
