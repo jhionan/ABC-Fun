@@ -14,7 +14,11 @@ class SettingsDao {
   }
 
   Future<SettingsEntity?> get() async {
-    return (await db.getAll()).first;
+    List<SettingsEntity?> list = await db.getAll();
+    if (list.isEmpty) {
+      return null;
+    }
+    return list.first;
   }
 
   Future<void> delete(SettingsEntity item) async {

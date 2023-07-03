@@ -4,8 +4,8 @@ import 'package:abc_fun/core/db/db.dart';
 import 'package:abc_fun/core/db/schemas/settings_dto.dart';
 import 'package:isar/isar.dart';
 
-class IsarDbActionCustomItemImp implements Db<SettingsDto> {
-  IsarDbActionCustomItemImp(this._isar) {
+class IsarDbSettingsImp implements Db<SettingsDto> {
+  IsarDbSettingsImp(this._isar) {
     _ensureOpennedDb();
   }
   final Future<Isar> _isar;
@@ -42,11 +42,18 @@ class IsarDbActionCustomItemImp implements Db<SettingsDto> {
     return await _opennedIsar!.settingsDtos.where().findAll();
   }
 
+  //Force insert just 1 item
   @override
   Future<void> insert(SettingsDto item) async {
     await _ensureOpennedDb();
+    SettingsDto itemToInsert = item;
+    List<SettingsDto?> items = await getAll();
+    if (items.isNotEmpty) {
+      itemToInsert.id = items.first!.id;
+    }
+
     await _opennedIsar!.writeTxn(() async {
-      await _opennedIsar!.settingsDtos.put(item);
+      await _opennedIsar!.settingsDtos.put(itemToInsert);
     });
   }
 
