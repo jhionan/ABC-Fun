@@ -1,5 +1,3 @@
-import 'package:abc_fun/core/theme/abc_colors.dart';
-import 'package:abc_fun/core/theme/dimensions.dart';
 import 'package:flutter/material.dart';
 
 abstract class AbcDropDownObject<T> {

@@ -13,7 +13,6 @@ import 'package:abc_fun/core/theme/abc_colors.dart';
 import 'package:abc_fun/core/theme/dimensions.dart';
 import 'package:abc_fun/core/utils/extensions/context_ext.dart';
 import 'package:abc_fun/features/account_sync/presentation/domain/model/settings_select_entity.dart';
-import 'package:abc_fun/features/game/presentation/view/widgets/game_victory_widget.dart';
 import 'package:abc_fun/features/settings/presentation/bloc/settings_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:file_picker/file_picker.dart';

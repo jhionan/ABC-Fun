@@ -8,7 +8,6 @@ import 'package:abc_fun/features/game/presentation/view/widgets/game_wrong_answe
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GamePage extends StatelessWidget {
   const GamePage({super.key});
@@ -64,7 +63,4 @@ class GamePage extends StatelessWidget {
     );
   }
 
-  void _navigateToMenu(BuildContext context) {
-    Navigator.of(context).pop();
-  }
 }
