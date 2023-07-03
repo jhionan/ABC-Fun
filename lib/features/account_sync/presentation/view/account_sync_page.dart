@@ -8,7 +8,6 @@ import 'package:abc_fun/core/navigation/abc_router.gr.dart';
 import 'package:abc_fun/core/theme/dimensions.dart';
 import 'package:abc_fun/core/utils/extensions/context_ext.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AccountSyncPage extends StatelessWidget {
@@ -80,10 +79,6 @@ class AccountSyncPage extends StatelessWidget {
   }
 
   _connectGoogleAccount(BuildContext context) {
-    if (Platform.isMacOS) {
-      FirebaseAuth.instance.getRedirectResult();
-      return;
-    }
-    FirebaseAuth.instance.signInWithProvider(GoogleAuthProvider());
+   
   }
 }
