@@ -1,13 +1,12 @@
-import 'dart:io';
 import 'dart:math';
 
+import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/core/domain/view/widgets/background_widget.dart';
 import 'package:abc_fun/core/images.dart';
 import 'package:abc_fun/core/theme/abc_colors.dart';
 import 'package:abc_fun/core/theme/dimensions.dart';
 import 'package:abc_fun/core/utils/extensions/context_ext.dart';
-import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
-import 'package:abc_fun/core/domain/view/widgets/background_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -31,28 +30,39 @@ class GameVictoryWidget extends StatelessWidget {
                     top: 0,
                     left: 0,
                     right: 0,
-                    bottom: 0,
-                    child: Image.file(
-                      File.fromRawPath(imageData!),
-                      fit: BoxFit.cover,
-                    )),
-              Center(
-                child: AbcCard(
-                  padding: EdgeInsets.all(context.dimensions.hMargin),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        width: double.infinity,
-                      ),
-                      Text(
-                        context.intl.gameVictory,
-                        style: context.textTheme.displayMedium?.copyWith(
-                          color: AbcColors.primary,
+                    bottom: 150,
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: Image.memory(
+                          imageData!,
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
-                    ],
+                    )),
+              Positioned(
+                top: imageData != null ? null : 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Center(
+                  child: AbcCard(
+                    padding: EdgeInsets.all(context.dimensions.hMargin),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          width: double.infinity,
+                        ),
+                        Text(
+                          context.intl.gameVictory,
+                          style: context.textTheme.displayMedium?.copyWith(
+                            color: AbcColors.primary,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -66,16 +76,16 @@ class GameVictoryWidget extends StatelessWidget {
                     fit: BoxFit.fitWidth,
                   ),
                 ),
-              if (imageData == null)
-                Positioned(
-                  right: 2 * context.dimensions.hMargin,
-                  bottom: (constraints.maxHeight / 2) - maxImageWidth - (type.isHandset ? 30.0 : 0),
-                  child: Image.asset(
-                    Images.totalChallengesResults,
-                    width: maxImageWidth,
-                    fit: BoxFit.fitWidth,
-                  ),
+              Positioned(
+                right: imageData == null ? 2 * context.dimensions.hMargin : 0,
+                bottom:
+                    imageData == null ? (constraints.maxHeight / 2) - maxImageWidth - (type.isHandset ? 30.0 : 0) : 0,
+                child: Image.asset(
+                  Images.totalChallengesResults,
+                  width: maxImageWidth,
+                  fit: BoxFit.fitWidth,
                 ),
+              ),
             ],
           );
         }),

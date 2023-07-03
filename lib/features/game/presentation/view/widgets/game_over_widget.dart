@@ -1,13 +1,16 @@
 import 'dart:math';
 
+import 'package:abc_fun/core/domain/view/widgets/abc_button.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/core/domain/view/widgets/background_widget.dart';
 import 'package:abc_fun/core/images.dart';
 import 'package:abc_fun/core/theme/abc_colors.dart';
 import 'package:abc_fun/core/theme/dimensions.dart';
 import 'package:abc_fun/core/utils/extensions/context_ext.dart';
-import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
-import 'package:abc_fun/core/domain/view/widgets/background_widget.dart';
+import 'package:abc_fun/features/game/presentation/bloc/game_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GameOverWidget extends StatelessWidget {
   const GameOverWidget({
@@ -36,10 +39,28 @@ class GameOverWidget extends StatelessWidget {
                         width: double.infinity,
                       ),
                       Text(
-                        context.intl.gameVictory,
+                        context.intl.gameOverTitle,
+                        textAlign: TextAlign.center,
                         style: context.textTheme.displayMedium?.copyWith(
-                          color: AbcColors.green,
+                          color: AbcColors.primary,
                         ),
+                      ),
+                      SizedBox(
+                        height: context.dimensions.vMargin * 2,
+                      ),
+                      IconButton.filledTonal(
+                        icon: const Icon(
+                          Icons.replay,
+                          size: 48,
+                        ),
+                        onPressed: () => _playAgain(context),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      AbcButton.secondary(
+                        text: context.intl.buttonPlayAgain,
+                        onPressed: () => _playAgain(context),
                       ),
                     ],
                   ),
@@ -47,7 +68,7 @@ class GameOverWidget extends StatelessWidget {
               ),
               Positioned(
                 left: 2 * context.dimensions.hMargin,
-                bottom: (constraints.maxHeight / 2) - maxImageWidth / 2 + (type.isHandset ? 50.0 : 0),
+                top: (constraints.maxHeight / 4) - maxImageWidth,
                 child: Image.asset(
                   Images.totalAverangeSuccessResults,
                   width: maxImageWidth,
@@ -56,17 +77,29 @@ class GameOverWidget extends StatelessWidget {
               ),
               Positioned(
                 right: 2 * context.dimensions.hMargin,
-                bottom: (constraints.maxHeight / 2) - maxImageWidth - (type.isHandset ? 30.0 : 0),
+                bottom: (constraints.maxHeight / 4) - maxImageWidth / 2,
                 child: Image.asset(
                   Images.totalChallengesResults,
                   width: maxImageWidth,
                   fit: BoxFit.fitWidth,
                 ),
               ),
+              Positioned(
+                top: 0,
+                left: 0,
+                child: AbcButton.backButton(
+                  context: context,
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              )
             ],
           );
         }),
       ),
     );
+  }
+
+  void _playAgain(BuildContext context) {
+    BlocProvider.of<GameBloc>(context).add(GameRestartStageEvent());
   }
 }

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:abc_fun/core/domain/action_items_repository.dart';
 import 'package:abc_fun/core/domain/models/action_item_entity.dart';
+import 'package:abc_fun/features/account_sync/presentation/domain/model/settings_entity.dart';
+import 'package:abc_fun/features/settings/domain/settings_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,15 +11,17 @@ part 'game_event.dart';
 part 'game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  GameBloc({required this.repository}) : super(GameLoading()) {
+  GameBloc({required this.actionEntityRepository, required this.settingsRepository}) : super(GameLoading()) {
     on<GameEvent>(eventHandler);
     _startGameSetup();
   }
-  final ActionItemsRepository repository;
-  final int itemsCount = 6;
-  final int rounds = 2;
+  final ActionItemsRepository actionEntityRepository;
+  final SettingsRepository settingsRepository;
+  int itemsCount = 6;
+  int rounds = 2;
   int currentRound = 0;
   int totalMoves = 0;
+  Uint8List? rewardImageBytes;
   double get finalScorePercentage => rounds / totalMoves * 100;
 
   final List<ActionItemEntity> roundItems = <ActionItemEntity>[];
@@ -28,11 +32,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       case GameEventOnItemTapped:
         emit(_nextState(event as GameEventOnItemTapped));
         return;
-      case GameEventRestart:
+      case GameRestartStageEvent:
         _phaseGenerator(emit);
         return;
-      case GameWithError:
+      case GameWithErrorEvent:
         emit(GameError());
+        return;
+      case GamePlayAgainEvent:
+        _startGameSetup();
         return;
     }
   }
@@ -40,7 +47,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   GameState _nextState(GameEventOnItemTapped event) {
     totalMoves++;
     if (state is GameRunning && event.item == (state as GameRunning).correctAnswer && currentRound < rounds) {
-      return GameVictory();
+      return GameVictory(image: rewardImageBytes);
     }
     if (state is GameRunning && event.item != (state as GameRunning).correctAnswer && currentRound <= rounds) {
       return GameWrongAnswer.fromRunningState(state as GameRunning);
@@ -67,12 +74,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   Future<void> _startGameSetup() async {
+    await _loadingSettings();
     Set<String> containedItems = <String>{};
-    List<ActionItemEntity> event = (await repository.getAllItems()).where((e) {
+    List<ActionItemEntity> event = (await actionEntityRepository.getAllItems()).where((e) {
       return e.isActive;
     }).toList();
     if (event.isEmpty) {
-      add(GameWithError());
+      add(GameWithErrorEvent());
     }
     roundItems.addAll(event
       ..shuffle()
@@ -80,6 +88,19 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         (value) => !containedItems.add(value.name.toLowerCase()),
       ).take(rounds));
     possibleItems.addAll(event);
-    add(GameEventRestart());
+    add(GameRestartStageEvent());
+  }
+
+  Future<void> _loadingSettings() async {
+    SettingsEntity? settings = await settingsRepository.getSettings();
+    if (settings == null) {
+      add(GameWithErrorEvent());
+      return;
+    }
+    rounds = settings.selectedStageQuantity;
+    itemsCount = settings.selectedActionsPerStage;
+    if (settings.rewardImageBytes != null) {
+      rewardImageBytes = Uint8List.fromList(settings.rewardImageBytes!);
+    }
   }
 }

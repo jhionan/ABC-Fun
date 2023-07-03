@@ -34,7 +34,7 @@ class GamePage extends StatelessWidget {
             }
             if (state is GameVictory) {
               Future.delayed(const Duration(milliseconds: 1500))
-                  .then((value) => context.read<GameBloc>().add(GameEventRestart()));
+                  .then((value) => context.read<GameBloc>().add(GameRestartStageEvent()));
               return GameVictoryWidget(
                 imageData: state.image,
               );
@@ -44,30 +44,13 @@ class GamePage extends StatelessWidget {
               return Container(color: Colors.red.shade700, child: Center(child: Text(context.intl.gameError)));
             }
             if (state is GameWrongAnswer) {
-              Future.delayed(const Duration(milliseconds: 1000))
-                  .then((value) => context.read<GameBloc>().add(GameEventRestart()));
+              Future.delayed(const Duration(milliseconds: 2000))
+                  .then((value) => context.read<GameBloc>().add(GameRestartStageEvent()));
               return const GameWrongAnswerWidget();
             }
             if (state is GameOver) {
-              Future.delayed(const Duration(milliseconds: 2000)).then((value) => context.router.popUntilRoot());
+              // Future.delayed(const Duration(milliseconds: 2000)).then((value) => context.router.popUntilRoot());
               return const GameOverWidget();
-              return Container(
-                  color: Colors.blue.shade200,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text('Pontuação final: ${state.scorePercentage.toStringAsPrecision(4)}%'),
-                      const SizedBox(
-                        width: double.infinity,
-                        height: 16,
-                      ),
-                      MaterialButton(
-                        onPressed: () => _navigateToMenu(context),
-                        child: Text(AppLocalizations.of(context).menuTitle),
-                      )
-                    ],
-                  ));
             }
             if (state is GameRunning) {
               return GameRunningWidget(
