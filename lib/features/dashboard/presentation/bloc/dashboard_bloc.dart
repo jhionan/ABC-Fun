@@ -12,6 +12,7 @@ part 'dashboard_state.dart';
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   DashboardBloc({required this.gameSessionRepository}) : super(DashboardLoadingState()) {
     on<DashboardEvent>(_handleEvent);
+    _listenDbChanges();
     _init();
   }
 
@@ -43,6 +44,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         actionErrors: event.actionErrors,
       ));
       return;
+    }
+
+    if (event is DashboardReloadEvent) {
+      _init();
     }
   }
 
@@ -97,5 +102,11 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       return;
     }
     add(dashboardSessionLoadedEvent);
+  }
+
+  void _listenDbChanges() {
+    gameSessionRepository.onDbChanged().listen((event) {
+      _init();
+    });
   }
 }

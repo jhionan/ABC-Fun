@@ -15,4 +15,11 @@ class GameSessionRepositoryImp implements GameSessionRepository {
   Future<void> insert(GameSessionDto item) {
     return localDataSource.insert(item);
   }
+  
+  @override
+  Stream<void> onDbChanged() {
+   return localDataSource.onDbChanged();
+  }
+
+  
 }

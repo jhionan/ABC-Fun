@@ -15,4 +15,9 @@ class GameSessionLocalDataSouce implements GameSessionRepository {
   Future<void> insert(GameSessionDto item) async {
     await gameSessionDao.insert(item);
   }
+
+  @override
+  Stream<void> onDbChanged() {
+    return gameSessionDao.onDbChange();
+  }
 }

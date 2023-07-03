@@ -5,6 +5,8 @@ abstract class DashboardEvent {}
 
 class DashboardEmptyEvent extends DashboardEvent {}
 
+class DashboardReloadEvent  extends DashboardEvent {}
+
 class DashboardSessionLoadedEvent extends DashboardEvent {
   DashboardSessionLoadedEvent({
     required this.totalSessions,

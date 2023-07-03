@@ -9,4 +9,5 @@ abstract interface class Db<T extends Object> {
   Future<void> deleteAll(List<T> items);
   Future<void> update(T item);
   Future<void> updateAll(List<T> items);
+  Stream<void> onDbchanged();
 }

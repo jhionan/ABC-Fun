@@ -73,4 +73,10 @@ class IsarDbActionCustomItemImp implements Db<ActionCustomItemEntity> {
   Future<void> _ensureOpennedDb() async {
     _opennedIsar ??= await _isar;
   }
+  
+  @override
+  Stream<void> onDbchanged() async* {
+    await _ensureOpennedDb();
+    yield* _opennedIsar!.actionCustomItemEntitys.watchLazy();
+  }
 }

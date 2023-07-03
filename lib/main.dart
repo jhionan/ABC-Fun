@@ -1,9 +1,12 @@
+import 'dart:async';
+
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:abc_fun/core/navigation/abc_router.dart';
 import 'package:abc_fun/core/providers/providers.dart';
 import 'package:abc_fun/core/theme/abc_fun_theme.dart';
 import 'package:abc_fun/core/theme/dimensions.dart';
-import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +16,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -40,10 +42,24 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final appRouter = provider.read<AbcRouter>(Providers.appRouter);

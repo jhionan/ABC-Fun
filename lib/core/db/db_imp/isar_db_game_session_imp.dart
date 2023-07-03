@@ -73,4 +73,10 @@ class IsarDbGameSessionImp implements Db<GameSessionDto> {
   Future<void> _ensureOpennedDb() async {
     _opennedIsar ??= await _isar;
   }
+
+  @override
+  Stream<void> onDbchanged() async* {
+    await _ensureOpennedDb();
+    yield* _opennedIsar!.gameSessionDtos.watchLazy();
+  }
 }

@@ -27,4 +27,8 @@ class GameSessionDao {
   Future<void> deleteMany(List<GameSessionDto> items) async {
     await db.deleteAll(items);
   }
+
+  Stream<void> onDbChange() async* {
+    yield* db.onDbchanged();
+  }
 }

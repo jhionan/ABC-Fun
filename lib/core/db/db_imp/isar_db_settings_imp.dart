@@ -80,4 +80,10 @@ class IsarDbSettingsImp implements Db<SettingsDto> {
   Future<void> _ensureOpennedDb() async {
     _opennedIsar ??= await _isar;
   }
+
+  @override
+  Stream<void> onDbchanged() async* {
+    await _ensureOpennedDb();
+    yield* _opennedIsar!.settingsDtos.watchLazy();
+  }
 }

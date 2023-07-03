@@ -17,11 +17,19 @@ class AbcRouter extends $AbcRouter {
           path: '/${AbcRoute.menu.pathFragment}',
           title: (context, data) => 'Menu',
           children: [
-            AutoRoute(page: DashboardRoute.page, path: AbcRoute.dashboard.pathFragment, initial: true),
-            AutoRoute(page: ChallengeProviderRoute.page, path: AbcRoute.challenges.pathFragment, children: [
-              AutoRoute(page: ChallengeRoute.page, initial: true),
-              AutoRoute(page: CreateNewChallengeRoute.page, path: 'new-challenge'),
-            ]),
+            AutoRoute(
+              page: DashboardRoute.page,
+              path: AbcRoute.dashboard.pathFragment,
+              initial: true,
+            ),
+            AutoRoute(
+              page: ChallengeProviderRoute.page,
+              path: AbcRoute.challenges.pathFragment,
+              children: [
+                AutoRoute(page: ChallengeRoute.page, initial: true),
+                AutoRoute(page: CreateNewChallengeRoute.page, path: 'new-challenge'),
+              ],
+            ),
             AutoRoute(
               page: AboutRoute.page,
               path: AbcRoute.about.pathFragment,
