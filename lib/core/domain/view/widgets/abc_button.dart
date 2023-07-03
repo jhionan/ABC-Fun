@@ -54,6 +54,26 @@ class AbcButton extends StatelessWidget {
       foregroundColor: AbcColors.onSecondary,
     );
   }
+   factory AbcButton.secondaryRed({
+    Key? key,
+    required String text,
+    VoidCallback? onPressed,
+    double? minWidth,
+    double? maxWidth,
+    IconData? icon,
+  }) {
+    return AbcButton._(
+      key: key,
+      text: text,
+      onPressed: onPressed,
+      minWidth: minWidth ?? 99,
+      maxWidth: maxWidth,
+      icon: icon,
+      height: 48,
+      backgroundColor: AbcColors.error,
+      foregroundColor: AbcColors.onError,
+    );
+  }
 
   factory AbcButton.backButton({
     VoidCallback? onPressed,
