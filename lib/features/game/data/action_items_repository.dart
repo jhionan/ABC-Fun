@@ -1,12 +1,12 @@
 import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
-import 'package:abc_fun/features/game/data/action_items_default_data_source_imp.dart';
+import 'package:abc_fun/features/game/data/action_items_default_data_source.dart';
 import 'package:abc_fun/core/domain/action_items_repository.dart';
 import 'package:abc_fun/core/domain/models/action_item_entity.dart';
-import 'package:abc_fun/features/game/data/action_items_local_data_source_imp.dart';
+import 'package:abc_fun/features/game/data/action_items_local_data_source.dart';
 
 class ActionItemsRepositoryImp implements ActionItemsRepository {
-  final ActionItemsDefaultDataSourceImp defaultDataSource;
-  final ActionItemsLocalDataSourceImp localDataSource;
+  final ActionItemsDefaultDataSource defaultDataSource;
+  final ActionItemsLocalDataSource localDataSource;
 
   ActionItemsRepositoryImp({
     required this.defaultDataSource,

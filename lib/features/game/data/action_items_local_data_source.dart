@@ -3,10 +3,10 @@ import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
 import 'package:abc_fun/core/domain/action_items_repository.dart';
 import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 
-class ActionItemsLocalDataSourceImp implements ActionItemsRepository {
+class ActionItemsLocalDataSource implements ActionItemsRepository {
   final ActionCustomItemDao actionCustomItemDao;
 
-  ActionItemsLocalDataSourceImp(this.actionCustomItemDao);
+  ActionItemsLocalDataSource(this.actionCustomItemDao);
 
   @override
   Future<void> addItem(ActionItemEntity item) async {

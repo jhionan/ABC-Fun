@@ -1,7 +1,8 @@
 import 'package:abc_fun/core/db/daos/action_custom_item_dao.dart';
+import 'package:abc_fun/core/db/db_imp/isar_db_action_custom_item_imp.dart';
 import 'package:abc_fun/core/providers/providers.dart';
-import 'package:abc_fun/features/game/data/action_items_default_data_source_imp.dart';
-import 'package:abc_fun/features/game/data/action_items_local_data_source_imp.dart';
+import 'package:abc_fun/features/game/data/action_items_default_data_source.dart';
+import 'package:abc_fun/features/game/data/action_items_local_data_source.dart';
 import 'package:abc_fun/features/game/data/action_items_repository.dart';
 import 'package:abc_fun/features/game/presentation/bloc/game_bloc.dart';
 import 'package:abc_fun/features/game/presentation/view/game_page.dart';
@@ -21,10 +22,10 @@ class GameProvider extends StatelessWidget {
     return BlocProvider<GameBloc>(
       create: (context) => GameBloc(
         repository: ActionItemsRepositoryImp(
-          defaultDataSource: ActionItemsDefaultDataSourceImp(),
-          localDataSource: ActionItemsLocalDataSourceImp(
+          defaultDataSource: ActionItemsDefaultDataSource(),
+          localDataSource: ActionItemsLocalDataSource(
             ActionCustomItemDao(
-              provider.read<Future<Isar>>(Providers.db),
+              IsarDbActionCustomItemImp(provider.read<Future<Isar>>(Providers.db)),
             ),
           ),
         ),
