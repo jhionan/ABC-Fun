@@ -32,7 +32,7 @@ class GamePage extends StatelessWidget {
               ));
             }
             if (state is GameVictory) {
-              Future.delayed(const Duration(milliseconds: 1500))
+              Future.delayed(const Duration(milliseconds: 3000))
                   .then((value) => context.read<GameBloc>().add(GameRestartStageEvent()));
               return GameVictoryWidget(
                 imageData: state.image,
