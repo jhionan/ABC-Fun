@@ -21,7 +21,7 @@ final class Providers {
     return PathProviderHelper();
   });
 
-  static final db = Provider<Future<Isar>>((ref) async {
+  static final isarDb = Provider<Future<Isar>>((ref) async {
     final path = await ref.read<PathProviderHelper>(pathProviderHelper).getApplicationDocumentsDirectoryPath();
     final isar = await Isar.open(
       [ActionCustomItemEntitySchema, SettingsDtoSchema],

@@ -28,7 +28,7 @@ class ChallengeProvider extends StatelessWidget implements AutoRouteWrapper {
         defaultDataSource: ActionItemsDefaultDataSource(),
         localDataSource: ActionItemsLocalDataSource(
           ActionCustomItemDao(
-            IsarDbActionCustomItemImp(provider.read<Future<Isar>>(Providers.db)),
+            IsarDbActionCustomItemImp(provider.read<Future<Isar>>(Providers.isarDb)),
           ),
         ),
       )),
