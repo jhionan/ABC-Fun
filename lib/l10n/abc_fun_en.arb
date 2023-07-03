@@ -106,5 +106,8 @@
     "gameVictory": "Correct",
     "gameWrongAnswer": "Wrong",
     "createNewChallengePageActionNameError": "The action name is required",
-    "accountSyncPageSyncAccount": "Sync Google account"
+    "accountSyncPageSyncAccount": "Sync Google account",
+    "gameOverTitle": "Congratulations, you have completed the game!",
+    "buttonPlayAgain": "Play Again",
+    "buttonBackHome": "Back to Home"
 }
