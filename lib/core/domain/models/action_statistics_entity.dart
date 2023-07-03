@@ -1,19 +1,19 @@
 import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 
-final class ActionStatistics {
-  ActionStatistics({
-    required this.action,
+final class ActionStatisticsEntity {
+  ActionStatisticsEntity({
+    required this.actionName,
     required this.totalShown,
-    required this.totalCorrect,
     required this.totalIncorrect,
+    required this.actionGroup
   });
 
-  final ActionItemEntity action;
+  final String actionName;
   final int totalShown;
-  final int totalCorrect;
   final int totalIncorrect;
-  double get errorRate => totalIncorrect / totalShown;
-  double get errorRatePercentage => errorRate * 100;
+  final ActionGroup actionGroup;
+  double get errorRate =>  totalIncorrect / totalShown;
+  double get errorRatePercentage => errorRate == double.infinity ? 0 : errorRate * 100;
 }
 
 final class TotalActionResults {

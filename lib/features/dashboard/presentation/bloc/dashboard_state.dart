@@ -22,3 +22,16 @@ class DashboardLoadedState extends DashboardState {
     required this.totalCorrect,
   });
 }
+
+class DashboardLoadedWithActionErrorsState extends DashboardLoadedState {
+  final List<GameSessionAction> actionErrors;
+
+  DashboardLoadedWithActionErrorsState({
+    required super.totalSessions,
+    required super.totalStages,
+    required super.totalMoves,
+    required super.totalWrong,
+    required super.totalCorrect,
+    required this.actionErrors,
+  });
+}

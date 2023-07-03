@@ -1,58 +1,55 @@
+import 'package:abc_fun/core/domain/models/action_statistics_entity.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_title_widget.dart';
 import 'package:abc_fun/core/images.dart';
 import 'package:abc_fun/core/theme/dimensions.dart';
 import 'package:abc_fun/core/utils/extensions/context_ext.dart';
-import 'package:abc_fun/core/domain/view/widgets/abc_title_widget.dart';
+import 'package:abc_fun/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:abc_fun/features/dashboard/presentation/view/widgets/report_card.dart';
-import 'package:abc_fun/core/domain/models/action_statistics.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ReportWidget extends StatelessWidget {
-  ReportWidget({super.key});
-  final List<ActionStatistics> actionStatistics = [
-    // ActionStatistics(
-    //   action:
-    //       ActionItemEntity(name: 'Correndo', imagePath: 'assets/images/a.png', group: ActionGroup.custom, dificulty: 1),
-    //   totalShown: 10,
-    //   totalCorrect: 5,
-    //   totalIncorrect: 8,
-    // ),
-    // ActionStatistics(
-    //   action:
-    //       ActionItemEntity(name: 'Nadando', imagePath: 'assets/images/b.png', group: ActionGroup.custom, dificulty: 1),
-    //   totalShown: 10,
-    //   totalCorrect: 5,
-    //   totalIncorrect: 9,
-    // ),
-    // ActionStatistics(
-    //   action: ActionItemEntity(
-    //       name: 'Escalando', imagePath: 'assets/images/c.png', group: ActionGroup.custom, dificulty: 1),
-    //   totalShown: 10,
-    //   totalCorrect: 5,
-    //   totalIncorrect: 1,
-    // ),
-  ];
-
+  const ReportWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: context.dimensions.maxHorizontalWidth,
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.dimensions.hMargin, vertical: context.dimensions.vMargin),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AbcTitleWidget.small(imageUrl: Images.performanceIcon, title: context.intl.reportWidgetByTheme),
-            ...actionStatistics
-                .map((e) => Padding(
-                      padding: EdgeInsets.only(top: context.dimensions.vMargin),
-                      child: ReportCard(actionStatistics: e),
-                    ))
-                .toList()
-          ],
-        ),
-      ),
+    return BlocBuilder<DashboardBloc, DashboardState>(
+      builder: (context, state) {
+        final List<ActionStatisticsEntity> actionStatistics = [];
+
+        if (state is DashboardLoadedWithActionErrorsState) {
+          actionStatistics.addAll(state.actionErrors.map((e) => ActionStatisticsEntity(
+              actionName: e.actionName, totalIncorrect: e.totalWrong, totalShown: e.totalPlayed, actionGroup: e.group)));
+          
+          return ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: context.dimensions.maxHorizontalWidth,
+            ),
+            child: Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: context.dimensions.hMargin, vertical: context.dimensions.vMargin),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AbcTitleWidget.small(imageUrl: Images.performanceIcon, title: context.intl.reportWidgetByTheme),
+                  ...actionStatistics
+                      .map((e) => Padding(
+                            padding: EdgeInsets.only(top: context.dimensions.vMargin),
+                            child: ReportCard(actionStatistics: e),
+                          ))
+                      .toList()
+                ],
+              ),
+            ),
+          );
+        }
+        if (state is DashboardLoadingState) {
+          return Padding(
+            padding: EdgeInsets.all(context.dimensions.hMargin),
+            child: const Center(child: CircularProgressIndicator()),
+          );
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 }

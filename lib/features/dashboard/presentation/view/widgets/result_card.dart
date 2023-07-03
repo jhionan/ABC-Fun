@@ -18,7 +18,7 @@ class ResultCard extends StatelessWidget {
   });
   final String imageUrl;
   final String text;
-  final double result;
+  final String result;
   final ResultCardType type;
 
   @override
@@ -58,7 +58,7 @@ class ResultCard extends StatelessWidget {
                 width: 4,
               ),
               Text(
-                result.round().toString(),
+                result,
                 style: TextStyle(
                   fontSize: getResultFontSizeByType(),
                   color: AbcColors.primary,

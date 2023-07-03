@@ -56,11 +56,11 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   GameState _nextState(GameEventOnItemTapped event) {
     _totalMoves++;
     if (state is GameRunning && event.item == (state as GameRunning).correctAnswer && _currentRound < _rounds) {
-      _addToGameSession(event.item);
+      _addToGameSession((state as GameRunning).correctAnswer);
       return GameVictory(image: rewardImageBytes);
     }
     if (state is GameRunning && event.item != (state as GameRunning).correctAnswer && _currentRound <= _rounds) {
-      _addWrongAnswerToSession(event.item);
+      _addWrongAnswerToSession((state as GameRunning).correctAnswer);
       return GameWrongAnswer.fromRunningState(state as GameRunning);
     }
     _saveSession();
@@ -130,6 +130,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   void _addWrongAnswerToSession(ActionItemEntity item) {
     if (_playedActions.containsKey(item.name)) {
       _playedActions[item.name]!.totalWrong++;
+      _playedActions[item.name]!.totalPlayed++;
     } else {
       _playedActions[item.name] = GameSessionAction(
         actionName: item.name,

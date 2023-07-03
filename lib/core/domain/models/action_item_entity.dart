@@ -78,7 +78,13 @@ enum ActionGroup {
 
 extension ActionGroupNameEx on ActionItemEntity {
   String actionName(BuildContext context) {
-    return switch (group) {
+   return group.actionName(context: context, defaultName: name);
+  }
+}
+
+extension ActionGroupEx on ActionGroup {
+  String actionName({required BuildContext context, required String defaultName}) {
+ return switch (this) {
       ActionGroup.answeringPhone => context.intl.actionAnsweringPhone,
       ActionGroup.bathing => context.intl.actionBathing,
       ActionGroup.blowingBubbles => context.intl.actionBlowingBubbles,
@@ -94,7 +100,7 @@ extension ActionGroupNameEx on ActionItemEntity {
       ActionGroup.climbingTree => context.intl.actionClimbingTree,
       ActionGroup.cooking => context.intl.actionCooking,
       ActionGroup.crying => context.intl.actionCrying,
-      ActionGroup.custom => name.capitalize(),
+      ActionGroup.custom => defaultName.capitalize(),
       ActionGroup.dancing => context.intl.actionDancing,
       ActionGroup.dog => context.intl.actionDog,
       ActionGroup.drawing => context.intl.actionDrawing,
