@@ -1,7 +1,7 @@
-import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/utils/extensions/context_ext.dart';
-import 'package:aba/core/domain/view/widgets/abc_card.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/utils/extensions/context_ext.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
 import 'package:flutter/material.dart';
 
 class GameWrongAnswerWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class GameWrongAnswerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.all(2*context.dimensions.hMargin),
+        padding: EdgeInsets.all(2 * context.dimensions.hMargin),
         child: AbcCard(
           padding: EdgeInsets.all(context.dimensions.hMargin),
           child: Column(

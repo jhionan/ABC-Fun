@@ -1,6 +1,6 @@
-import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/domain/view/widgets/abc_card.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_card.dart';
 import 'package:flutter/material.dart';
 
 enum ResultCardType {
@@ -18,7 +18,7 @@ class ResultCard extends StatelessWidget {
   });
   final String imageUrl;
   final String text;
-  final double result;
+  final String result;
   final ResultCardType type;
 
   @override
@@ -58,7 +58,7 @@ class ResultCard extends StatelessWidget {
                 width: 4,
               ),
               Text(
-                result.round().toString(),
+                result,
                 style: TextStyle(
                   fontSize: getResultFontSizeByType(),
                   color: AbcColors.primary,

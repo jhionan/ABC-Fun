@@ -81,9 +81,9 @@
     "syncAccountPageTitle": "Sincronizar Cuentas",
     "settingsPageTitle": "Configuraciones de fase",
     "settingsPageDescription": "Configura el número de fases por ronda y la dificultad (número de imágenes)",
-    "settingsPagePhasesTitle": "Número de Fases",
-    "settingsPagePhases": "{n, plural, =1{1 fase} other {{n} fases}}",
-    "@settingsPagePhases": {
+    "settingsPageStagesTitle": "Número de Fases",
+    "settingsPageStages": "{n, plural, =1{1 fase} other {{n} fases}}",
+    "@settingsPageStages": {
         "placeholders": {
             "n": {
                 "type": "int"
@@ -102,5 +102,12 @@
     "settingsPageRewardTitle": "Recompensa",
     "settingsPageRewardDescription": "Configura una imagen específica para cuando haya una respuesta correcta",
     "aboutPageTitle": "Acerca de",
-    "aboutPageDescription": "ABC Fun es un juego innovador basado en el método ABA (Análisis Aplicado del Comportamiento).\nFue desarrollado con el objetivo de ayudar a niños autistas en su proceso de aprendizaje.\nCreado con dedicación por Jhionan Rian Lara dos Santos y Bruno Stefanis Leal, y bajo la supervisión del Dr. Alexander Robert Kutzke como parte de su proyecto final en el curso de Análisis y Desarrollo de Sistemas de la Universidad Federal de Paraná (UFPR).\n\n\nABC Fun ofrece una experiencia interactiva y atractiva. El juego combina los principios del método ABA con elementos lúdicos e interactivos adaptados específicamente para satisfacer las necesidades de los niños autistas. A través de una serie de actividades cuidadosamente diseñadas. La concepción de este juego fue realizada por el estudiante Guilherme Antônio Constantino, bajo la supervisión del Dr. Ricardo Z. N. Vêncio, como parte del curso de Informática Biomédica de la Facultad de Medicina de Ribeirão Preto de la Universidad de São Paulo, en el año 2021."
+    "aboutPageDescription": "ABC Fun es un juego innovador basado en el método ABA (Análisis Aplicado del Comportamiento).\nFue desarrollado con el objetivo de ayudar a niños autistas en su proceso de aprendizaje.\nCreado con dedicación por Jhionan Rian Lara dos Santos y Bruno Stefanis Leal, y bajo la supervisión del Dr. Alexander Robert Kutzke como parte de su proyecto final en el curso de Análisis y Desarrollo de Sistemas de la Universidad Federal de Paraná (UFPR).\n\n\nABC Fun ofrece una experiencia interactiva y atractiva. El juego combina los principios del método ABA con elementos lúdicos e interactivos adaptados específicamente para satisfacer las necesidades de los niños autistas. A través de una serie de actividades cuidadosamente diseñadas. La concepción de este juego fue realizada por el estudiante Guilherme Antônio Constantino, bajo la supervisión del Dr. Ricardo Z. N. Vêncio, como parte del curso de Informática Biomédica de la Facultad de Medicina de Ribeirão Preto de la Universidad de São Paulo, en el año 2021.",
+    "gameVictory": "Correcto",
+    "gameWrongAnswer": "Incorrecto",
+    "createNewChallengePageActionNameError": "Se requiere el nombre de la acción",
+    "accountSyncPageSyncAccount": "Sincronizar cuenta de Google",
+    "gameOverTitle": "¡Felicitaciones, has completado el juego!",
+    "buttonPlayAgain": "Jugar de nuevo",
+    "buttonBackHome": "Volver a inicio"
 }

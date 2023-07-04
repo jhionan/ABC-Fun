@@ -1,4 +1,4 @@
-import 'package:aba/core/images.dart';
+import 'package:abc_fun/core/images.dart';
 import 'package:flutter/material.dart';
 
 class BackgroundWidget extends StatelessWidget {

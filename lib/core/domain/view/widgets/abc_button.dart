@@ -1,5 +1,5 @@
-import 'package:aba/core/theme/abc_colors.dart';
-import 'package:aba/core/utils/extensions/context_ext.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/utils/extensions/context_ext.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,8 @@ class AbcButton extends StatelessWidget {
         minWidth: minWidth,
         maxWidth: maxWidth,
       );
-  factory AbcButton.green({Key? key, required String text, VoidCallback? onPressed, double? minWidth, double? maxWidth}) =>
+  factory AbcButton.green(
+          {Key? key, required String text, VoidCallback? onPressed, double? minWidth, double? maxWidth}) =>
       AbcButton._(
         key: key,
         text: text,
@@ -51,6 +52,26 @@ class AbcButton extends StatelessWidget {
       height: 48,
       backgroundColor: AbcColors.secondary,
       foregroundColor: AbcColors.onSecondary,
+    );
+  }
+   factory AbcButton.secondaryRed({
+    Key? key,
+    required String text,
+    VoidCallback? onPressed,
+    double? minWidth,
+    double? maxWidth,
+    IconData? icon,
+  }) {
+    return AbcButton._(
+      key: key,
+      text: text,
+      onPressed: onPressed,
+      minWidth: minWidth ?? 99,
+      maxWidth: maxWidth,
+      icon: icon,
+      height: 48,
+      backgroundColor: AbcColors.error,
+      foregroundColor: AbcColors.onError,
     );
   }
 

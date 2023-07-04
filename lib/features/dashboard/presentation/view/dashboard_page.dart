@@ -1,16 +1,14 @@
 import 'dart:math';
 
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/core/domain/view/widgets/abc_scaffold.dart';
-import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:aba/features/dashboard/presentation/view/widgets/play_card.dart';
-import 'package:aba/features/dashboard/presentation/view/widgets/results_widget.dart';
-import 'package:aba/core/domain/view/widgets/abc_divider.dart';
-import 'package:auto_route/annotations.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_divider.dart';
+import 'package:abc_fun/core/domain/view/widgets/abc_scaffold.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/features/dashboard/presentation/view/widgets/play_card.dart';
+import 'package:abc_fun/features/dashboard/presentation/view/widgets/report_widget.dart';
+import 'package:abc_fun/features/dashboard/presentation/view/widgets/results_widget.dart';
 import 'package:flutter/material.dart';
 
-@RoutePage()
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 
@@ -28,14 +26,11 @@ class DashboardPage extends StatelessWidget {
             const AbcMobileDivider(),
             Center(
               child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.end,
+                crossAxisAlignment: WrapCrossAlignment.start,
                 alignment: WrapAlignment.spaceEvenly,
                 runAlignment: WrapAlignment.end,
                 children: [
-                  SizedBox(width: !isHandset ? maxElementWidth : null, child: const ResultsWidget()),
-                  // SizedBox(
-                  //   width: !isHandset ? maxElementWidth : null,
-                  //   child: ReportWidget()),
+                  SizedBox(width: !isHandset ? maxElementWidth : null, child: const ReportWidget()),
                   const AbcMobileDivider(),
                   SizedBox(width: !isHandset ? maxElementWidth : null, child: const ResultsWidget()),
                 ],

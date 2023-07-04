@@ -20,6 +20,8 @@ class GameEventOnItemTapped extends GameEvent {
   int get hashCode => item.hashCode;
 }
 
-class GameEventRestart extends GameEvent {}
+class GameRestartStageEvent extends GameEvent {}
 
-class GameWithError extends GameEvent {}
+class GameWithErrorEvent extends GameEvent {}
+
+class GamePlayAgainEvent extends GameEvent {}

@@ -1,4 +1,4 @@
-import 'package:aba/core/navigation/abc_router.gr.dart';
+import 'package:abc_fun/core/navigation/abc_router.gr.dart';
 
 import 'package:auto_route/auto_route.dart';
 
@@ -17,14 +17,30 @@ class AbcRouter extends $AbcRouter {
           path: '/${AbcRoute.menu.pathFragment}',
           title: (context, data) => 'Menu',
           children: [
-            AutoRoute(page: DashboardRoute.page, path: AbcRoute.dashboard.pathFragment, initial: true),
-            AutoRoute(page: ChallengeProviderRoute.page, path: AbcRoute.challenges.pathFragment, children: [
-              AutoRoute(page: ChallengeRoute.page, initial: true),
-              AutoRoute(page: CreateNewChallengeRoute.page, path: 'new-challenge'),
-            ]),
+            AutoRoute(
+              page: DashboardRoute.page,
+              path: AbcRoute.dashboard.pathFragment,
+              initial: true,
+            ),
+            AutoRoute(
+              page: ChallengeProviderRoute.page,
+              path: AbcRoute.challenges.pathFragment,
+              children: [
+                AutoRoute(page: ChallengeRoute.page, initial: true),
+                AutoRoute(page: CreateNewChallengeRoute.page, path: 'new-challenge'),
+              ],
+            ),
             AutoRoute(
               page: AboutRoute.page,
               path: AbcRoute.about.pathFragment,
+            ),
+            AutoRoute(
+              page: AccountSyncRoute.page,
+              path: AbcRoute.accountSync.pathFragment,
+            ),
+            AutoRoute(
+              page: SettingsRoute.page,
+              path: AbcRoute.settings.pathFragment,
             )
           ],
         ),
@@ -37,6 +53,8 @@ enum AbcRoute {
   dashboard('dashboard'),
   game('game'),
   challenges('challenges'),
+  settings('settings'),
+  accountSync('account-sync'),
   about('about');
 
   const AbcRoute(this.pathFragment);

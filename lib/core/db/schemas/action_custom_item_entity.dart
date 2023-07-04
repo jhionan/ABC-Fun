@@ -1,4 +1,4 @@
-import 'package:aba/core/domain/models/action_item_entity.dart';
+import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 
 import 'package:isar/isar.dart';
 
@@ -42,8 +42,4 @@ class ActionCustomItemEntity implements ActionItemEntity {
   List<byte>? audioBytes;
 
   List<byte>? imageBytes;
-
-  
-
-  
 }

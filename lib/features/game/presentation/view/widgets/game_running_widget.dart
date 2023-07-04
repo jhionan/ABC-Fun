@@ -1,12 +1,13 @@
-import 'package:aba/core/actions_audio.dart';
-import 'package:aba/core/db/schemas/action_custom_item_entity.dart';
-import 'package:aba/core/domain/models/action_item_entity.dart';
-import 'package:aba/core/domain/view/widgets/adaptative_screen_builder.dart';
-import 'package:aba/core/domain/view/widgets/background_widget.dart';
-import 'package:aba/core/providers/providers.dart';
-import 'package:aba/core/theme/dimensions.dart';
-import 'package:aba/features/game/presentation/bloc/game_bloc.dart';
-import 'package:aba/features/game/presentation/view/widgets/game_running_image.dart';
+import 'package:abc_fun/core/actions_audio.dart';
+import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/domain/models/action_item_entity.dart';
+import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
+import 'package:abc_fun/core/domain/view/widgets/background_widget.dart';
+import 'package:abc_fun/core/providers/providers.dart';
+import 'package:abc_fun/core/theme/abc_colors.dart';
+import 'package:abc_fun/core/theme/dimensions.dart';
+import 'package:abc_fun/features/game/presentation/bloc/game_bloc.dart';
+import 'package:abc_fun/features/game/presentation/view/widgets/game_running_image.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -81,37 +82,52 @@ class _ActionTitleState extends State<_ActionTitle> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 1000))
-        .then((value) => _readAloud(context, widget.gameRunningState.correctAnswer));
-    return InkWell(
-      onTap: () => _readAloud(context, widget.gameRunningState.correctAnswer),
-      child: Container(
-        color: Colors.white,
-        margin: EdgeInsets.all(context.dimensions.vMargin),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (widget.gameRunningState.correctAnswer.group != ActionGroup.custom ||
-                (widget.gameRunningState.correctAnswer is ActionCustomItemEntity &&
-                    (widget.gameRunningState.correctAnswer as ActionCustomItemEntity).audioBytes != null)) ...[
-              const Icon(
-                Icons.play_circle_outline_sharp,
-                size: 32,
-              ),
-              SizedBox(
-                width: context.dimensions.hMargin / 2,
-              ),
-            ],
-            Flexible(
-              child: Text(
-                widget.gameRunningState.correctAnswer.actionName(context),
-                style: const TextStyle(fontSize: 32),
+    Future.microtask(() {
+      _readAloud(context, widget.gameRunningState.correctAnswer);
+    });
+    return Row(
+      children: [
+        SizedBox(
+          width: context.dimensions.hMargin,
+        ),
+        BackButton(
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all(AbcColors.text),
+          ),
+        ),
+        Expanded(
+          child: InkWell(
+            onTap: () => _readAloud(context, widget.gameRunningState.correctAnswer),
+            child: Container(
+              color: Colors.white,
+              margin: EdgeInsets.all(context.dimensions.vMargin),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (widget.gameRunningState.correctAnswer.group != ActionGroup.custom ||
+                      (widget.gameRunningState.correctAnswer is ActionCustomItemEntity &&
+                          (widget.gameRunningState.correctAnswer as ActionCustomItemEntity).audioBytes != null)) ...[
+                    const Icon(
+                      Icons.play_circle_outline_sharp,
+                      size: 32,
+                    ),
+                    SizedBox(
+                      width: context.dimensions.hMargin / 2,
+                    ),
+                  ],
+                  Flexible(
+                    child: Text(
+                      widget.gameRunningState.correctAnswer.actionName(context),
+                      style: const TextStyle(fontSize: 32),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 

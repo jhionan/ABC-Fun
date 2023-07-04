@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:aba/core/utils/helpers/path_provider_helper/path_provider_helper_interface.dart';
+import 'package:abc_fun/core/utils/helpers/path_provider_helper/path_provider_helper_interface.dart';
 
 final class PathProviderImp implements PathProviderHelperInterface {
   @override
