@@ -95,8 +95,6 @@ class SettingsRemoteDataSource implements SettingsRepository {
             fileId: userID,
             permissions: appwriteClient.defaultPermissions(userID));
       }
-    } catch (_) {
-      print(_);
-    }
+    } catch (_) {}
   }
 }
