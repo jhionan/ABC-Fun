@@ -1,3 +1,4 @@
+import 'package:abc_fun/core/providers/providers.dart';
 import 'package:abc_fun/features/account_sync/presentation/bloc/account_sync_bloc.dart';
 import 'package:abc_fun/features/account_sync/presentation/view/account_sync_page.dart';
 import 'package:auto_route/auto_route.dart';
@@ -11,7 +12,9 @@ class AccountSyncProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AccountSyncBloc(),
+      create: (context) => AccountSyncBloc(
+        userRepository: provider.read(Providers.userRepository),
+      ),
       child: const AccountSyncPage(),
     );
   }

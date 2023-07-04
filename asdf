@@ -1,0 +1,5 @@
+appwrite projects createPlatform --projectId 64a24b3f19e937584841 --type flutter-ios --name "app.foca.abc-fun" --key "app.foca.abc-fun"
+appwrite projects createPlatform --projectId 64a24b3f19e937584841 --type flutter-android --name "app.foca.abc_fun" --key "app.foca.abc_fun"
+appwrite projects createPlatform --projectId 64a24b3f19e937584841 --type flutter-macos --name "app.foca.abc-fun" --key "app.foca.abc-fun"
+appwrite projects createPlatform --projectId 64a24b3f19e937584841 --type flutter-windows --name "abc_fun" --key "abc_fun"
+appwrite projects createPlatform --projectId 64a24b3f19e937584841 --type flutter-linux --name "abc_fun" --key "abc_fun"

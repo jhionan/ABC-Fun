@@ -18,6 +18,13 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
   final SettingsRepository settingsRepository;
   SettingsEntity? _settings;
+  StreamSubscription? _settingsSubscription;
+
+  @override
+  Future<void> close() async {
+    _settingsSubscription?.cancel();
+    super.close();
+  }
 
   FutureOr<void> _handleEvent(SettingsEvent event, Emitter<SettingsState> emit) {
     if (event is SettingsLoadedEvent) {
@@ -42,16 +49,18 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
 
   Future<void> _init() async {
-    _settings = await settingsRepository.getSettings();
-    if (_settings == null) {
-      addError(Exception('Settings not found'));
-      return;
-    }
-    add(SettingsLoadedEvent(
-      selectedStageQuantity: _settings!.selectedStageQuantity,
-      selectedActionsPerStage: _settings!.selectedActionsPerStage,
-      rewardImageBytes: _settings!.rewardImageBytes,
-    ));
+    _settingsSubscription = settingsRepository.getSettings().listen((event) {
+      _settings = event;
+      if (_settings == null) {
+        addError(Exception('Settings not found'));
+        return;
+      }
+      add(SettingsLoadedEvent(
+        selectedStageQuantity: _settings!.selectedStageQuantity,
+        selectedActionsPerStage: _settings!.selectedActionsPerStage,
+        rewardImageBytes: _settings!.rewardImageBytes,
+      ));
+    }, onError: (error) {});
   }
 
   void _setStageQuantity(int stageQuantity, Emitter<SettingsState> emit) {
