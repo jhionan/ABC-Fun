@@ -17,6 +17,13 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   }
 
   final GameSessionRepository gameSessionRepository;
+  StreamSubscription? _dbChangesSubscription;
+
+  @override
+  Future<void> close() {
+    _dbChangesSubscription?.cancel();
+    return super.close();
+  }
 
   FutureOr<void> _handleEvent(DashboardEvent event, Emitter<DashboardState> emit) async {
     if (event is DashboardEmptyEvent) {
@@ -105,8 +112,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   }
 
   void _listenDbChanges() {
-    gameSessionRepository.onDbChanged().listen((event) {
-      _init();
+     _dbChangesSubscription = gameSessionRepository.onDbChanged().listen((event) {
+      if (!isClosed) {
+        _init();
+      }
     });
   }
 }

@@ -677,3 +677,18 @@ extension SettingsDtoQueryProperty
     });
   }
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+SettingsDto _$SettingsDtoFromJson(Map<String, dynamic> json) => SettingsDto(
+      selectedActionsPerStage: json['selectedActionsPerStage'] as int,
+      selectedStageQuantity: json['selectedStageQuantity'] as int,
+    );
+
+Map<String, dynamic> _$SettingsDtoToJson(SettingsDto instance) =>
+    <String, dynamic>{
+      'selectedActionsPerStage': instance.selectedActionsPerStage,
+      'selectedStageQuantity': instance.selectedStageQuantity,
+    };

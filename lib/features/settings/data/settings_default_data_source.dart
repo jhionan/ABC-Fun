@@ -9,8 +9,8 @@ class SettingsDefaultDataSource implements SettingsRepository {
   }
 
   @override
-  Future<SettingsEntity> getSettings() async {
-    return SettingsEntity(
+  Stream<SettingsEntity> getSettings() async* {
+    yield SettingsEntity(
       selectedActionsPerStage: kMaxActionsPerStage,
       selectedStageQuantity: kMaxStageQuantity,
     );

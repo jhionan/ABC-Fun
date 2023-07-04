@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:abc_fun/core/domain/repositories/user_repository.dart';
 import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:abc_fun/core/navigation/abc_router.dart';
 import 'package:abc_fun/core/providers/providers.dart';
@@ -20,6 +21,7 @@ Future<void> main() async {
   );
   provider = ProviderContainer();
   setPathUrlStrategy();
+  provider.read<UserRepository>(Providers.userRepository).annonymousLogin();
 
   runApp(const MyApp());
 }

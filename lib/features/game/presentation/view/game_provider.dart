@@ -8,6 +8,7 @@ import 'package:abc_fun/features/game/presentation/view/game_page.dart';
 import 'package:abc_fun/features/settings/data/settings_default_data_source.dart';
 import 'package:abc_fun/features/settings/data/settings_local_data_source.dart';
 import 'package:abc_fun/features/settings/data/settings_repository_imp.dart';
+import 'package:abc_fun/features/settings/domain/settings_repository.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,16 +30,7 @@ class GameProvider extends StatelessWidget {
         gameSessionRepository: provider.read<GameSessionRepository>(
           Providers.gameSessionRepository,
         ),
-        settingsRepository: SettingsRepositoryImp(
-          settingsDefaultDataSource: SettingsDefaultDataSource(),
-          settingsLocalDataSource: SettingsLocalDataSource(
-            settingsDao: SettingsDao(
-              IsarDbSettingsImp(
-                provider.read<Future<Isar>>(Providers.isarDb),
-              ),
-            ),
-          ),
-        ),
+        settingsRepository: provider.read<SettingsRepository>(Providers.settingsRepository),
       ),
       child: const GamePage(),
     );
