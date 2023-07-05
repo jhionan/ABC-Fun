@@ -35,8 +35,8 @@ class ActionItemsRepositoryImp implements ActionItemsRepository {
   }
 
   @override
-  Future<void> deleteManyItems(List<ActionItemEntity> items) async {
-    await localDataSource.deleteManyItems(items);
+  Future<void> deleteAll(List<ActionItemEntity> items) async {
+    await localDataSource.deleteAll(items);
   }
 
   Future<void> _seedDb() async {

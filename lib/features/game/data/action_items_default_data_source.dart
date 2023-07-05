@@ -596,15 +596,14 @@ class ActionItemsDefaultDataSource implements ActionItemsRepository {
           imagePath: ActionImages.wateringPlants2),
     ]
         .map((e) => ActionItemDto(
-              dificulty: e.dificulty,
-              group: e.group,
-              imagePath: e.imagePath,
-              name: e.name,
-              notAllowedWith: e.notAllowedWith,
-              isActive: e.isActive,
-              audioHash: null,
-              imageHash: null
-            ))
+            dificulty: e.dificulty,
+            group: e.group,
+            imagePath: e.imagePath,
+            name: e.name,
+            notAllowedWith: e.notAllowedWith,
+            isActive: e.isActive,
+            audioHash: null,
+            imageHash: null))
         .toList();
   }
 
@@ -619,7 +618,7 @@ class ActionItemsDefaultDataSource implements ActionItemsRepository {
   }
 
   @override
-  Future<void> deleteManyItems(List<ActionItemDto> items) {
+  Future<void> deleteAll(List<ActionItemDto> items) {
     throw UnimplementedError();
   }
 

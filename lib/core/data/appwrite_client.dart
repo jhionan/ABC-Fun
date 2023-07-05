@@ -44,11 +44,11 @@ class AppwriteClient {
   }
 
   Future<User?> login() async {
-    try {
-      return await _getUserAndSetId();
-    } catch (_) {}
+    User? user = await _getUserAndSetId();
+    if(user.isLogged) return user;
     try {
       await _account.createOAuth2Session(provider: 'google', success: kIsWeb ? '${location?.origin}/auth.html' : null);
+      await Future.delayed(const Duration(seconds: 1));
       return await _getUserAndSetId();
     } catch (e) {
       return null;
@@ -107,6 +107,7 @@ enum Collection {
   settings,
   actions,
   gameSessions,
+  gameSessionAction,
   actionsSync,
   gameSessionsSync,
   settingsSync;

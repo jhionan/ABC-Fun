@@ -7,7 +7,7 @@ class GameSessionLocalDataSouce implements GameSessionRepository {
   final GameSessionDao gameSessionDao;
 
   @override
-  Future<List<GameSessionDto>>? getAll() async {
+  Future<List<GameSessionDto>?> getAll() async {
     return await gameSessionDao.getAllItems();
   }
 
@@ -19,5 +19,11 @@ class GameSessionLocalDataSouce implements GameSessionRepository {
   @override
   Stream<void> onDbChanged() {
     return gameSessionDao.onDbChange();
+  }
+  
+  @override
+  Future<void> insertAll(List<GameSessionDto> items) async {
+    await gameSessionDao.deleteAll();
+    await gameSessionDao.insertMany(items);
   }
 }

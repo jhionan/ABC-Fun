@@ -23,7 +23,7 @@ class ActionCustomItemDao {
     await db.delete(item);
   }
 
-  Future<void> deleteMany(List<ActionItemDto> items) async {
-    await db.deleteAll(items);
+  Future<void> deleteAll() async {
+    await db.deleteAll();
   }
 }

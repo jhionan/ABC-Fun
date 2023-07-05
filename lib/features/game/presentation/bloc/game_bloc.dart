@@ -148,7 +148,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       totalWrongAnswers:
           _playedActions.values.fold<int>(0, (previousValue, element) => previousValue + element.totalWrong),
       totalStages: _rounds,
-      totalActionsJson: _playedActions.values.map((e) => jsonEncode(e.toJson())).toList(),
+      totalActionsJson: jsonEncode(_playedActions.values.toList()) 
     ));
   }
 

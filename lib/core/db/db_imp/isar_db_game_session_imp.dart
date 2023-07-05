@@ -20,10 +20,10 @@ class IsarDbGameSessionImp implements Db<GameSessionDto> {
   }
 
   @override
-  Future<void> deleteAll(List<GameSessionDto> items) async {
+  Future<void> deleteAll() async {
     await _ensureOpennedDb();
     await _opennedIsar!.writeTxn(() async {
-      await _opennedIsar!.gameSessionDtos.deleteAll(items.map((e) => e.id!).toList());
+      await _opennedIsar!.gameSessionDtos.clear();
     });
   }
 

@@ -18,6 +18,7 @@ import 'package:abc_fun/features/game/data/action_items_default_data_source.dart
 import 'package:abc_fun/features/game/data/action_items_local_data_source.dart';
 import 'package:abc_fun/features/game/data/action_items_repository.dart';
 import 'package:abc_fun/features/game/data/game_session_local_data_source.dart';
+import 'package:abc_fun/features/game/data/game_session_remote_data_source.dart';
 import 'package:abc_fun/features/game/data/game_session_repository.dart';
 import 'package:abc_fun/features/game/domain/game_session_repository.dart';
 import 'package:abc_fun/features/settings/data/settings_default_data_source.dart';
@@ -91,8 +92,18 @@ final class Providers {
     return GameSessionLocalDataSouce(ref.read<GameSessionDao>(_gameSessionDao));
   });
 
+  static final _gameSessionRemoteDataSource = Provider<GameSessionRepository>((ref) {
+    return GameSessionRemoteDataSource(
+      appwriteClient: ref.read<AppwriteClient>(_appwriteClient),
+    );
+  });
+
   static final gameSessionRepository = Provider<GameSessionRepository>((ref) {
-    return GameSessionRepositoryImp(localDataSource: ref.read<GameSessionRepository>(_gameSessionLocalDataSource));
+    return GameSessionRepositoryImp(
+      localDataSource: ref.read<GameSessionRepository>(_gameSessionLocalDataSource),
+      remoteDataSource: ref.read<GameSessionRepository>(_gameSessionRemoteDataSource),
+      userRepository: ref.read<UserRepository>(userRepository),
+    );
   });
 
   static final _settingsDao = Provider<SettingsDao>((ref) {

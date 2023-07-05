@@ -30,11 +30,11 @@ class ActionItemsLocalDataSource implements ActionItemsRepository {
   }
 
   @override
-  Future<void> deleteManyItems(List<ActionItemEntity> items) async {
+  Future<void> deleteAll(List<ActionItemEntity> items) async {
     if (items.every(
       (element) => element is ActionItemDto,
     )) {
-      actionCustomItemDao.deleteMany(items as List<ActionItemDto>);
+      actionCustomItemDao.deleteAll();
     }
   }
 

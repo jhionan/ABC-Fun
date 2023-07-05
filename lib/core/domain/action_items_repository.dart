@@ -5,5 +5,5 @@ abstract interface class ActionItemsRepository {
   Future<void> addItem(ActionItemDto item);
   Future<void> addAllItems(List<ActionItemDto> items);
   Future<void> deleteItem(ActionItemDto item);
-  Future<void> deleteManyItems(List<ActionItemDto> items);
+  Future<void> deleteAll(List<ActionItemDto> items);
 }

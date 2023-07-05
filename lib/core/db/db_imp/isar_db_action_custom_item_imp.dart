@@ -20,10 +20,10 @@ class IsarDbActionCustomItemImp implements Db<ActionItemDto> {
   }
 
   @override
-  Future<void> deleteAll(List<ActionItemDto> items) async {
+  Future<void> deleteAll() async {
     await _ensureOpennedDb();
     await _opennedIsar!.writeTxn(() async {
-      await _opennedIsar!.actionItemDtos.deleteAll(items.map((e) => e.id!).toList());
+      await _opennedIsar!.actionItemDtos.clear();
     });
   }
 

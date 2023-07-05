@@ -25,7 +25,7 @@ const GameSessionDtoSchema = CollectionSchema(
     r'totalActionsJson': PropertySchema(
       id: 1,
       name: r'totalActionsJson',
-      type: IsarType.stringList,
+      type: IsarType.string,
     ),
     r'totalMoves': PropertySchema(
       id: 2,
@@ -64,12 +64,6 @@ int _gameSessionDtoEstimateSize(
 ) {
   var bytesCount = offsets.last;
   bytesCount += 3 + object.totalActionsJson.length * 3;
-  {
-    for (var i = 0; i < object.totalActionsJson.length; i++) {
-      final value = object.totalActionsJson[i];
-      bytesCount += value.length * 3;
-    }
-  }
   return bytesCount;
 }
 
@@ -80,7 +74,7 @@ void _gameSessionDtoSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeDateTime(offsets[0], object.createdAt);
-  writer.writeStringList(offsets[1], object.totalActionsJson);
+  writer.writeString(offsets[1], object.totalActionsJson);
   writer.writeLong(offsets[2], object.totalMoves);
   writer.writeLong(offsets[3], object.totalStages);
   writer.writeLong(offsets[4], object.totalWrongAnswers);
@@ -95,7 +89,7 @@ GameSessionDto _gameSessionDtoDeserialize(
   final object = GameSessionDto(
     createdAt: reader.readDateTime(offsets[0]),
     id: id,
-    totalActionsJson: reader.readStringList(offsets[1]) ?? [],
+    totalActionsJson: reader.readString(offsets[1]),
     totalMoves: reader.readLong(offsets[2]),
     totalStages: reader.readLong(offsets[3]),
     totalWrongAnswers: reader.readLong(offsets[4]),
@@ -113,7 +107,7 @@ P _gameSessionDtoDeserializeProp<P>(
     case 0:
       return (reader.readDateTime(offset)) as P;
     case 1:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readString(offset)) as P;
     case 2:
       return (reader.readLong(offset)) as P;
     case 3:
@@ -351,7 +345,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementEqualTo(
+      totalActionsJsonEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -365,7 +359,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementGreaterThan(
+      totalActionsJsonGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -381,7 +375,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementLessThan(
+      totalActionsJsonLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -397,7 +391,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementBetween(
+      totalActionsJsonBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -417,7 +411,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementStartsWith(
+      totalActionsJsonStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -431,7 +425,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementEndsWith(
+      totalActionsJsonEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -445,8 +439,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementContains(String value,
-          {bool caseSensitive = true}) {
+      totalActionsJsonContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'totalActionsJson',
@@ -457,8 +450,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementMatches(String pattern,
-          {bool caseSensitive = true}) {
+      totalActionsJsonMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'totalActionsJson',
@@ -469,7 +461,7 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementIsEmpty() {
+      totalActionsJsonIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'totalActionsJson',
@@ -479,101 +471,12 @@ extension GameSessionDtoQueryFilter
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonElementIsNotEmpty() {
+      totalActionsJsonIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'totalActionsJson',
         value: '',
       ));
-    });
-  }
-
-  QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonLengthEqualTo(int length) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'totalActionsJson',
-        length,
-        true,
-        length,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'totalActionsJson',
-        0,
-        true,
-        0,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'totalActionsJson',
-        0,
-        false,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonLengthLessThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'totalActionsJson',
-        0,
-        true,
-        length,
-        include,
-      );
-    });
-  }
-
-  QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonLengthGreaterThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'totalActionsJson',
-        length,
-        include,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<GameSessionDto, GameSessionDto, QAfterFilterCondition>
-      totalActionsJsonLengthBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'totalActionsJson',
-        lower,
-        includeLower,
-        upper,
-        includeUpper,
-      );
     });
   }
 
@@ -768,6 +671,20 @@ extension GameSessionDtoQuerySortBy
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterSortBy>
+      sortByTotalActionsJson() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'totalActionsJson', Sort.asc);
+    });
+  }
+
+  QueryBuilder<GameSessionDto, GameSessionDto, QAfterSortBy>
+      sortByTotalActionsJsonDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'totalActionsJson', Sort.desc);
+    });
+  }
+
+  QueryBuilder<GameSessionDto, GameSessionDto, QAfterSortBy>
       sortByTotalMoves() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'totalMoves', Sort.asc);
@@ -838,6 +755,20 @@ extension GameSessionDtoQuerySortThenBy
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QAfterSortBy>
+      thenByTotalActionsJson() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'totalActionsJson', Sort.asc);
+    });
+  }
+
+  QueryBuilder<GameSessionDto, GameSessionDto, QAfterSortBy>
+      thenByTotalActionsJsonDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'totalActionsJson', Sort.desc);
+    });
+  }
+
+  QueryBuilder<GameSessionDto, GameSessionDto, QAfterSortBy>
       thenByTotalMoves() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'totalMoves', Sort.asc);
@@ -890,9 +821,10 @@ extension GameSessionDtoQueryWhereDistinct
   }
 
   QueryBuilder<GameSessionDto, GameSessionDto, QDistinct>
-      distinctByTotalActionsJson() {
+      distinctByTotalActionsJson({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'totalActionsJson');
+      return query.addDistinctBy(r'totalActionsJson',
+          caseSensitive: caseSensitive);
     });
   }
 
@@ -932,7 +864,7 @@ extension GameSessionDtoQueryProperty
     });
   }
 
-  QueryBuilder<GameSessionDto, List<String>, QQueryOperations>
+  QueryBuilder<GameSessionDto, String, QQueryOperations>
       totalActionsJsonProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'totalActionsJson');
@@ -962,6 +894,24 @@ extension GameSessionDtoQueryProperty
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+GameSessionDto _$GameSessionDtoFromJson(Map<String, dynamic> json) =>
+    GameSessionDto(
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      totalStages: json['totalStages'] as int,
+      totalWrongAnswers: json['totalWrongAnswers'] as int,
+      totalMoves: json['totalMoves'] as int,
+      totalActionsJson: json['totalActionsJson'] as String,
+    );
+
+Map<String, dynamic> _$GameSessionDtoToJson(GameSessionDto instance) =>
+    <String, dynamic>{
+      'createdAt': instance.createdAt.toIso8601String(),
+      'totalStages': instance.totalStages,
+      'totalWrongAnswers': instance.totalWrongAnswers,
+      'totalMoves': instance.totalMoves,
+      'totalActionsJson': instance.totalActionsJson,
+    };
 
 GameSessionAction _$GameSessionActionFromJson(Map<String, dynamic> json) =>
     GameSessionAction(
