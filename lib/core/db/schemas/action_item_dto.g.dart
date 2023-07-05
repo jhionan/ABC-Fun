@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'action_custom_item_entity.dart';
+part of 'action_item_dto.dart';
 
 // **************************************************************************
 // IsarCollectionGenerator
@@ -9,79 +9,88 @@ part of 'action_custom_item_entity.dart';
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-extension GetActionCustomItemEntityCollection on Isar {
-  IsarCollection<ActionCustomItemEntity> get actionCustomItemEntitys =>
-      this.collection();
+extension GetActionItemDtoCollection on Isar {
+  IsarCollection<ActionItemDto> get actionItemDtos => this.collection();
 }
 
-const ActionCustomItemEntitySchema = CollectionSchema(
-  name: r'ActionCustomItemEntity',
-  id: 272646321258518201,
+const ActionItemDtoSchema = CollectionSchema(
+  name: r'ActionItemDto',
+  id: 8180479277777778131,
   properties: {
     r'audioBytes': PropertySchema(
       id: 0,
       name: r'audioBytes',
       type: IsarType.byteList,
     ),
-    r'dificulty': PropertySchema(
+    r'audioHash': PropertySchema(
       id: 1,
+      name: r'audioHash',
+      type: IsarType.long,
+    ),
+    r'dificulty': PropertySchema(
+      id: 2,
       name: r'dificulty',
       type: IsarType.long,
     ),
     r'group': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'group',
       type: IsarType.string,
-      enumMap: _ActionCustomItemEntitygroupEnumValueMap,
+      enumMap: _ActionItemDtogroupEnumValueMap,
     ),
     r'hashCode': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'hashCode',
       type: IsarType.long,
     ),
     r'imageBytes': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'imageBytes',
       type: IsarType.byteList,
     ),
+    r'imageHash': PropertySchema(
+      id: 6,
+      name: r'imageHash',
+      type: IsarType.long,
+    ),
     r'imagePath': PropertySchema(
-      id: 5,
+      id: 7,
       name: r'imagePath',
       type: IsarType.string,
     ),
     r'isActive': PropertySchema(
-      id: 6,
+      id: 8,
       name: r'isActive',
       type: IsarType.bool,
     ),
     r'name': PropertySchema(
-      id: 7,
+      id: 9,
       name: r'name',
       type: IsarType.string,
     ),
     r'notAllowedWith': PropertySchema(
-      id: 8,
+      id: 10,
       name: r'notAllowedWith',
       type: IsarType.stringList,
-      enumMap: _ActionCustomItemEntitynotAllowedWithEnumValueMap,
+      enumMap: _ActionItemDtonotAllowedWithEnumValueMap,
     )
   },
-  estimateSize: _actionCustomItemEntityEstimateSize,
-  serialize: _actionCustomItemEntitySerialize,
-  deserialize: _actionCustomItemEntityDeserialize,
-  deserializeProp: _actionCustomItemEntityDeserializeProp,
+  estimateSize: _actionItemDtoEstimateSize,
+  serialize: _actionItemDtoSerialize,
+  deserialize: _actionItemDtoDeserialize,
+  deserializeProp: _actionItemDtoDeserializeProp,
   idName: r'id',
   indexes: {},
   links: {},
   embeddedSchemas: {},
-  getId: _actionCustomItemEntityGetId,
-  getLinks: _actionCustomItemEntityGetLinks,
-  attach: _actionCustomItemEntityAttach,
+  getId: _actionItemDtoGetId,
+  getLinks: _actionItemDtoGetLinks,
+  attach: _actionItemDtoAttach,
   version: '3.1.0+1',
 );
 
-int _actionCustomItemEntityEstimateSize(
-  ActionCustomItemEntity object,
+int _actionItemDtoEstimateSize(
+  ActionItemDto object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -111,53 +120,57 @@ int _actionCustomItemEntityEstimateSize(
   return bytesCount;
 }
 
-void _actionCustomItemEntitySerialize(
-  ActionCustomItemEntity object,
+void _actionItemDtoSerialize(
+  ActionItemDto object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeByteList(offsets[0], object.audioBytes);
-  writer.writeLong(offsets[1], object.dificulty);
-  writer.writeString(offsets[2], object.group.name);
-  writer.writeLong(offsets[3], object.hashCode);
-  writer.writeByteList(offsets[4], object.imageBytes);
-  writer.writeString(offsets[5], object.imagePath);
-  writer.writeBool(offsets[6], object.isActive);
-  writer.writeString(offsets[7], object.name);
+  writer.writeLong(offsets[1], object.audioHash);
+  writer.writeLong(offsets[2], object.dificulty);
+  writer.writeString(offsets[3], object.group.name);
+  writer.writeLong(offsets[4], object.hashCode);
+  writer.writeByteList(offsets[5], object.imageBytes);
+  writer.writeLong(offsets[6], object.imageHash);
+  writer.writeString(offsets[7], object.imagePath);
+  writer.writeBool(offsets[8], object.isActive);
+  writer.writeString(offsets[9], object.name);
   writer.writeStringList(
-      offsets[8], object.notAllowedWith.map((e) => e.name).toList());
+      offsets[10], object.notAllowedWith.map((e) => e.name).toList());
 }
 
-ActionCustomItemEntity _actionCustomItemEntityDeserialize(
+ActionItemDto _actionItemDtoDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = ActionCustomItemEntity(
+  final object = ActionItemDto(
     audioBytes: reader.readByteList(offsets[0]),
-    dificulty: reader.readLong(offsets[1]),
-    group: _ActionCustomItemEntitygroupValueEnumMap[
-            reader.readStringOrNull(offsets[2])] ??
-        ActionGroup.answeringPhone,
-    imageBytes: reader.readByteList(offsets[4]),
-    imagePath: reader.readString(offsets[5]),
-    isActive: reader.readBool(offsets[6]),
-    name: reader.readString(offsets[7]),
+    audioHash: reader.readLongOrNull(offsets[1]),
+    dificulty: reader.readLongOrNull(offsets[2]) ?? 2,
+    group:
+        _ActionItemDtogroupValueEnumMap[reader.readStringOrNull(offsets[3])] ??
+            ActionGroup.answeringPhone,
+    imageBytes: reader.readByteList(offsets[5]),
+    imageHash: reader.readLongOrNull(offsets[6]),
+    imagePath: reader.readStringOrNull(offsets[7]) ?? '',
+    isActive: reader.readBool(offsets[8]),
+    name: reader.readString(offsets[9]),
     notAllowedWith: reader
-            .readStringList(offsets[8])
+            .readStringList(offsets[10])
             ?.map((e) =>
-                _ActionCustomItemEntitynotAllowedWithValueEnumMap[e] ??
+                _ActionItemDtonotAllowedWithValueEnumMap[e] ??
                 ActionGroup.answeringPhone)
             .toList() ??
-        [],
+        const [],
   );
   object.id = id;
   return object;
 }
 
-P _actionCustomItemEntityDeserializeProp<P>(
+P _actionItemDtoDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -167,35 +180,39 @@ P _actionCustomItemEntityDeserializeProp<P>(
     case 0:
       return (reader.readByteList(offset)) as P;
     case 1:
-      return (reader.readLong(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 2:
-      return (_ActionCustomItemEntitygroupValueEnumMap[
+      return (reader.readLongOrNull(offset) ?? 2) as P;
+    case 3:
+      return (_ActionItemDtogroupValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ActionGroup.answeringPhone) as P;
-    case 3:
-      return (reader.readLong(offset)) as P;
     case 4:
-      return (reader.readByteList(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 5:
-      return (reader.readString(offset)) as P;
+      return (reader.readByteList(offset)) as P;
     case 6:
-      return (reader.readBool(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 7:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 8:
+      return (reader.readBool(offset)) as P;
+    case 9:
+      return (reader.readString(offset)) as P;
+    case 10:
       return (reader
               .readStringList(offset)
               ?.map((e) =>
-                  _ActionCustomItemEntitynotAllowedWithValueEnumMap[e] ??
+                  _ActionItemDtonotAllowedWithValueEnumMap[e] ??
                   ActionGroup.answeringPhone)
               .toList() ??
-          []) as P;
+          const []) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
 }
 
-const _ActionCustomItemEntitygroupEnumValueMap = {
+const _ActionItemDtogroupEnumValueMap = {
   r'answeringPhone': r'answeringPhone',
   r'bathing': r'bathing',
   r'blowingBubbles': r'blowingBubbles',
@@ -233,7 +250,7 @@ const _ActionCustomItemEntitygroupEnumValueMap = {
   r'watchingTV': r'watchingTV',
   r'wateringPlants': r'wateringPlants',
 };
-const _ActionCustomItemEntitygroupValueEnumMap = {
+const _ActionItemDtogroupValueEnumMap = {
   r'answeringPhone': ActionGroup.answeringPhone,
   r'bathing': ActionGroup.bathing,
   r'blowingBubbles': ActionGroup.blowingBubbles,
@@ -271,7 +288,7 @@ const _ActionCustomItemEntitygroupValueEnumMap = {
   r'watchingTV': ActionGroup.watchingTV,
   r'wateringPlants': ActionGroup.wateringPlants,
 };
-const _ActionCustomItemEntitynotAllowedWithEnumValueMap = {
+const _ActionItemDtonotAllowedWithEnumValueMap = {
   r'answeringPhone': r'answeringPhone',
   r'bathing': r'bathing',
   r'blowingBubbles': r'blowingBubbles',
@@ -309,7 +326,7 @@ const _ActionCustomItemEntitynotAllowedWithEnumValueMap = {
   r'watchingTV': r'watchingTV',
   r'wateringPlants': r'wateringPlants',
 };
-const _ActionCustomItemEntitynotAllowedWithValueEnumMap = {
+const _ActionItemDtonotAllowedWithValueEnumMap = {
   r'answeringPhone': ActionGroup.answeringPhone,
   r'bathing': ActionGroup.bathing,
   r'blowingBubbles': ActionGroup.blowingBubbles,
@@ -348,34 +365,32 @@ const _ActionCustomItemEntitynotAllowedWithValueEnumMap = {
   r'wateringPlants': ActionGroup.wateringPlants,
 };
 
-Id _actionCustomItemEntityGetId(ActionCustomItemEntity object) {
+Id _actionItemDtoGetId(ActionItemDto object) {
   return object.id ?? Isar.autoIncrement;
 }
 
-List<IsarLinkBase<dynamic>> _actionCustomItemEntityGetLinks(
-    ActionCustomItemEntity object) {
+List<IsarLinkBase<dynamic>> _actionItemDtoGetLinks(ActionItemDto object) {
   return [];
 }
 
-void _actionCustomItemEntityAttach(
-    IsarCollection<dynamic> col, Id id, ActionCustomItemEntity object) {
+void _actionItemDtoAttach(
+    IsarCollection<dynamic> col, Id id, ActionItemDto object) {
   object.id = id;
 }
 
-extension ActionCustomItemEntityQueryWhereSort
-    on QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QWhere> {
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterWhere>
-      anyId() {
+extension ActionItemDtoQueryWhereSort
+    on QueryBuilder<ActionItemDto, ActionItemDto, QWhere> {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension ActionCustomItemEntityQueryWhere on QueryBuilder<
-    ActionCustomItemEntity, ActionCustomItemEntity, QWhereClause> {
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterWhereClause> idEqualTo(Id id) {
+extension ActionItemDtoQueryWhere
+    on QueryBuilder<ActionItemDto, ActionItemDto, QWhereClause> {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterWhereClause> idEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -384,8 +399,8 @@ extension ActionCustomItemEntityQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterWhereClause> idNotEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -407,8 +422,9 @@ extension ActionCustomItemEntityQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterWhereClause> idGreaterThan(Id id, {bool include = false}) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterWhereClause> idGreaterThan(
+      Id id,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -416,8 +432,9 @@ extension ActionCustomItemEntityQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterWhereClause> idLessThan(Id id, {bool include = false}) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterWhereClause> idLessThan(
+      Id id,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -425,8 +442,7 @@ extension ActionCustomItemEntityQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterWhereClause> idBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -443,10 +459,10 @@ extension ActionCustomItemEntityQueryWhere on QueryBuilder<
   }
 }
 
-extension ActionCustomItemEntityQueryFilter on QueryBuilder<
-    ActionCustomItemEntity, ActionCustomItemEntity, QFilterCondition> {
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesIsNull() {
+extension ActionItemDtoQueryFilter
+    on QueryBuilder<ActionItemDto, ActionItemDto, QFilterCondition> {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'audioBytes',
@@ -454,8 +470,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesIsNotNull() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'audioBytes',
@@ -463,8 +479,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesElementEqualTo(int value) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesElementEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'audioBytes',
@@ -473,8 +489,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesElementGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesElementGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -487,8 +503,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesElementLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesElementLessThan(
     int value, {
     bool include = false,
   }) {
@@ -501,8 +517,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesElementBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesElementBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -519,8 +535,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesLengthEqualTo(int length) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'audioBytes',
@@ -532,8 +548,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesIsEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'audioBytes',
@@ -545,8 +561,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesIsNotEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'audioBytes',
@@ -558,8 +574,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesLengthLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesLengthLessThan(
     int length, {
     bool include = false,
   }) {
@@ -574,8 +590,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesLengthGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesLengthGreaterThan(
     int length, {
     bool include = false,
   }) {
@@ -590,8 +606,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> audioBytesLengthBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioBytesLengthBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -608,8 +624,82 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> dificultyEqualTo(int value) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioHashIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'audioHash',
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioHashIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'audioHash',
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioHashEqualTo(int? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'audioHash',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioHashGreaterThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'audioHash',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioHashLessThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'audioHash',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      audioHashBetween(
+    int? lower,
+    int? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'audioHash',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      dificultyEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'dificulty',
@@ -618,8 +708,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> dificultyGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      dificultyGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -632,8 +722,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> dificultyLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      dificultyLessThan(
     int value, {
     bool include = false,
   }) {
@@ -646,8 +736,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> dificultyBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      dificultyBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -664,8 +754,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> groupEqualTo(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      groupEqualTo(
     ActionGroup value, {
     bool caseSensitive = true,
   }) {
@@ -678,8 +768,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> groupGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      groupGreaterThan(
     ActionGroup value, {
     bool include = false,
     bool caseSensitive = true,
@@ -694,8 +784,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> groupLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      groupLessThan(
     ActionGroup value, {
     bool include = false,
     bool caseSensitive = true,
@@ -710,8 +800,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> groupBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      groupBetween(
     ActionGroup lower,
     ActionGroup upper, {
     bool includeLower = true,
@@ -730,8 +820,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> groupStartsWith(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      groupStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -744,8 +834,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> groupEndsWith(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      groupEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -758,8 +848,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-          QAfterFilterCondition>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
       groupContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -770,8 +859,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-          QAfterFilterCondition>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
       groupMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
@@ -782,8 +870,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> groupIsEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      groupIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'group',
@@ -792,8 +880,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> groupIsNotEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      groupIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'group',
@@ -802,8 +890,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> hashCodeEqualTo(int value) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      hashCodeEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'hashCode',
@@ -812,8 +900,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> hashCodeGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      hashCodeGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -826,8 +914,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> hashCodeLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      hashCodeLessThan(
     int value, {
     bool include = false,
   }) {
@@ -840,8 +928,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> hashCodeBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      hashCodeBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -858,8 +946,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> idIsNull() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition> idIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'id',
@@ -867,8 +954,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> idIsNotNull() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      idIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'id',
@@ -876,8 +963,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> idEqualTo(Id? value) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition> idEqualTo(
+      Id? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -886,8 +973,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      idGreaterThan(
     Id? value, {
     bool include = false,
   }) {
@@ -900,8 +987,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> idLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition> idLessThan(
     Id? value, {
     bool include = false,
   }) {
@@ -914,8 +1000,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> idBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition> idBetween(
     Id? lower,
     Id? upper, {
     bool includeLower = true,
@@ -932,8 +1017,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesIsNull() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'imageBytes',
@@ -941,8 +1026,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesIsNotNull() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'imageBytes',
@@ -950,8 +1035,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesElementEqualTo(int value) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesElementEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'imageBytes',
@@ -960,8 +1045,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesElementGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesElementGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -974,8 +1059,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesElementLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesElementLessThan(
     int value, {
     bool include = false,
   }) {
@@ -988,8 +1073,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesElementBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesElementBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1006,8 +1091,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesLengthEqualTo(int length) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'imageBytes',
@@ -1019,8 +1104,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesIsEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'imageBytes',
@@ -1032,8 +1117,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesIsNotEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'imageBytes',
@@ -1045,8 +1130,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesLengthLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesLengthLessThan(
     int length, {
     bool include = false,
   }) {
@@ -1061,8 +1146,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesLengthGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesLengthGreaterThan(
     int length, {
     bool include = false,
   }) {
@@ -1077,8 +1162,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imageBytesLengthBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageBytesLengthBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1095,8 +1180,82 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imagePathEqualTo(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageHashIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'imageHash',
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageHashIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'imageHash',
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageHashEqualTo(int? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'imageHash',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageHashGreaterThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'imageHash',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageHashLessThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'imageHash',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imageHashBetween(
+    int? lower,
+    int? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'imageHash',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imagePathEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1109,8 +1268,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imagePathGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imagePathGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1125,8 +1284,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imagePathLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imagePathLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1141,8 +1300,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imagePathBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imagePathBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -1161,8 +1320,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imagePathStartsWith(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imagePathStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1175,8 +1334,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imagePathEndsWith(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imagePathEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1189,8 +1348,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-          QAfterFilterCondition>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
       imagePathContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -1201,8 +1359,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-          QAfterFilterCondition>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
       imagePathMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
@@ -1213,8 +1370,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imagePathIsEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imagePathIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'imagePath',
@@ -1223,8 +1380,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> imagePathIsNotEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      imagePathIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'imagePath',
@@ -1233,8 +1390,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> isActiveEqualTo(bool value) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      isActiveEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'isActive',
@@ -1243,8 +1400,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> nameEqualTo(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition> nameEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1257,8 +1413,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> nameGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      nameGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1273,8 +1429,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> nameLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      nameLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1289,8 +1445,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> nameBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition> nameBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -1309,8 +1464,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> nameStartsWith(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      nameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1323,8 +1478,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> nameEndsWith(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      nameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1337,8 +1492,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-          QAfterFilterCondition>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
       nameContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -1349,9 +1503,9 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-          QAfterFilterCondition>
-      nameMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition> nameMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'name',
@@ -1361,8 +1515,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> nameIsEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      nameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'name',
@@ -1371,8 +1525,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> nameIsNotEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      nameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'name',
@@ -1381,8 +1535,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithElementEqualTo(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithElementEqualTo(
     ActionGroup value, {
     bool caseSensitive = true,
   }) {
@@ -1395,8 +1549,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithElementGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithElementGreaterThan(
     ActionGroup value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1411,8 +1565,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithElementLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithElementLessThan(
     ActionGroup value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1427,8 +1581,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithElementBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithElementBetween(
     ActionGroup lower,
     ActionGroup upper, {
     bool includeLower = true,
@@ -1447,8 +1601,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithElementStartsWith(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithElementStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1461,8 +1615,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithElementEndsWith(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithElementEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1475,8 +1629,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-          QAfterFilterCondition>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
       notAllowedWithElementContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -1487,8 +1640,7 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-          QAfterFilterCondition>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
       notAllowedWithElementMatches(String pattern,
           {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1500,8 +1652,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithElementIsEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithElementIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'notAllowedWith',
@@ -1510,8 +1662,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithElementIsNotEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithElementIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'notAllowedWith',
@@ -1520,8 +1672,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithLengthEqualTo(int length) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'notAllowedWith',
@@ -1533,8 +1685,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithIsEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'notAllowedWith',
@@ -1546,8 +1698,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithIsNotEmpty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'notAllowedWith',
@@ -1559,8 +1711,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithLengthLessThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithLengthLessThan(
     int length, {
     bool include = false,
   }) {
@@ -1575,8 +1727,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithLengthGreaterThan(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithLengthGreaterThan(
     int length, {
     bool include = false,
   }) {
@@ -1591,8 +1743,8 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity,
-      QAfterFilterCondition> notAllowedWithLengthBetween(
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterFilterCondition>
+      notAllowedWithLengthBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1610,259 +1762,300 @@ extension ActionCustomItemEntityQueryFilter on QueryBuilder<
   }
 }
 
-extension ActionCustomItemEntityQueryObject on QueryBuilder<
-    ActionCustomItemEntity, ActionCustomItemEntity, QFilterCondition> {}
+extension ActionItemDtoQueryObject
+    on QueryBuilder<ActionItemDto, ActionItemDto, QFilterCondition> {}
 
-extension ActionCustomItemEntityQueryLinks on QueryBuilder<
-    ActionCustomItemEntity, ActionCustomItemEntity, QFilterCondition> {}
+extension ActionItemDtoQueryLinks
+    on QueryBuilder<ActionItemDto, ActionItemDto, QFilterCondition> {}
 
-extension ActionCustomItemEntityQuerySortBy
-    on QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QSortBy> {
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      sortByDificulty() {
+extension ActionItemDtoQuerySortBy
+    on QueryBuilder<ActionItemDto, ActionItemDto, QSortBy> {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByAudioHash() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioHash', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
+      sortByAudioHashDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioHash', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByDificulty() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dificulty', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
       sortByDificultyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dificulty', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      sortByGroup() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByGroup() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'group', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      sortByGroupDesc() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByGroupDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'group', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      sortByHashCode() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByHashCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'hashCode', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
       sortByHashCodeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'hashCode', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      sortByImagePath() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByImageHash() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'imageHash', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
+      sortByImageHashDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'imageHash', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByImagePath() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'imagePath', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
       sortByImagePathDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'imagePath', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      sortByIsActive() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByIsActive() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isActive', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
       sortByIsActiveDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isActive', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      sortByName() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      sortByNameDesc() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> sortByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 }
 
-extension ActionCustomItemEntityQuerySortThenBy on QueryBuilder<
-    ActionCustomItemEntity, ActionCustomItemEntity, QSortThenBy> {
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByDificulty() {
+extension ActionItemDtoQuerySortThenBy
+    on QueryBuilder<ActionItemDto, ActionItemDto, QSortThenBy> {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByAudioHash() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioHash', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
+      thenByAudioHashDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioHash', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByDificulty() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dificulty', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
       thenByDificultyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dificulty', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByGroup() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByGroup() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'group', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByGroupDesc() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByGroupDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'group', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByHashCode() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByHashCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'hashCode', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
       thenByHashCodeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'hashCode', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenById() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByIdDesc() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByImagePath() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByImageHash() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'imageHash', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
+      thenByImageHashDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'imageHash', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByImagePath() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'imagePath', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
       thenByImagePathDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'imagePath', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByIsActive() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByIsActive() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isActive', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy>
       thenByIsActiveDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isActive', Sort.desc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByName() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QAfterSortBy>
-      thenByNameDesc() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QAfterSortBy> thenByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 }
 
-extension ActionCustomItemEntityQueryWhereDistinct
-    on QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct> {
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
-      distinctByAudioBytes() {
+extension ActionItemDtoQueryWhereDistinct
+    on QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> {
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByAudioBytes() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'audioBytes');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
-      distinctByDificulty() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByAudioHash() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'audioHash');
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByDificulty() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dificulty');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
-      distinctByGroup({bool caseSensitive = true}) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByGroup(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'group', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
-      distinctByHashCode() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByHashCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'hashCode');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
-      distinctByImageBytes() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByImageBytes() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'imageBytes');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
-      distinctByImagePath({bool caseSensitive = true}) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByImageHash() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'imageHash');
+    });
+  }
+
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByImagePath(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'imagePath', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
-      distinctByIsActive() {
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByIsActive() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isActive');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
-      distinctByName({bool caseSensitive = true}) {
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct> distinctByName(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'name', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionCustomItemEntity, QDistinct>
+  QueryBuilder<ActionItemDto, ActionItemDto, QDistinct>
       distinctByNotAllowedWith() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'notAllowedWith');
@@ -1870,74 +2063,143 @@ extension ActionCustomItemEntityQueryWhereDistinct
   }
 }
 
-extension ActionCustomItemEntityQueryProperty on QueryBuilder<
-    ActionCustomItemEntity, ActionCustomItemEntity, QQueryProperty> {
-  QueryBuilder<ActionCustomItemEntity, int, QQueryOperations> idProperty() {
+extension ActionItemDtoQueryProperty
+    on QueryBuilder<ActionItemDto, ActionItemDto, QQueryProperty> {
+  QueryBuilder<ActionItemDto, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, List<int>?, QQueryOperations>
+  QueryBuilder<ActionItemDto, List<int>?, QQueryOperations>
       audioBytesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'audioBytes');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, int, QQueryOperations>
-      dificultyProperty() {
+  QueryBuilder<ActionItemDto, int?, QQueryOperations> audioHashProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'audioHash');
+    });
+  }
+
+  QueryBuilder<ActionItemDto, int, QQueryOperations> dificultyProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dificulty');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, ActionGroup, QQueryOperations>
-      groupProperty() {
+  QueryBuilder<ActionItemDto, ActionGroup, QQueryOperations> groupProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'group');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, int, QQueryOperations>
-      hashCodeProperty() {
+  QueryBuilder<ActionItemDto, int, QQueryOperations> hashCodeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'hashCode');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, List<int>?, QQueryOperations>
+  QueryBuilder<ActionItemDto, List<int>?, QQueryOperations>
       imageBytesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'imageBytes');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, String, QQueryOperations>
-      imagePathProperty() {
+  QueryBuilder<ActionItemDto, int?, QQueryOperations> imageHashProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'imageHash');
+    });
+  }
+
+  QueryBuilder<ActionItemDto, String, QQueryOperations> imagePathProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'imagePath');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, bool, QQueryOperations>
-      isActiveProperty() {
+  QueryBuilder<ActionItemDto, bool, QQueryOperations> isActiveProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isActive');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, String, QQueryOperations>
-      nameProperty() {
+  QueryBuilder<ActionItemDto, String, QQueryOperations> nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'name');
     });
   }
 
-  QueryBuilder<ActionCustomItemEntity, List<ActionGroup>, QQueryOperations>
+  QueryBuilder<ActionItemDto, List<ActionGroup>, QQueryOperations>
       notAllowedWithProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'notAllowedWith');
     });
   }
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ActionItemDto _$ActionItemDtoFromJson(Map<String, dynamic> json) =>
+    ActionItemDto(
+      group: $enumDecode(_$ActionGroupEnumMap, json['group']),
+      dificulty: json['dificulty'] as int? ?? 2,
+      audioHash: json['audioHash'] as int?,
+      imageHash: json['imageHash'] as int?,
+      name: json['name'] as String,
+      isActive: json['isActive'] as bool,
+    );
+
+Map<String, dynamic> _$ActionItemDtoToJson(ActionItemDto instance) =>
+    <String, dynamic>{
+      'group': _$ActionGroupEnumMap[instance.group]!,
+      'dificulty': instance.dificulty,
+      'name': instance.name,
+      'isActive': instance.isActive,
+      'imageHash': instance.imageHash,
+      'audioHash': instance.audioHash,
+    };
+
+const _$ActionGroupEnumMap = {
+  ActionGroup.answeringPhone: 'answeringPhone',
+  ActionGroup.bathing: 'bathing',
+  ActionGroup.blowingBubbles: 'blowingBubbles',
+  ActionGroup.brushingHair: 'brushingHair',
+  ActionGroup.brushingTeeth: 'brushingTeeth',
+  ActionGroup.buttoningShirt: 'buttoningShirt',
+  ActionGroup.catPlayingWithWoolBall: 'catPlayingWithWoolBall',
+  ActionGroup.catchingBall: 'catchingBall',
+  ActionGroup.chasingButterflies: 'chasingButterflies',
+  ActionGroup.clappingHands: 'clappingHands',
+  ActionGroup.clearingTable: 'clearingTable',
+  ActionGroup.climbingStairs: 'climbingStairs',
+  ActionGroup.climbingTree: 'climbingTree',
+  ActionGroup.cooking: 'cooking',
+  ActionGroup.crying: 'crying',
+  ActionGroup.custom: 'custom',
+  ActionGroup.dancing: 'dancing',
+  ActionGroup.dog: 'dog',
+  ActionGroup.drawing: 'drawing',
+  ActionGroup.drinkingWater: 'drinkingWater',
+  ActionGroup.eating: 'eating',
+  ActionGroup.jumpingRope: 'jumpingRope',
+  ActionGroup.playingBlocks: 'playingBlocks',
+  ActionGroup.playingWithDog: 'playingWithDog',
+  ActionGroup.readingBook: 'readingBook',
+  ActionGroup.receivingGift: 'receivingGift',
+  ActionGroup.ridingBike: 'ridingBike',
+  ActionGroup.running: 'running',
+  ActionGroup.singing: 'singing',
+  ActionGroup.sleeping: 'sleeping',
+  ActionGroup.swinging: 'swinging',
+  ActionGroup.usingComputer: 'usingComputer',
+  ActionGroup.washingDishes: 'washingDishes',
+  ActionGroup.washingHands: 'washingHands',
+  ActionGroup.watchingTV: 'watchingTV',
+  ActionGroup.wateringPlants: 'wateringPlants',
+};

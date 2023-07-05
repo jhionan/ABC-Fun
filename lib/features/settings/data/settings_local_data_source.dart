@@ -15,11 +15,15 @@ class SettingsLocalDataSource implements SettingsRepository {
 
   @override
   Stream<SettingsEntity?> getSettings() async* {
-    yield* settingsDao.get().asStream();
+    try {
+      yield* settingsDao.get().asStream();
+    } catch (_) {}
   }
 
   @override
-  Future<void> insertSettings(SettingsEntity settingsEntity) {
-    return settingsDao.insert(settingsEntity);
+  Future<void> insertSettings(SettingsEntity settingsEntity) async {
+    try {
+      return settingsDao.insert(settingsEntity);
+    } catch (_) {}
   }
 }

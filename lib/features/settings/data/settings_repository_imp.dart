@@ -17,16 +17,17 @@ class SettingsRepositoryImp implements SettingsRepository {
   final SettingsDefaultDataSource settingsDefaultDataSource;
   final SettingsLocalDataSource settingsLocalDataSource;
   final SettingsRemoteDataSource settingsRemoteDataSource;
+  bool isLogged = false;
 
   Future<void> _seedDb() async {
-    if (await settingsRemoteDataSource.isLogged()) {
+    isLogged = await settingsRemoteDataSource.isLogged();
+    if (isLogged) {
       SettingsEntity? remoteSettings = await settingsRemoteDataSource.getSettings().first;
       if (remoteSettings != null) {
         SettingsDto settingsDto = SettingsDto(
-          selectedActionsPerStage: remoteSettings.selectedActionsPerStage,
-          selectedStageQuantity: remoteSettings.selectedStageQuantity,
-          rewardImageBytes: remoteSettings.rewardImageBytes
-        );
+            selectedActionsPerStage: remoteSettings.selectedActionsPerStage,
+            selectedStageQuantity: remoteSettings.selectedStageQuantity,
+            rewardImageBytes: remoteSettings.rewardImageBytes);
 
         await settingsLocalDataSource.insertSettings(settingsDto);
         return;
@@ -50,7 +51,9 @@ class SettingsRepositoryImp implements SettingsRepository {
   @override
   Future<void> deleteSettings(SettingsEntity settingsEntity) async {
     await settingsLocalDataSource.deleteSettings(settingsEntity);
-    await settingsRemoteDataSource.deleteSettings(settingsEntity);
+    if (isLogged) {
+      await settingsRemoteDataSource.deleteSettings(settingsEntity);
+    }
   }
 
   @override

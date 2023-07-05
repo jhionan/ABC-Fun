@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:abc_fun/core/db/db.dart';
-import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_item_dto.dart';
 import 'package:isar/isar.dart';
 
-class IsarDbActionCustomItemImp implements Db<ActionCustomItemEntity> {
+class IsarDbActionCustomItemImp implements Db<ActionItemDto> {
   IsarDbActionCustomItemImp(this._isar) {
     _ensureOpennedDb();
   }
@@ -12,60 +12,60 @@ class IsarDbActionCustomItemImp implements Db<ActionCustomItemEntity> {
   Isar? _opennedIsar;
 
   @override
-  Future<void> delete(ActionCustomItemEntity item) async {
+  Future<void> delete(ActionItemDto item) async {
     await _ensureOpennedDb();
     await _opennedIsar!.writeTxn(() async {
-      _opennedIsar!.actionCustomItemEntitys.delete(item.id!);
+      _opennedIsar!.actionItemDtos.delete(item.id!);
     });
   }
 
   @override
-  Future<void> deleteAll(List<ActionCustomItemEntity> items) async {
+  Future<void> deleteAll(List<ActionItemDto> items) async {
     await _ensureOpennedDb();
     await _opennedIsar!.writeTxn(() async {
-      await _opennedIsar!.actionCustomItemEntitys.deleteAll(items.map((e) => e.id!).toList());
+      await _opennedIsar!.actionItemDtos.deleteAll(items.map((e) => e.id!).toList());
     });
   }
 
   @override
-  Future<ActionCustomItemEntity?> get(Object id) async {
+  Future<ActionItemDto?> get(Object id) async {
     await _ensureOpennedDb();
     if (id is int) {
-      return await _opennedIsar!.actionCustomItemEntitys.get(id);
+      return await _opennedIsar!.actionItemDtos.get(id);
     }
     throw Exception('id must be int');
   }
 
   @override
-  Future<List<ActionCustomItemEntity>> getAll() async {
+  Future<List<ActionItemDto>> getAll() async {
     await _ensureOpennedDb();
-    return await _opennedIsar!.actionCustomItemEntitys.where().findAll();
+    return await _opennedIsar!.actionItemDtos.where().findAll();
   }
 
   @override
-  Future<void> insert(ActionCustomItemEntity item) async {
+  Future<void> insert(ActionItemDto item) async {
     await _ensureOpennedDb();
     await _opennedIsar!.writeTxn(() async {
-      await _opennedIsar!.actionCustomItemEntitys.put(item);
+      await _opennedIsar!.actionItemDtos.put(item);
     });
   }
 
   @override
-  Future<void> insertAll(List<ActionCustomItemEntity> items) async {
+  Future<void> insertAll(List<ActionItemDto> items) async {
     await _ensureOpennedDb();
     await _opennedIsar!.writeTxn(() async {
-      await _opennedIsar!.actionCustomItemEntitys.putAll(items);
+      await _opennedIsar!.actionItemDtos.putAll(items);
     });
   }
 
   @override
-  Future<void> update(ActionCustomItemEntity item) async {
+  Future<void> update(ActionItemDto item) async {
     await _ensureOpennedDb();
     await insert(item);
   }
 
   @override
-  Future<void> updateAll(List<ActionCustomItemEntity> items) async {
+  Future<void> updateAll(List<ActionItemDto> items) async {
     await _ensureOpennedDb();
     await insertAll(items);
   }
@@ -73,10 +73,10 @@ class IsarDbActionCustomItemImp implements Db<ActionCustomItemEntity> {
   Future<void> _ensureOpennedDb() async {
     _opennedIsar ??= await _isar;
   }
-  
+
   @override
   Stream<void> onDbchanged() async* {
     await _ensureOpennedDb();
-    yield* _opennedIsar!.actionCustomItemEntitys.watchLazy();
+    yield* _opennedIsar!.actionItemDtos.watchLazy();
   }
 }

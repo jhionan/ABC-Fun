@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_item_dto.dart';
 import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class GameRunningImage extends StatelessWidget {
 
   Widget _imageFromEntityType(ActionItemEntity e) {
     if (e.group == ActionGroup.custom) {
-      ActionCustomItemEntity item = e as ActionCustomItemEntity;
+      ActionItemDto item = e as ActionItemDto;
       return Image.memory(
         Uint8List.fromList(item.imageBytes!),
         fit: BoxFit.contain,

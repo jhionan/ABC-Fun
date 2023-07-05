@@ -9,14 +9,14 @@ class ChallengeLoadedState extends ChallengeState {
   ChallengeLoadedState({
     required this.actionsGroupedByName,
   });
-  final Map<String, List<ActionCustomItemEntity>> actionsGroupedByName;
+  final Map<String, List<ActionItemDto>> actionsGroupedByName;
 }
 
 class ChallengeErrorState extends ChallengeState {
   ChallengeErrorState({
     required this.actionsGroupedByName,
   });
-  final Map<String, List<ActionCustomItemEntity>> actionsGroupedByName;
+  final Map<String, List<ActionItemDto>> actionsGroupedByName;
 }
 
 class ChallengeNewActionDataState extends ChallengeState {

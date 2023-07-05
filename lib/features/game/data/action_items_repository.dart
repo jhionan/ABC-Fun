@@ -1,4 +1,4 @@
-import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_item_dto.dart';
 import 'package:abc_fun/features/game/data/action_items_default_data_source.dart';
 import 'package:abc_fun/core/domain/action_items_repository.dart';
 import 'package:abc_fun/core/domain/models/action_item_entity.dart';
@@ -14,8 +14,8 @@ class ActionItemsRepositoryImp implements ActionItemsRepository {
   });
 
   @override
-  Future<List<ActionCustomItemEntity>> getAllItems() async {
-    List<ActionCustomItemEntity> local = await localDataSource.getAllItems();
+  Future<List<ActionItemDto>> getAllItems() async {
+    List<ActionItemDto> local = await localDataSource.getAllItems();
 
     if (local.isEmpty) {
       _seedDb();

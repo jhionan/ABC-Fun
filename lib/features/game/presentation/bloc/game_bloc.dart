@@ -63,6 +63,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _addWrongAnswerToSession((state as GameRunning).correctAnswer);
       return GameWrongAnswer.fromRunningState(state as GameRunning);
     }
+    _addToGameSession((state as GameRunning).correctAnswer);
     _saveSession();
     return GameOver();
   }
