@@ -21,8 +21,9 @@ class SettingsRepositoryImp implements SettingsRepository {
 
   Future<void> _seedDb() async {
     isLogged = await settingsRemoteDataSource.isLogged();
+    SettingsEntity? local = await settingsLocalDataSource.getSettings();
     if (isLogged) {
-      SettingsEntity? remoteSettings = await settingsRemoteDataSource.getSettings().first;
+      SettingsEntity? remoteSettings = await settingsRemoteDataSource.getSettings();
       if (remoteSettings != null) {
         SettingsDto settingsDto = SettingsDto(
             selectedActionsPerStage: remoteSettings.selectedActionsPerStage,
@@ -32,19 +33,20 @@ class SettingsRepositoryImp implements SettingsRepository {
         await settingsLocalDataSource.insertSettings(settingsDto);
         return;
       }
-      SettingsEntity? local = await settingsLocalDataSource.getSettings().first;
+
       if (local != null) {
         settingsRemoteDataSource.insertSettings(local);
         return;
       }
     }
-
-    SettingsEntity settingsEntity = await settingsDefaultDataSource.getSettings().first;
+    if (local != null) {
+      return;
+    }
+    SettingsEntity settingsEntity = await settingsDefaultDataSource.getSettings();
     SettingsDto settingsDto = SettingsDto(
       selectedActionsPerStage: settingsEntity.selectedActionsPerStage,
       selectedStageQuantity: settingsEntity.selectedStageQuantity,
     );
-
     await settingsLocalDataSource.insertSettings(settingsDto);
   }
 
@@ -57,10 +59,9 @@ class SettingsRepositoryImp implements SettingsRepository {
   }
 
   @override
-  Stream<SettingsEntity?> getSettings() async* {
-    yield* settingsLocalDataSource.getSettings();
+  Future<SettingsEntity?> getSettings() async {
     await _seedDb();
-    yield* settingsLocalDataSource.getSettings();
+    return settingsLocalDataSource.getSettings();
   }
 
   @override

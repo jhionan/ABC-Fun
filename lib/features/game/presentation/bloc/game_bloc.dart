@@ -105,7 +105,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   Future<void> _loadingSettings() async {
-    SettingsEntity? settings = await settingsRepository.getSettings().first;
+    SettingsEntity? settings = await settingsRepository.getSettings();
     if (settings == null) {
       add(GameWithErrorEvent());
       return;

@@ -30,9 +30,9 @@ class SettingsRemoteDataSource implements SettingsRepository {
   }
 
   @override
-  Stream<SettingsEntity?> getSettings() async* {
+  Future<SettingsEntity?> getSettings() async {
      String? userId = await appwriteClient.userId;
-      if (userId == null) return;
+      if (userId == null) return null;
     Document? document;
     SettingsDto? settingsDto;
     SettingsEntity? entity;
@@ -45,8 +45,8 @@ class SettingsRemoteDataSource implements SettingsRepository {
       settingsDto = SettingsDto.fromJson(document.data);
       entity = SettingsEntity.fromDto(settingsDto);
     } catch (_) {
-      yield null;
-      return;
+      
+      return null;
     }
     try {
       Uint8List imageFromBucket =
@@ -54,7 +54,7 @@ class SettingsRemoteDataSource implements SettingsRepository {
       entity.rewardImageBytes = imageFromBucket.toList();
     } catch (_) {}
 
-    yield entity;
+    return entity;
   }
 
   @override
