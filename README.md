@@ -1,16 +1,18 @@
 # ABC Fun
 
-A new Flutter project.
+## Sobre
+ABC Fun é um jogo inovador baseado no método ABA (Análise do Comportamento Aplicada)\nfoi desenvolvido com o objetivo de auxiliar crianças autistas no processo de aprendizado.\nCriado com dedicação por Jhionan Rian Lara dos Santos e Bruno Stefanis Leal, e orientados pelo Dr Alexander Robert Kutzke como parte de sua conclusão no curso de Análise e Desenvolvimento de Sistemas da Universidade Federal do Paraná (UFPR).
 
-## Getting Started
+O ABC Fun oferece uma experiência interativa e envolvente. O jogo ABC Fun combina os princípios do método ABA com elementos lúdicos e interativos, adaptados especificamente para atender às necessidades das crianças autistas. Através de uma série de atividades cuidadosamente projetadas. A concepção desse jogo foi feita pelo aluno Guilherme Antônio Constantino, orientado pelo Professor Doutor Ricardo Z. N. Vêncio, para o curso de Informática Biomédica da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo, no ano de 2021
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Instalação
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1 - Este projeto utiliza Flutter, e sua instalação pode ser feita [seguindo os passos aqui](https://docs.flutter.dev/get-started/install)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2 - Após configurar seu ambiente clone esse projeto:
+ - utilizando ssh `git clone git@github.com:jhionan/ABC-Fun.git` ou https `git clone git@github.com:jhionan/ABC-Fun.git)`
+
+3 - utilize `flutter pub get` para baixar as dependencias do projeto
+
+4 - rode com `flutter run`
