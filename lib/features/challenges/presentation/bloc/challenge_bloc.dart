@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'dart:typed_data';
 
-import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_item_dto.dart';
 import 'package:abc_fun/core/domain/action_items_repository.dart';
 import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 import 'package:abc_fun/core/providers/providers.dart';
@@ -8,6 +9,7 @@ import 'package:abc_fun/core/utils/extensions/string_ext.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:xxh3/xxh3.dart';
 
 part 'challenge_event.dart';
 part 'challenge_state.dart';
@@ -20,7 +22,7 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
   static const int _maxImageSelection = 4;
 
   final ActionItemsRepository actionItemsRepository;
-  Map<String, List<ActionCustomItemEntity>> _actions = {};
+  Map<String, List<ActionItemDto>> _actions = {};
 
   FutureOr<void> handleEvent(ChallengeEvent event, Emitter<ChallengeState> emit) async {
     if (event is ChallengeLoadedEvent) {
@@ -47,8 +49,7 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
   }
 
   void _init() async {
-    _actions = groupBy(
-        List.castFrom<ActionItemEntity, ActionCustomItemEntity>(await actionItemsRepository.getAllItems()),
+    _actions = groupBy(List.castFrom<ActionItemEntity, ActionItemDto>(await actionItemsRepository.getAllItems()),
         (e) => e.name.toLowerCase());
 
     if (!isClosed) {
@@ -120,17 +121,22 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
       }
 
       for (String imagePath in state.imagePaths) {
-        await actionItemsRepository.addItem(ActionCustomItemEntity(
+        Uint8List imageBytes = await provider.read(Providers.pathProviderHelper).getBytesFromFilePath(imagePath);
+        Uint8List? audioBytes = state.audioPath != null
+                ? await provider.read(Providers.pathProviderHelper).getBytesFromFilePath(state.audioPath!)
+                : null;
+        await actionItemsRepository.addItem(ActionItemDto(
             name: state.title,
             isActive: true,
             group: ActionGroup.custom,
             dificulty: 2,
             imagePath: '',
-            imageBytes: await provider.read(Providers.pathProviderHelper).getBytesFromFilePath(imagePath),
-            audioBytes: state.audioPath != null
-                ? await provider.read(Providers.pathProviderHelper).getBytesFromFilePath(state.audioPath!)
-                : null,
-            notAllowedWith: []));
+            imageBytes: imageBytes,
+            audioBytes: audioBytes,
+            notAllowedWith: [],
+            audioHash: audioBytes!= null ? xxh3(audioBytes) : null,
+            imageHash: xxh3(imageBytes),
+            ));
       }
       if (isClosed) return;
       add(const CreateNewChallengeCompleteEvent());

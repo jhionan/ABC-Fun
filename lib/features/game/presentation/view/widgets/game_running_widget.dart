@@ -1,5 +1,5 @@
 import 'package:abc_fun/core/actions_audio.dart';
-import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_item_dto.dart';
 import 'package:abc_fun/core/domain/models/action_item_entity.dart';
 import 'package:abc_fun/core/domain/view/widgets/adaptative_screen_builder.dart';
 import 'package:abc_fun/core/domain/view/widgets/background_widget.dart';
@@ -106,8 +106,8 @@ class _ActionTitleState extends State<_ActionTitle> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (widget.gameRunningState.correctAnswer.group != ActionGroup.custom ||
-                      (widget.gameRunningState.correctAnswer is ActionCustomItemEntity &&
-                          (widget.gameRunningState.correctAnswer as ActionCustomItemEntity).audioBytes != null)) ...[
+                      (widget.gameRunningState.correctAnswer is ActionItemDto &&
+                          (widget.gameRunningState.correctAnswer as ActionItemDto).audioBytes != null)) ...[
                     const Icon(
                       Icons.play_circle_outline_sharp,
                       size: 32,
@@ -137,7 +137,7 @@ class _ActionTitleState extends State<_ActionTitle> {
     if (audioPath.isNotEmpty && action.group != ActionGroup.custom) {
       audioPlayer.play(AssetSource(audioPath.replaceAll('assets/', '')));
     }
-    if (action.group == ActionGroup.custom && action is ActionCustomItemEntity && action.audioBytes != null) {
+    if (action.group == ActionGroup.custom && action is ActionItemDto && action.audioBytes != null) {
       try {
         audioPlayer.play(BytesSource(Uint8List.fromList(action.audioBytes!)));
       } catch (_) {}

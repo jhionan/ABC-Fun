@@ -1,3 +1,5 @@
+
+
 part of 'settings_bloc.dart';
 
 sealed class SettingsState {
@@ -17,4 +19,17 @@ class SettingsLoadedState extends SettingsState {
   final List<int>? rewardImageBytes;
   final int selectedStageQuantity;
   final int selectedActionsPerStage;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+  
+    return other is SettingsLoadedState &&
+      listEquals(other.rewardImageBytes, rewardImageBytes) &&
+      other.selectedStageQuantity == selectedStageQuantity &&
+      other.selectedActionsPerStage == selectedActionsPerStage;
+  }
+
+  @override
+  int get hashCode => rewardImageBytes.hashCode ^ selectedStageQuantity.hashCode ^ selectedActionsPerStage.hashCode;
 }

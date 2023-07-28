@@ -19,18 +19,20 @@ class SettingsRemoteDataSource implements SettingsRepository {
   @override
   Future<void> deleteSettings(SettingsEntity settingsEntity) async {
     try {
-      String userID = await appwriteClient.userId;
+      String? userId = await appwriteClient.userId;
+      if (userId == null) return;
       appwriteClient.databases.deleteDocument(
         databaseId: appwriteClient.dataBaseId,
         collectionId: Collection.settings.toString(),
-        documentId: userID,
+        documentId: userId,
       );
     } catch (_) {}
   }
 
   @override
-  Stream<SettingsEntity?> getSettings() async* {
-    String userID = await appwriteClient.userId;
+  Future<SettingsEntity?> getSettings() async {
+     String? userId = await appwriteClient.userId;
+      if (userId == null) return null;
     Document? document;
     SettingsDto? settingsDto;
     SettingsEntity? entity;
@@ -38,50 +40,51 @@ class SettingsRemoteDataSource implements SettingsRepository {
       document = await appwriteClient.databases.getDocument(
         databaseId: appwriteClient.dataBaseId,
         collectionId: Collection.settings.toString(),
-        documentId: userID,
+        documentId: userId,
       );
       settingsDto = SettingsDto.fromJson(document.data);
       entity = SettingsEntity.fromDto(settingsDto);
     } catch (_) {
-      yield null;
-      return;
+      
+      return null;
     }
     try {
       Uint8List imageFromBucket =
-          await appwriteClient.storage.getFileView(bucketId: appwriteClient.settingsBucketId, fileId: userID);
+          await appwriteClient.storage.getFileView(bucketId: appwriteClient.settingsBucketId, fileId: userId);
       entity.rewardImageBytes = imageFromBucket.toList();
     } catch (_) {}
 
-    yield entity;
+    return entity;
   }
 
   @override
   Future<void> insertSettings(SettingsEntity settingsEntity) async {
-    String userID = await appwriteClient.userId;
+    String? userId = await appwriteClient.userId;
+    if (userId == null) return;
     try {
       appwriteClient.databases.updateDocument(
         databaseId: appwriteClient.dataBaseId,
         collectionId: Collection.settings.toString(),
-        documentId: userID,
+        documentId: userId,
         data: SettingsDto(
           selectedActionsPerStage: settingsEntity.selectedActionsPerStage,
           selectedStageQuantity: settingsEntity.selectedStageQuantity,
         ).toJson(),
       );
       if (settingsEntity.rewardImageBytes != null) {
-        await appwriteClient.storage.deleteFile(bucketId: appwriteClient.settingsBucketId, fileId: userID);
+        await appwriteClient.storage.deleteFile(bucketId: appwriteClient.settingsBucketId, fileId: userId);
         appwriteClient.storage.createFile(
             file: InputFile.fromBytes(
-                bytes: settingsEntity.rewardImageBytes!, filename: 'settings$userID', contentType: 'image/png/webp'),
+                bytes: settingsEntity.rewardImageBytes!, filename: 'settings$userId', contentType: 'image/png/webp'),
             bucketId: appwriteClient.settingsBucketId,
-            fileId: userID,
-            permissions: appwriteClient.defaultPermissions(userID));
+            fileId: userId,
+            permissions: appwriteClient.defaultPermissions(userId));
       }
     } on AppwriteException {
       appwriteClient.databases.createDocument(
         databaseId: appwriteClient.dataBaseId,
         collectionId: Collection.settings.toString(),
-        documentId: userID,
+        documentId: userId,
         data: SettingsDto(
           selectedActionsPerStage: settingsEntity.selectedActionsPerStage,
           selectedStageQuantity: settingsEntity.selectedStageQuantity,
@@ -90,13 +93,11 @@ class SettingsRemoteDataSource implements SettingsRepository {
       if (settingsEntity.rewardImageBytes != null) {
         appwriteClient.storage.createFile(
             file: InputFile.fromBytes(
-                bytes: settingsEntity.rewardImageBytes!, filename: 'settings$userID', contentType: 'image/png/webp'),
+                bytes: settingsEntity.rewardImageBytes!, filename: 'settings$userId', contentType: 'image/png/webp'),
             bucketId: appwriteClient.settingsBucketId,
-            fileId: userID,
-            permissions: appwriteClient.defaultPermissions(userID));
+            fileId: userId,
+            permissions: appwriteClient.defaultPermissions(userId));
       }
-    } catch (_) {
-      print(_);
-    }
+    } catch (_) {}
   }
 }

@@ -7,7 +7,7 @@ import 'package:abc_fun/core/db/daos/settings_dao.dart';
 import 'package:abc_fun/core/db/db_imp/isar_db_action_custom_item_imp.dart';
 import 'package:abc_fun/core/db/db_imp/isar_db_game_session_imp.dart';
 import 'package:abc_fun/core/db/db_imp/isar_db_settings_imp.dart';
-import 'package:abc_fun/core/db/schemas/action_custom_item_entity.dart';
+import 'package:abc_fun/core/db/schemas/action_item_dto.dart';
 import 'package:abc_fun/core/db/schemas/game_session_dto.dart';
 import 'package:abc_fun/core/db/schemas/settings_dto.dart';
 import 'package:abc_fun/core/domain/action_items_repository.dart';
@@ -18,6 +18,7 @@ import 'package:abc_fun/features/game/data/action_items_default_data_source.dart
 import 'package:abc_fun/features/game/data/action_items_local_data_source.dart';
 import 'package:abc_fun/features/game/data/action_items_repository.dart';
 import 'package:abc_fun/features/game/data/game_session_local_data_source.dart';
+import 'package:abc_fun/features/game/data/game_session_remote_data_source.dart';
 import 'package:abc_fun/features/game/data/game_session_repository.dart';
 import 'package:abc_fun/features/game/domain/game_session_repository.dart';
 import 'package:abc_fun/features/settings/data/settings_default_data_source.dart';
@@ -55,7 +56,7 @@ final class Providers {
     final path = await ref.read<PathProviderHelper>(pathProviderHelper).getApplicationDocumentsDirectoryPath();
     final isar = await Isar.open(
       [
-        ActionCustomItemEntitySchema,
+        ActionItemDtoSchema,
         SettingsDtoSchema,
         GameSessionDtoSchema,
       ],
@@ -91,8 +92,18 @@ final class Providers {
     return GameSessionLocalDataSouce(ref.read<GameSessionDao>(_gameSessionDao));
   });
 
+  static final _gameSessionRemoteDataSource = Provider<GameSessionRepository>((ref) {
+    return GameSessionRemoteDataSource(
+      appwriteClient: ref.read<AppwriteClient>(_appwriteClient),
+    );
+  });
+
   static final gameSessionRepository = Provider<GameSessionRepository>((ref) {
-    return GameSessionRepositoryImp(localDataSource: ref.read<GameSessionRepository>(_gameSessionLocalDataSource));
+    return GameSessionRepositoryImp(
+      localDataSource: ref.read<GameSessionRepository>(_gameSessionLocalDataSource),
+      remoteDataSource: ref.read<GameSessionRepository>(_gameSessionRemoteDataSource),
+      userRepository: ref.read<UserRepository>(userRepository),
+    );
   });
 
   static final _settingsDao = Provider<SettingsDao>((ref) {

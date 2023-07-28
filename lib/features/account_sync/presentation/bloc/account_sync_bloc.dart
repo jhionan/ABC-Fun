@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:abc_fun/core/data/appwrite_client.dart';
-import 'package:abc_fun/core/data/repositories/user_repository.dart';
 import 'package:abc_fun/core/domain/repositories/user_repository.dart';
 import 'package:appwrite/models.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

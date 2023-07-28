@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:abc_fun/features/account_sync/presentation/domain/model/settings_entity.dart';
 import 'package:abc_fun/features/settings/domain/settings_constants.dart';
 import 'package:abc_fun/features/settings/domain/settings_repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'settings_event.dart';
 part 'settings_state.dart';
@@ -18,13 +18,6 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
   final SettingsRepository settingsRepository;
   SettingsEntity? _settings;
-  StreamSubscription? _settingsSubscription;
-
-  @override
-  Future<void> close() async {
-    _settingsSubscription?.cancel();
-    super.close();
-  }
 
   FutureOr<void> _handleEvent(SettingsEvent event, Emitter<SettingsState> emit) {
     if (event is SettingsLoadedEvent) {
@@ -49,9 +42,8 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
 
   Future<void> _init() async {
-    _settingsSubscription = settingsRepository.getSettings().listen((event) {
-      _settings = event;
-      if (_settings == null) {
+    _settings = await settingsRepository.getSettings();
+     if (_settings == null) {
         addError(Exception('Settings not found'));
         return;
       }
@@ -60,7 +52,6 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         selectedActionsPerStage: _settings!.selectedActionsPerStage,
         rewardImageBytes: _settings!.rewardImageBytes,
       ));
-    }, onError: (error) {});
   }
 
   void _setStageQuantity(int stageQuantity, Emitter<SettingsState> emit) {

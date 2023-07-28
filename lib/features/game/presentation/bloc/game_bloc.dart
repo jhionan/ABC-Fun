@@ -63,6 +63,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _addWrongAnswerToSession((state as GameRunning).correctAnswer);
       return GameWrongAnswer.fromRunningState(state as GameRunning);
     }
+    _addToGameSession((state as GameRunning).correctAnswer);
     _saveSession();
     return GameOver();
   }
@@ -104,7 +105,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   Future<void> _loadingSettings() async {
-    SettingsEntity? settings = await settingsRepository.getSettings().first;
+    SettingsEntity? settings = await settingsRepository.getSettings();
     if (settings == null) {
       add(GameWithErrorEvent());
       return;
@@ -147,7 +148,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       totalWrongAnswers:
           _playedActions.values.fold<int>(0, (previousValue, element) => previousValue + element.totalWrong),
       totalStages: _rounds,
-      totalActionsJson: _playedActions.values.map((e) => jsonEncode(e.toJson())).toList(),
+      totalActionsJson: jsonEncode(_playedActions.values.toList()) 
     ));
   }
 

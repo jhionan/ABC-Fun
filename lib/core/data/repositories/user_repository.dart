@@ -27,9 +27,13 @@ class UserRepositoryImp implements UserRepository {
   Future<void> logoutAllDevices() async {
     await appwriteClient.logoutAllDevices();
   }
-  
+
   @override
-  Future<User?> getUser() {
-    return appwriteClient.getUser();
+  Future<User?> getUser() async {
+    try {
+      return appwriteClient.getUser();
+    } catch (e) {
+      return null;
+    }
   }
 }

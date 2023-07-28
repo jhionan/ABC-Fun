@@ -26,12 +26,14 @@ class AppwriteClient {
 
   Storage get storage => Storage(_client);
 
-  Future<String> get userId async {
-    _userId ??= await _account.get().then((value) => value.$id);
-    return _userId!;
+  Future<String?> get userId async {
+    if (_userId != null) return _userId;
+    User? user = await _getUserAndSetId();
+    return user?.$id;
   }
 
   logout() {
+    if (_userId == null) return;
     _userId = null;
     _account.deleteSession(sessionId: 'current');
   }
@@ -42,21 +44,25 @@ class AppwriteClient {
   }
 
   Future<User?> login() async {
-    try {
-      return await _getUserAndSetId();
-    } catch (_) {}
+    User? user = await _getUserAndSetId();
+    if(user.isLogged) return user;
     try {
       await _account.createOAuth2Session(provider: 'google', success: kIsWeb ? '${location?.origin}/auth.html' : null);
+      await Future.delayed(const Duration(seconds: 1));
       return await _getUserAndSetId();
     } catch (e) {
       return null;
     }
   }
 
-  Future<User> _getUserAndSetId() async {
-    var user = await _account.get();
-    _userId = user.$id;
-    debugPrint('User Logged in: ${user.name} ${user.email}');
+  Future<User?> _getUserAndSetId() async {
+    User? user;
+    try {
+      user = await _account.get();
+      _userId = user.$id;
+      debugPrint('User Logged in: ${user.name} ${user.email}');
+    } catch (_) {}
+
     return user;
   }
 
@@ -83,20 +89,28 @@ class AppwriteClient {
         Permission.delete(Role.user(userId))
       ];
 
-  Future<User?> getUser() {
-    return _getUserAndSetId();
+  Future<User?> getUser() async {
+    try {
+      return await _getUserAndSetId();
+    } catch (_) {
+      return null;
+    }
   }
 }
 
 extension UserExtension on User? {
- bool get isLogged => this!=null && this!.email.isNotEmpty && this!.emailVerification;
- bool get isAnnonymous => this!=null && this!.email.isEmpty;
+  bool get isLogged => this != null && this!.email.isNotEmpty && this!.emailVerification;
+  bool get isAnnonymous => this != null && this!.email.isEmpty;
 }
 
 enum Collection {
   settings,
   actions,
-  gameSessions;
+  gameSessions,
+  gameSessionAction,
+  actionsSync,
+  gameSessionsSync,
+  settingsSync;
 
   @override
   String toString() => name;

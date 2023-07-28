@@ -20,10 +20,10 @@ class IsarDbSettingsImp implements Db<SettingsDto> {
   }
 
   @override
-  Future<void> deleteAll(List<SettingsDto> items) async {
+  Future<void> deleteAll() async {
     await _ensureOpennedDb();
     await _opennedIsar!.writeTxn(() async {
-      await _opennedIsar!.settingsDtos.deleteAll(items.map((e) => e.id!).toList());
+      await _opennedIsar!.settingsDtos.clear();
     });
   }
 

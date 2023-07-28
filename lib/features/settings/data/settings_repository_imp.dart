@@ -17,47 +17,51 @@ class SettingsRepositoryImp implements SettingsRepository {
   final SettingsDefaultDataSource settingsDefaultDataSource;
   final SettingsLocalDataSource settingsLocalDataSource;
   final SettingsRemoteDataSource settingsRemoteDataSource;
+  bool isLogged = false;
 
   Future<void> _seedDb() async {
-    if (await settingsRemoteDataSource.isLogged()) {
-      SettingsEntity? remoteSettings = await settingsRemoteDataSource.getSettings().first;
+    isLogged = await settingsRemoteDataSource.isLogged();
+    SettingsEntity? local = await settingsLocalDataSource.getSettings();
+    if (isLogged) {
+      SettingsEntity? remoteSettings = await settingsRemoteDataSource.getSettings();
       if (remoteSettings != null) {
         SettingsDto settingsDto = SettingsDto(
-          selectedActionsPerStage: remoteSettings.selectedActionsPerStage,
-          selectedStageQuantity: remoteSettings.selectedStageQuantity,
-          rewardImageBytes: remoteSettings.rewardImageBytes
-        );
+            selectedActionsPerStage: remoteSettings.selectedActionsPerStage,
+            selectedStageQuantity: remoteSettings.selectedStageQuantity,
+            rewardImageBytes: remoteSettings.rewardImageBytes);
 
         await settingsLocalDataSource.insertSettings(settingsDto);
         return;
       }
-      SettingsEntity? local = await settingsLocalDataSource.getSettings().first;
+
       if (local != null) {
         settingsRemoteDataSource.insertSettings(local);
         return;
       }
     }
-
-    SettingsEntity settingsEntity = await settingsDefaultDataSource.getSettings().first;
+    if (local != null) {
+      return;
+    }
+    SettingsEntity settingsEntity = await settingsDefaultDataSource.getSettings();
     SettingsDto settingsDto = SettingsDto(
       selectedActionsPerStage: settingsEntity.selectedActionsPerStage,
       selectedStageQuantity: settingsEntity.selectedStageQuantity,
     );
-
     await settingsLocalDataSource.insertSettings(settingsDto);
   }
 
   @override
   Future<void> deleteSettings(SettingsEntity settingsEntity) async {
     await settingsLocalDataSource.deleteSettings(settingsEntity);
-    await settingsRemoteDataSource.deleteSettings(settingsEntity);
+    if (isLogged) {
+      await settingsRemoteDataSource.deleteSettings(settingsEntity);
+    }
   }
 
   @override
-  Stream<SettingsEntity?> getSettings() async* {
-    yield* settingsLocalDataSource.getSettings();
+  Future<SettingsEntity?> getSettings() async {
     await _seedDb();
-    yield* settingsLocalDataSource.getSettings();
+    return settingsLocalDataSource.getSettings();
   }
 
   @override

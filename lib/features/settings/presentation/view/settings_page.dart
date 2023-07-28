@@ -29,6 +29,12 @@ class SettingsPage extends StatelessWidget {
       adaptativeBuilder: (context, screenType, _) {
         return BlocBuilder<SettingsBloc, SettingsState>(
           builder: (context, state) {
+            if (state is SettingsInitial) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
             int? selectedStageQuantity;
             int? selectedActionsPerStage;
             List<SettingsSelectEntity> stageQuantity = _generateStateQuantity(state, context);

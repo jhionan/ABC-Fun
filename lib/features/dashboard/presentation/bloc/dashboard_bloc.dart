@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:abc_fun/core/db/schemas/game_session_dto.dart';
 import 'package:abc_fun/features/game/domain/game_session_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:meta/meta.dart';
 
 part 'dashboard_event.dart';
@@ -82,7 +81,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   }
 
   void _calculateActionErrors(List<GameSessionDto> sessions, DashboardSessionLoadedEvent dashboardSessionLoadedEvent) {
-    List<GameSessionAction> actions = sessions.map((e) => e.totalActions).expand((element) => element).toList();
+    List<GameSessionAction> actions = sessions.map((e) => e.totalActions!).expand((element) => element).toList();
     Map<String, GameSessionAction> groupedActions =
         actions.fold<Map<String, GameSessionAction>>({}, (previousValue, element) {
       if (previousValue.containsKey(element.actionName)) {
@@ -112,7 +111,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   }
 
   void _listenDbChanges() {
-     _dbChangesSubscription = gameSessionRepository.onDbChanged().listen((event) {
+    _dbChangesSubscription = gameSessionRepository.onDbChanged().listen((event) {
       if (!isClosed) {
         _init();
       }

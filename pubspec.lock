@@ -1187,7 +1187,7 @@ packages:
     source: hosted
     version: "6.3.0"
   xxh3:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: xxh3
       sha256: a92b30944a9aeb4e3d4f3c3d4ddb3c7816ca73475cd603682c4f8149690f56d7

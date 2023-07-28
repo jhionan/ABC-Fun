@@ -16,8 +16,7 @@ class GameSessionDao {
   }
 
   Future<void> insertMany(List<GameSessionDto> items) async {
-    throw Exception('not implemented');
-    // await db.insertAll(items);
+    await db.insertAll(items);
   }
 
   Future<void> delete(GameSessionDto item) async {
@@ -25,10 +24,14 @@ class GameSessionDao {
   }
 
   Future<void> deleteMany(List<GameSessionDto> items) async {
-    await db.deleteAll(items);
+    await db.deleteAll();
   }
 
   Stream<void> onDbChange() async* {
     yield* db.onDbchanged();
+  }
+
+  Future<void> deleteAll() {
+    return db.deleteAll();
   }
 }

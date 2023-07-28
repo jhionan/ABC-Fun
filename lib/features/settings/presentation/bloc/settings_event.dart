@@ -1,3 +1,5 @@
+
+
 part of 'settings_bloc.dart';
 
 @immutable
@@ -17,6 +19,19 @@ class SettingsLoadedEvent extends SettingsEvent {
     required this.selectedActionsPerStage,
     this.rewardImageBytes,
   });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+  
+    return other is SettingsLoadedEvent &&
+      other.selectedStageQuantity == selectedStageQuantity &&
+      other.selectedActionsPerStage == selectedActionsPerStage &&
+      listEquals(other.rewardImageBytes, rewardImageBytes);
+  }
+
+  @override
+  int get hashCode => selectedStageQuantity.hashCode ^ selectedActionsPerStage.hashCode ^ rewardImageBytes.hashCode;
 }
 
 class SettingsActionsPerStageEvent extends SettingsEvent {
