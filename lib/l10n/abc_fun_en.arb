@@ -109,5 +109,7 @@
     "accountSyncPageSyncAccount": "Sync Google account",
     "gameOverTitle": "Congratulations, you have completed the game!",
     "buttonPlayAgain": "Play Again",
-    "buttonBackHome": "Back to Home"
+    "buttonBackHome": "Back to Home",
+    "buttonLogout": "Logout",
+    "buttonLogoutAllDevices": "Logout from All Devices"
 }

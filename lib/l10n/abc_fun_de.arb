@@ -108,6 +108,8 @@
 "createNewChallengePageActionNameError": "Der Aktionsname ist erforderlich",
 "accountSyncPageSyncAccount": "Google-Konto synchronisieren",
 "gameOverTitle": "Herzlichen Glückwunsch, du hast das Spiel abgeschlossen!",
-"buttonPlayAgain": "Nochmal spielen",
-"buttonBackHome": "Zurück zur Startseite"
+"buttonPlayAgain": "Erneut spielen",
+"buttonBackHome": "Zurück zum Start",
+"buttonLogout": "Abmelden",
+"buttonLogoutAllDevices": "Von allen Geräten abmelden"
 }
