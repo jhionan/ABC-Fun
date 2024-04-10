@@ -109,5 +109,7 @@
     "accountSyncPageSyncAccount": "Synchroniser le compte Google",
     "gameOverTitle": "Félicitations, vous avez terminé le jeu !",
     "buttonPlayAgain": "Jouer à nouveau",
-    "buttonBackHome": "Retour à l'accueil"
+    "buttonBackHome": "Retour à l'accueil",
+    "buttonLogout": "Se déconnecter",
+    "buttonLogoutAllDevices": "Se déconnecter de tous les appareils"
 }
