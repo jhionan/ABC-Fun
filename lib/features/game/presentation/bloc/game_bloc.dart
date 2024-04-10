@@ -39,7 +39,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   FutureOr<void> eventHandler(GameEvent event, Emitter<GameState> emit) async {
     switch (event) {
       case GameEventOnItemTapped() :
-        emit(_nextState(event as GameEventOnItemTapped));
+        emit(_nextState(event));
         return;
       case GameRestartStageEvent() :
         _phaseGenerator(emit);
