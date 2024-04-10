@@ -1,6 +1,5 @@
 import 'package:abc_fun/core/utils/extensions/context_ext.dart';
 import 'package:abc_fun/core/utils/extensions/string_ext.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 class ActionItemEntity {
@@ -72,19 +71,19 @@ enum ActionGroup {
   wateringPlants;
 
   factory ActionGroup.fromString(String value) {
-    return ActionGroup.values.firstWhere((e) => describeEnum(e) == value);
+    return ActionGroup.values.firstWhere((e) => e.name == value);
   }
 }
 
 extension ActionGroupNameEx on ActionItemEntity {
   String actionName(BuildContext context) {
-   return group.actionName(context: context, defaultName: name);
+    return group.actionName(context: context, defaultName: name);
   }
 }
 
 extension ActionGroupEx on ActionGroup {
   String actionName({required BuildContext context, required String defaultName}) {
- return switch (this) {
+    return switch (this) {
       ActionGroup.answeringPhone => context.intl.actionAnsweringPhone,
       ActionGroup.bathing => context.intl.actionBathing,
       ActionGroup.blowingBubbles => context.intl.actionBlowingBubbles,

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/enums.dart';
 import 'package:appwrite/models.dart';
 import 'package:flutter/foundation.dart';
 import 'package:window_location_href/window_location_href.dart';
@@ -45,9 +46,10 @@ class AppwriteClient {
 
   Future<User?> login() async {
     User? user = await _getUserAndSetId();
-    if(user.isLogged) return user;
+    if (user.isLogged) return user;
     try {
-      await _account.createOAuth2Session(provider: 'google', success: kIsWeb ? '${location?.origin}/auth.html' : null);
+      await _account.createOAuth2Session(
+          provider: OAuthProvider.google, success: kIsWeb ? '${location?.origin}/auth.html' : null);
       await Future.delayed(const Duration(seconds: 1));
       return await _getUserAndSetId();
     } catch (e) {

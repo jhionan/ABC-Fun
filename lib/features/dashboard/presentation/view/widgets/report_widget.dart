@@ -18,8 +18,11 @@ class ReportWidget extends StatelessWidget {
 
         if (state is DashboardLoadedWithActionErrorsState) {
           actionStatistics.addAll(state.actionErrors.map((e) => ActionStatisticsEntity(
-              actionName: e.actionName, totalIncorrect: e.totalWrong, totalShown: e.totalPlayed, actionGroup: e.group)));
-          
+              actionName: e.actionName,
+              totalIncorrect: e.totalWrong,
+              totalShown: e.totalPlayed,
+              actionGroup: e.group)));
+
           return ConstrainedBox(
             constraints: BoxConstraints(
               maxWidth: context.dimensions.maxHorizontalWidth,
@@ -31,12 +34,10 @@ class ReportWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AbcTitleWidget.small(imageUrl: Images.performanceIcon, title: context.intl.reportWidgetByTheme),
-                  ...actionStatistics
-                      .map((e) => Padding(
-                            padding: EdgeInsets.only(top: context.dimensions.vMargin),
-                            child: ReportCard(actionStatistics: e),
-                          ))
-                      .toList()
+                  ...actionStatistics.map((e) => Padding(
+                        padding: EdgeInsets.only(top: context.dimensions.vMargin),
+                        child: ReportCard(actionStatistics: e),
+                      ))
                 ],
               ),
             ),

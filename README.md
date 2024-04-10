@@ -16,3 +16,6 @@ O ABC Fun oferece uma experiência interativa e envolvente. O jogo ABC Fun combi
 3 - utilize `flutter pub get` para baixar as dependencias do projeto
 
 4 - rode com `flutter run`
+
+
+Repositorio oficial: https://github.com/jhionan/ABC-Fun

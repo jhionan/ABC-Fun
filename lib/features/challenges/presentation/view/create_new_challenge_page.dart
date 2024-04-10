@@ -16,7 +16,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:record/record.dart' as audio;
+import 'package:record/record.dart';
 
 @RoutePage()
 class CreateNewChallengePage extends StatefulWidget {
@@ -57,7 +57,7 @@ class _CreateNewChallengePageState extends State<CreateNewChallengePage> {
               alignment: Alignment.centerLeft,
               child: AbcButton.backButton(
                 context: context,
-                onPressed: () => context.router.pop(),
+                onPressed: () => context.router.maybePop(),
               ),
             ),
             SizedBox(
@@ -183,7 +183,7 @@ class _ActionImages extends StatelessWidget {
         Future.microtask(() {
           if (state is ChallengeNewActionSavedState) {
             bloc.add(const ChallengeInitialEvent());
-            context.router.pop();
+            context.router.maybePop();
           }
         });
         List<String> images = [];
@@ -319,7 +319,7 @@ class _RecordActionAudio extends StatefulWidget {
 }
 
 class _RecordActionAudioState extends State<_RecordActionAudio> with TickerProviderStateMixin {
-  final audio.Record record = audio.Record();
+  final AudioRecorder record = AudioRecorder();
   bool recording = false;
   AudioPlayer audioPlayer = AudioPlayer();
   String? recordedAudioPath;
@@ -424,7 +424,10 @@ class _RecordActionAudioState extends State<_RecordActionAudio> with TickerProvi
           recordedAudioPath = null;
           isPlaying = false;
         });
-        await record.start();
+        await record.start(
+          const RecordConfig(),
+          path: 'recorded/${DateTime.now().millisecondsSinceEpoch}.m4a'
+        );
       } else {
         recordedAudioPath = await record.stop();
         _recordingAnimationController.reset();

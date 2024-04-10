@@ -44,19 +44,19 @@ class _MenuPageState extends State<MenuPage> {
   void _navigate(BuildContext context, MenuSelectedPage event) {
     switch (event) {
       case MenuSelectedPage.dashboard:
-        context.router.pop();
+        context.router.maybePop();
         context.router.replace(const DashboardRoute());
       case MenuSelectedPage.settings:
-        context.router.pop();
+        context.router.maybePop();
         context.router.replace(const SettingsRoute());
       case MenuSelectedPage.challenges:
-        context.router.pop();
+        context.router.maybePop();
         context.router.replace(const ChallengeProviderRoute());
       case MenuSelectedPage.about:
-        context.router.pop();
+        context.router.maybePop();
         context.router.replace(const AboutRoute());
       case MenuSelectedPage.accountSync:
-        context.router.pop();
+        context.router.maybePop();
         context.router.replace(const AccountSyncRoute());
     }
   }
@@ -126,17 +126,17 @@ class MenuDrawer extends StatelessWidget {
                 onMenuSelected(context, MenuSelectedPage.about);
               },
             ),
-            ListTile(
-              title: Text(AppLocalizations.of(context).menuAccountSync),
-              leading: Image.asset(
-                Images.accountSync,
-                width: 40,
-                height: 40,
-              ),
-              onTap: () {
-                onMenuSelected(context, MenuSelectedPage.accountSync);
-              },
-            ),
+            // ListTile(
+            //   title: Text(AppLocalizations.of(context).menuAccountSync),
+            //   leading: Image.asset(
+            //     Images.accountSync,
+            //     width: 40,
+            //     height: 40,
+            //   ),
+            //   onTap: () {
+            //     onMenuSelected(context, MenuSelectedPage.accountSync);
+            //   },
+            // ),
           ],
         ),
       ),

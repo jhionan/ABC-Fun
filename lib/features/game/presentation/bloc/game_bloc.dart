@@ -38,16 +38,16 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
   FutureOr<void> eventHandler(GameEvent event, Emitter<GameState> emit) async {
     switch (event.runtimeType) {
-      case GameEventOnItemTapped:
+      case GameEventOnItemTapped _:
         emit(_nextState(event as GameEventOnItemTapped));
         return;
-      case GameRestartStageEvent:
+      case GameRestartStageEvent _:
         _phaseGenerator(emit);
         return;
-      case GameWithErrorEvent:
+      case GameWithErrorEvent _:
         emit(GameError());
         return;
-      case GamePlayAgainEvent:
+      case GamePlayAgainEvent _:
         _resetGame();
         return;
     }
@@ -143,13 +143,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
   void _saveSession() {
     gameSessionRepository.insert(GameSessionDto(
-      createdAt: DateTime.now().toUtc(),
-      totalMoves: _totalMoves,
-      totalWrongAnswers:
-          _playedActions.values.fold<int>(0, (previousValue, element) => previousValue + element.totalWrong),
-      totalStages: _rounds,
-      totalActionsJson: jsonEncode(_playedActions.values.toList()) 
-    ));
+        createdAt: DateTime.now().toUtc(),
+        totalMoves: _totalMoves,
+        totalWrongAnswers:
+            _playedActions.values.fold<int>(0, (previousValue, element) => previousValue + element.totalWrong),
+        totalStages: _rounds,
+        totalActionsJson: jsonEncode(_playedActions.values.toList())));
   }
 
   void _resetGame() {
