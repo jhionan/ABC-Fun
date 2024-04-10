@@ -81,7 +81,7 @@ class AbcButton extends StatelessWidget {
   }) {
     return AbcButton._(
       text: context.intl.buttonBack,
-      onPressed: onPressed ?? context.router.pop,
+      onPressed: onPressed ?? context.router.maybePop,
       minWidth: 99,
       icon: Icons.arrow_back_sharp,
       height: 48,
